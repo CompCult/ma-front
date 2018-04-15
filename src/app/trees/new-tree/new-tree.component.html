@@ -1,0 +1,47 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <form #treeForm ="ngForm" (ngSubmit)="create(treeForm)">
+
+    <h4>Dados da Arvore</h4>
+
+    <div class="form-group" *ngIf="modify">
+      <label for="id">Id</label>
+      <input id="id" [(ngModel)]="tree._id" class="form-control" type="text" name="_id" disabled #_id="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="nome">Nome completo</label>
+      <input id="nome" [(ngModel)]="tree.name" class="form-control" type="text" name="name" #name="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="descricao">Descrição</label>
+      <input id="descricao" [(ngModel)]="tree.description" class="form-control" type="text" name="description" #description="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="quantidade">Quantidade</label>
+      <input id="quantidade" [(ngModel)]="tree.amount_avaliable" class="form-control" type="number" name="amount_avaliable" #amount_avaliable="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="foto">Url da foto</label>
+      <input id="foto" [(ngModel)]="tree.photo" class="form-control" type="text" name="photo" #photo="ngModel">
+    </div>
+
+
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger" *ngIf="modify" (click)= delete(tree)>Deletar</button>
+  <button type="button" class="btn btn-info" *ngIf="modify" (click)= modifyTree(tree)>Salvar</button>
+  <button type="submit" class="btn btn-success" *ngIf="!modify">Confirmar</button>
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+
+</div>
+</form>

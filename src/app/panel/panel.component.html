@@ -1,0 +1,52 @@
+<nav class="navbar my-nav navbar-expand-lg navbar-dark">
+
+  <a class="navbar-brand" href="#">Minha Arvore</a>
+
+
+
+  <div *ngIf="showMenu" class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="users">Usuarios<span class="sr-only">(current)</span></a>
+      </li>
+
+      <li ngbDropdown class="d-inline-block ">
+        <a class="nav-link"  id="dropdownBasic3" routerLinkActive="active"  ngbDropdownToggle >
+          Pedidos
+        </a>
+
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic3">
+          <button class="dropdown-item" routerLink="trees">Arvores</button>
+          <hr>
+          <button class="dropdown-item" routerLink="resquestTree">Gerenciar Pedidos</button>
+        </div>
+
+      </li>
+
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="map">Mapas<span class="sr-only">(current)</span></a>
+      </li>
+
+    </ul>
+
+    <ul class="navbar-nav navbar-right">
+      <div class="navbar-right nav-item">
+        <a class="nav-link" routerLink="login" >Logout</a>
+      </div>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container">
+
+  <router-outlet></router-outlet>
+
+</div>
+
+<footer class="fixed-bottom">
+
+  <span style="color: white">@Comcult - inovar aplication - 2018</span>
+</footer>

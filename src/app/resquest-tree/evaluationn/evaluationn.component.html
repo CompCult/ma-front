@@ -1,0 +1,37 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <form #resquestForm ="ngForm" (ngSubmit)="create(requestForm)">
+
+    <h4>Dados do Pedido</h4>
+
+    <div class="form-group">
+      <label for="nome">Nome do requisitante</label>
+      <input id="nome" [(ngModel)]="resquestTree.requester_name" class="form-control" type="text" name="requester_name"  #requester_name="ngModel" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="lugar">Lugar</label>
+      <input id="lugar" [(ngModel)]="resquestTree.place" class="form-control" type="text" name="place" #place="ngModel" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="status">Status</label>
+      <input id="status" [(ngModel)]="resquestTree.status" class="form-control" type="text" name="status" #status="ngModel" disabled>
+    </div>
+
+
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger" *ngIf="modify" (click)= reject(resquestTree)>Rejeitar</button>
+  <button type="button" class="btn btn-success" *ngIf="modify" (click)= approve(resquestTree)>Aprovar</button>
+  <button type="submit" class="btn btn-success" *ngIf="!modify">Confirmar</button>
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+
+</div>
+</form>

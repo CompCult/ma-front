@@ -1,0 +1,42 @@
+<div class="top-space">
+
+
+  <nav class="navbar navbar-dark my-nav ">
+    <span class="navbar-brand">Gerenciar Pedidos</span>
+
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Search">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit">Procurar</button>
+    </form>
+  </nav>
+
+</div>
+
+<br>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>NOME</th>
+    <th>LUGAR</th>
+    <th>STATUS</th>
+    <th>AÇÕES</th>
+  </tr>
+  <tr *ngFor="let resquest_trees of resquest_trees">
+    <td>{{resquest_trees._id}}</td>
+    <td>{{resquest_trees.requester_name}}</td>
+    <td>{{resquest_trees.place}}</td>
+    <td>{{resquest_trees.status}}</td>
+    <td>
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="option(resquest_trees)">Opções</button>
+    </td>
+  </tr>
+
+</table>
+
+
+
+
+<div class="fixed-action-btn" >
+  <button class="btn btn-success" (click)="create()" ><span>Novo pedidos</span></button>
+</div>

@@ -1,0 +1,40 @@
+<div class="top-space">
+
+
+  <nav class="navbar navbar-dark my-nav ">
+    <span class="navbar-brand">Tipos de Arvores</span>
+
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Search">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit">Procurar</button>
+    </form>
+  </nav>
+
+</div>
+
+<br>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>NOME</th>
+    <th>DESCRIÇÃO</th>
+    <th>AÇÕES</th>
+  </tr>
+  <tr *ngFor="let tree of trees">
+    <td>{{tree._id}}</td>
+    <td>{{tree.name}}</td>
+    <td>{{tree.description}}</td>
+    <td>
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="option(tree)">Opções</button>
+    </td>
+  </tr>
+
+</table>
+
+
+
+
+<div class="fixed-action-btn" >
+  <button class="btn btn-success" (click)="create()" ><span>Adicionar Arvores</span></button>
+</div>
