@@ -1,4 +1,4 @@
-export interface Map{
+export class Map{
 _id: number;
 _user: number;
 _type: number;
