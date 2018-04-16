@@ -1,6 +1,5 @@
 export class NewResquestTree {
 
-  public _id: number;
 
   public  _user: number
   public _type: number
@@ -10,9 +9,9 @@ export class NewResquestTree {
 
 
 
-  constructor(_id: number, _user: number, _type: number, requester_name: string, place: string) {
+  constructor( _user: number, _type: number, requester_name: string, place: string) {
 
-      this._id = _id;
+    
       this._user = _user;
       this._type = _type;
 
