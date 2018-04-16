@@ -27,7 +27,8 @@ create() {
     title: 'Criar Usuario',
     user: new NewUser(null,null,null,null),
     mensage: 'Usuario criado com sucesso',
-    modify: false
+    modify: false,
+    password: ""
   };
   this.bsModalRef = this.modalService.show(NewUsersComponent, {initialState});
   this.bsModalRef.content.closeBtnName = 'Close';
@@ -39,7 +40,8 @@ option(user: User) {
     title: 'Opçoes de Usuario',
     user: user,
     mensage: 'Usuario criado com sucesso',
-    modify: true
+    modify: true,
+    password: ""
   };
   this.bsModalRef = this.modalService.show(NewUsersComponent, {initialState});
   this.bsModalRef.content.closeBtnName = 'Close';
