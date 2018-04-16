@@ -1,7 +1,7 @@
 <agm-map [latitude]="y" [longitude]="x">
   <agm-marker *ngFor="let tree of trees"
-              [latitude]={{tree.geolocation.lat}}
-              [longitude]={{tree.geolocation.lng}}>
+              [latitude]=[(ree.geolocation.lat)]
+              [longitude]=[(tree.geolocation.lng)]>
     <agm-info-window>
       <strong>{{ tree.name }}</strong><br>
     </agm-info-window>
