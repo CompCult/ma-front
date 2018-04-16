@@ -65,7 +65,7 @@ export class ResquestTreeComponent implements OnInit {
 
 
   getEndereco(resquest_trees: ResquestTree){
-    this.userService.getUser(resquest_trees._user).subscribe(user => this.userE = user);
+    this.userService.getUser(resquest_trees._user).subscribe(user => console.log(user) );
     console.log(this.userE)
     resquest_trees.zipcode =this.userE.zipcode;
     resquest_trees.state =this.userE.state;
