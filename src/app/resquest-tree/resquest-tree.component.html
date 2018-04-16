@@ -22,11 +22,11 @@
     <th>STATUS</th>
     <th>AÇÕES</th>
   </tr>
-  <tr *ngFor="let resquest_trees of resquest_trees">
-    <td>{{resquest_trees._id}}</td>
-    <td>{{resquest_trees.requester_name}}</td>
-    <td>{{resquest_trees.place}}</td>
-    <td>{{resquest_trees.status}}</td>
+  <tr *ngFor="let resquest of resquest_trees">
+    <td>{{resquest._id}}</td>
+    <td>{{resquest.requester_name}}</td>
+    <td>{{resquest.place}}</td>
+    <td>{{resquest.status}}</td>
     <td>
       <button class="btn btn-outline-success my-2 my-sm-0" (click)="option(resquest_trees)">Opções</button>
     </td>

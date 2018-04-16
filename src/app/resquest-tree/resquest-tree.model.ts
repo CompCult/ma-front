@@ -11,7 +11,7 @@ export class NewResquestTree {
 
   constructor( _user: number, _type: number, requester_name: string, place: string) {
 
-    
+
       this._user = _user;
       this._type = _type;
 
@@ -32,7 +32,8 @@ export class ResquestTree {
   public place: string;
   public status: string;
   public created_at: string;
-  public updated_at: string
+  public updated_at: string;
+
 
   public street: string;
   public zipcode: string;
