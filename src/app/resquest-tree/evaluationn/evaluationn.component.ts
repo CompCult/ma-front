@@ -46,9 +46,7 @@ export class EvaluationnComponent implements OnInit {
     }
 
 
-
-
-
   ngOnInit() {
+
   }
 }

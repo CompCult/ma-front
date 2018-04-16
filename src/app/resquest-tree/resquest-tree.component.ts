@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { ResquestTree } from './resquest-tree.model';
 import {ResquestTreeService} from './resquest-tree.service';
 
+import { UserService } from '../users/user.service';
+import { User } from '../users/user.model';
+
 import { EvaluationnComponent } from './evaluationn/evaluationn.component';
 
 
@@ -20,12 +23,12 @@ export class ResquestTreeComponent implements OnInit {
   bsModalRef: BsModalRef;
   resquest_trees: ResquestTree[] = [];
 
-  constructor(private modalService: BsModalService, private resquestTreeService: ResquestTreeService) { }
+  constructor(private modalService: BsModalService, private resquestTreeService: ResquestTreeService, private userService: UserService) { }
 
   create() {
     const initialState = {
       title: 'Novo pedido',
-      resquestTree: new ResquestTree(null,null,null,null,null,null,null,null),
+      resquestTree: new ResquestTree(null,null,null,null,null,null,null,null,null,null,null,null,null,null,null),
       mensage: 'Objeto adicionado com sucesso',
       modify: false
     };
@@ -35,9 +38,10 @@ export class ResquestTreeComponent implements OnInit {
   }
 
   option(resquest_trees: ResquestTree) {
+    let resquest_treesE = this.getEndereco(resquest_trees);
     const initialState = {
       title: 'Avaliar pedido',
-      resquestTree: resquest_trees,
+      resquestTree: resquest_treesE,
       mensage: 'Objeto adicionado com sucesso',
       modify: true
     };
@@ -56,6 +60,19 @@ export class ResquestTreeComponent implements OnInit {
 
   }
 
+
+  getEndereco(resquest_trees: ResquestTree){
+    let user: User;
+    this.userService.getUser(resquest_trees._user).subscribe(user => user = user);
+    resquest_trees.city =user.city;
+    resquest_trees.zipcode =user.zipcode;
+    resquest_trees.state =user.state;
+    resquest_trees.street =user.street;
+    resquest_trees.number =user.number;
+    resquest_trees.neighborhood =user.neighborhood;
+    resquest_trees.complement =user.complement;
+    return resquest_trees;
+  }
 
 
 }

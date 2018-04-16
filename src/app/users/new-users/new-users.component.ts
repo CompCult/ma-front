@@ -28,7 +28,7 @@ export class NewUsersComponent implements OnInit {
   constructor(public bsModalRef: BsModalRef, public userService: UserService) {}
 
   create(userForm){
-    if(this.password!= ""){
+    if(this.password != ""){
       this.user.password= this.password;
     }
     console.log(this.user);

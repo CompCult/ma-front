@@ -25,6 +25,11 @@ export class UserService {
     return this.http.post(`${API}/users/register`, json).map((response: Response) => response.json());
   }
 
+
+  getUser(id: number) {
+    return this.http.get(`${API}/users/${id}`).map((response: Response) => response.json());
+  }
+
   updateUser(json: any, id:number) {
     return this.http.post(`${API}/users/update/${id}`, json).map((response: Response) => response.text());
 }

@@ -11,6 +11,16 @@
     <h4>Dados do Pedido</h4>
 
     <div class="form-group">
+      <label for="idUser">Id Usuario</label>
+      <input id="idUser" [(ngModel)]="resquestTree._user" class="form-control" type="number" name="_user"  #_user="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="idtree">Id Arvore</label>
+      <input id="idtree" [(ngModel)]="resquestTree._type" class="form-control" type="number" name="_type"  #_type="ngModel">
+    </div>
+
+    <div class="form-group">
       <label for="nome">Nome do requisitante</label>
       <input id="nome" [(ngModel)]="resquestTree.requester_name" class="form-control" type="text" name="requester_name"  #requester_name="ngModel">
     </div>
@@ -20,9 +30,74 @@
       <input id="lugar" [(ngModel)]="resquestTree.place" class="form-control" type="text" name="place" #place="ngModel">
     </div>
 
-    <div class="form-group">
+    <div class="form-group" *ngIf="modify">
       <label for="status">Status</label>
       <input id="status" [(ngModel)]="resquestTree.status" class="form-control" type="text" name="status" #status="ngModel">
+    </div>
+
+    <div class="form-group" *ngIf="modify">
+      <label for="rua">Rua</label>
+      <input id="rua" [(ngModel)]="resquestTree.street" class="form-control" type="text" name="street"  #street="ngModel">
+    </div>
+
+    <div class="form-group" *ngIf="modify">
+      <label for="numero">Numero</label>
+      <input id="numero" [(ngModel)]="resquestTree.number" class="form-control" type="text" name="number"  #number="ngModel">
+    </div>
+
+    <div class="form-group" *ngIf="modify">
+      <label for="bairro">Bairro</label>
+      <input id="bairro" [(ngModel)]="resquestTree.neighborhood" class="form-control" type="text" name="neighborhood"  #neighborhood="ngModel">
+    </div>
+
+    <div class="form-group" *ngIf="modify">
+      <label for="complemento">Complemento</label>
+      <input id="complemento" [(ngModel)]="resquestTree.complement" class="form-control" type="text" name="complement"  #complement="ngModel">
+    </div>
+
+
+    <div class="form-group" *ngIf="modify">
+      <label for="cep">Cep</label>
+      <input id="cep" [(ngModel)]="resquestTree.zipcode" class="form-control" type="text" name="zipcode"  #zipcode="ngModel">
+    </div>
+
+
+    <div class="form-group" *ngIf="modify" >
+      <label for="cidade">Cidade</label>
+      <input id="cidade" [(ngModel)]="resquestTree.city" class="form-control" type="text" name="city"  #city="ngModel">
+    </div>
+
+    <div class="form-group" *ngIf="modify" >
+      <label for="estado">Estado</label>
+      <select id="estado" [(ngModel)]="resquestTree.state" class="form-control" name="state"  #state="ngModel">
+        <option value="AC">AC</option>
+        <option value="AL">AL</option>
+        <option value="AP">AP</option>
+        <option value="AM">AM</option>
+        <option value="BA">BA</option>
+        <option value="CE">CE</option>
+        <option value="DF">DF</option>
+        <option value="ES">ES</option>
+        <option value="GO">GO</option>
+        <option value="MA">MA</option>
+        <option value="MT">MT</option>
+        <option value="MS">MS</option>
+        <option value="MG">MG</option>
+        <option value="PA">PA</option>
+        <option value="PB">PB</option>
+        <option value="PR">PR</option>
+        <option value="PE">PE</option>
+        <option value="PI">PI</option>
+        <option value="RJ">RJ</option>
+        <option value="RN">RN</option>
+        <option value="RS">RS</option>
+        <option value="RO">RO</option>
+        <option value="RR">RR</option>
+        <option value="SC">SC</option>
+        <option value="SP">SP</option>
+        <option value="SE">SE</option>
+        <option value="TO">TO</option>
+      </select>
     </div>
 
 
