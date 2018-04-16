@@ -41,10 +41,10 @@ export class ResquestTreeComponent implements OnInit {
   }
 
   option(resquest_trees: ResquestTree) {
-    let resquest_treesE = this.getEndereco(resquest_trees);
+    //let resquest_treesE = this.getEndereco(resquest_trees);
     const initialState = {
       title: 'Avaliar pedido',
-      resquestTree: resquest_treesE,
+      resquestTree: resquest_trees,
       mensage: 'Objeto adicionado com sucesso',
       modify: true
     };
