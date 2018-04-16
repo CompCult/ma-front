@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ResquestTree } from './resquest-tree.model';
+import { ResquestTree, NewResquestTree } from './resquest-tree.model';
 import {ResquestTreeService} from './resquest-tree.service';
 
 import { UserService } from '../users/user.service';
@@ -28,7 +28,7 @@ export class ResquestTreeComponent implements OnInit {
   create() {
     const initialState = {
       title: 'Novo pedido',
-      resquestTree: new ResquestTree(null,null,null,null,null,null,null,null,null,null,null,null,null,null,null),
+      resquestTree: new NewResquestTree(null,null,null,null,null),
       mensage: 'Objeto adicionado com sucesso',
       modify: false
     };
@@ -71,6 +71,7 @@ export class ResquestTreeComponent implements OnInit {
     resquest_trees.number =user.number;
     resquest_trees.neighborhood =user.neighborhood;
     resquest_trees.complement =user.complement;
+    console.log(resquest_trees);
     return resquest_trees;
   }
 

@@ -1,3 +1,26 @@
+export class NewResquestTree {
+
+  public _id: number;
+
+  public  _user: number
+  public _type: number
+  public requester_name: string;
+  public place: string;
+
+
+
+
+  constructor(_id: number, _user: number, _type: number, requester_name: string, place: string) {
+
+      this._id = _id;
+      this._user = _user;
+      this._type = _type;
+
+      this.requester_name = requester_name;
+      this.place = place;
+
+    };
+  }
 
 
 export class ResquestTree {
