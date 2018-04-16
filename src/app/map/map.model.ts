@@ -4,8 +4,8 @@ public _user: number;
 public _type: number;
 public name: string;
 geolocation:{
-  latitude: number;
-  longitude: number;
+  lat: number;
+  lng: number;
 } ;
 planting_date: string;
 
