@@ -13,7 +13,7 @@ import { AuthGuard } from './login/auth.guard';
 
 const APP_ROUTES: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
+  { path: 'login', component: LoginComponent},
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
   { path: 'resquestTree', component: ResquestTreeComponent, canActivate: [AuthGuard] },
   { path: 'trees', component: TreesComponent, canActivate: [AuthGuard] },
