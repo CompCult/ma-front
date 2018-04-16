@@ -1,12 +1,11 @@
-export class Map{
-public _id: number;
-public _user: number;
-public _type: number;
-public name: string;
+export interface Map{
+_id: number;
+_user: number;
+_type: number;
+name: string;
 geolocation:{
   lat: number;
   lng: number;
 } ;
-planting_date: string;
 
 }

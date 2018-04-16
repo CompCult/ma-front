@@ -20,6 +20,7 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.mapService.getMap()
     .subscribe(trees => this.trees = trees);
+    console.log(this.trees);
   }
 
 }
