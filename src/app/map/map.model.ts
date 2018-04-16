@@ -3,7 +3,7 @@ public _id: number;
 public _user: number;
 public _type: number;
 public name: string;
-geolocalization:{
+geolocation:{
   lat: number;
   lng: number;
 } ;
