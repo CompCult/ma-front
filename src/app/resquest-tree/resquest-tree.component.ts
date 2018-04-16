@@ -37,7 +37,7 @@ export class ResquestTreeComponent implements OnInit {
   option(resquest_trees: ResquestTree) {
     const initialState = {
       title: 'Avaliar pedido',
-      resquestTree: ResquestTree,
+      resquestTree: resquest_trees,
       mensage: 'Objeto adicionado com sucesso',
       modify: true
     };
