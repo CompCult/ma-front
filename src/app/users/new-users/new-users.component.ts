@@ -8,6 +8,7 @@ import { UserService } from '../user.service';
 
 
 import{ NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-users',
@@ -21,20 +22,19 @@ export class NewUsersComponent implements OnInit {
   mensagem: string;
   user: User;
   modify: boolean;
-
+  onClose:any;
   password:string ="";
 
-
-  constructor(public bsModalRef: BsModalRef, public userService: UserService) {}
+  constructor(public bsModalRef: BsModalRef, public userService: UserService,private router: Router) {}
 
   create(userForm){
     if(this.password != ""){
       this.user.password= this.password;
     }
-    console.log(this.user);
     this.userService.createUser(this.user).subscribe();
-    this.bsModalRef.hide();
-
+    this.router.navigate(['users']);
+    //função para enviar um objeto para o componete pai
+    this.onClose(this.user);
   }
 
   modifyUserUsuario(user: User){
@@ -44,14 +44,17 @@ export class NewUsersComponent implements OnInit {
     }
 
     this.userService.updateUser(this.user, user._id).subscribe();
-    this.bsModalRef.hide();
+    //função para enviar um objeto para o componete pai
+    this.onClose('');
   }
 
   delete(user: User){
 
     console.log(this.user);
     this.userService.deleteUser(this.user, user._id).subscribe();
-    this.bsModalRef.hide();
+
+    //função para enviar um objeto para o componete pai
+    this.onClose('');
   }
 
 

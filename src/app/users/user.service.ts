@@ -16,15 +16,11 @@ import {ErrorHandler} from '../app.error-handler'
 @Injectable()
 export class UserService {
 
-
-
   constructor(private http: Http){}
-
 
   createUser(json: any) {
     return this.http.post(`${API}/users/register`, json).map((response: Response) => response.json());
   }
-
 
   getUser(id: number) {
     return this.http.get(`${API}/users/${id}`).map((response: Response) => response.json());
@@ -32,20 +28,16 @@ export class UserService {
 
   updateUser(json: any, id:number) {
     return this.http.post(`${API}/users/update/${id}`, json).map((response: Response) => response.text());
-}
+  }
 
-deleteUser(json: any, id:number) {
+  deleteUser(json: any, id:number) {
   return this.http.delete(`${API}/users/${id}`, json).map((response: Response) => response.text());
-}
-
-
-
+  }
 
   getUsuarios(): Observable<User[]>{
     return this.http.get(`${API}/users`)
     .map(response => response.json())
     .catch(ErrorHandler.handleError)
-
   }
 
 }

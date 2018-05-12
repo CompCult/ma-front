@@ -9,6 +9,7 @@ import { NewUsersComponent } from './new-users/new-users.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -16,10 +17,10 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class UsersComponent implements OnInit {
 
-  users: User[] =[];
+  users: User[];
+  myData:any;
+  bsModalRef: BsModalRef;
 
-
-bsModalRef: BsModalRef;
 constructor(private modalService: BsModalService, private usuarioService: UserService) {}
 
 create() {
@@ -32,7 +33,15 @@ create() {
   };
   this.bsModalRef = this.modalService.show(NewUsersComponent, {initialState});
   this.bsModalRef.content.closeBtnName = 'Close';
-  this.atualizaLista();
+
+  // funcao que recebe valores do modal
+  this.bsModalRef.content.onClose = (myData) => {
+      this.atualizaLista();
+      this.bsModalRef.hide();
+      this.myData = myData;
+  };
+
+
 }
 
 option(user: User) {
@@ -45,17 +54,33 @@ option(user: User) {
   };
   this.bsModalRef = this.modalService.show(NewUsersComponent, {initialState});
   this.bsModalRef.content.closeBtnName = 'Close';
-  this.atualizaLista();
+
+  // funcao que recebe valores do modal
+  this.bsModalRef.content.onClose = (myData) => {
+      this.atualizaLista();
+      this.bsModalRef.hide();
+      this.myData = myData;
+  };
 }
 
 atualizaLista(){
+  this.delay(1000);
+  // delay para tempo de receber os valores do get
+  setTimeout(() => {
+
   this.usuarioService.getUsuarios()
   .subscribe(users => this.users = users);
+
+  },1000);
+
 }
 
 ngOnInit() {
   this.atualizaLista();
+}
 
+delay(ms: number) {
+  setTimeout(() => { console.log('delay') },ms);
 }
 
 }
