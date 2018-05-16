@@ -1,9 +1,11 @@
 <agm-map [latitude]="y" [longitude]="x">
-  <agm-marker *ngFor="let tree of trees"
-              [latitude]=(tree.geolocation.lat)
-              [longitude]=(tree.geolocation.lng)>
-    <agm-info-window>
-      <strong>{{ tree.name }}</strong><br>
-    </agm-info-window>
+
+  <agm-marker *ngFor="let map of trees"
+              [latitude]="toNumber(map.location_lat)"
+              [longitude]="toNumber(map.location_lng)">
+
   </agm-marker>
 </agm-map>
+
+
+<button type="button" name="button" (click)="d()"></button>

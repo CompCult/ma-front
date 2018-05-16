@@ -13,14 +13,17 @@ export class MapComponent implements OnInit {
   y = -7.216521;
  x = -35.909413;
 
-  trees: Map[];
+  trees: Map[]=[];
 
   constructor(private mapService: MapService) { }
 
   ngOnInit() {
     this.mapService.getMap()
     .subscribe(trees => this.trees = trees);
-    console.log(this.trees);
+  }
+
+  toNumber(string) {
+    return parseFloat(string);
   }
 
 }

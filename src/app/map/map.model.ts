@@ -1,11 +1,14 @@
 export class Map{
-_id: number;
-_user: number;
-_type: number;
-name: string;
-geolocation:{
-  lat: number;
-  lng: number;
-} ;
+public _id: number;
+public _user: number;
+public _type: number;
+public name: string;
+public  location_lng: string;
+public  location_lat: string;
+planting_date: string;
+
+constructor(){
+
+}
 
 }
