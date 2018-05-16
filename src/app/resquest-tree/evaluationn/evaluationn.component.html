@@ -10,6 +10,11 @@
 
     <h4>Dados do Pedido</h4>
 
+    <div class="form-group" *ngIf="modify">
+      <label for="id">Id Pedido</label>
+      <input id="id" [(ngModel)]="resquestTree._id" class="form-control" type="number" name="_id"  #_id="ngModel" disabled>
+    </div>
+
     <div class="form-group">
       <label for="idUser">Id Usuario</label>
       <input id="idUser" [(ngModel)]="resquestTree._user" class="form-control" type="number" name="_user"  #_user="ngModel">
@@ -26,51 +31,96 @@
     </div>
 
     <div class="form-group">
-      <label for="lugar">Lugar</label>
-      <input id="lugar" [(ngModel)]="resquestTree.place" class="form-control" type="text" name="place" #place="ngModel">
+      <label>Lugar</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="lugar" value="calcada"
+          [(ngModel)]="resquestTree.place"  #place="ngModel">
+          calçada
+        </label>
+
+        <label class="radio-inline">
+          <input type="radio" name="lugar" value="canteiro"
+          [(ngModel)]="resquestTree.place"  #place="ngModel">
+          canteiro
+        </label>
+
+        <label class="radio-inline">
+          <input type="radio" name="lugar" value="quintal"
+          [(ngModel)]="resquestTree.place"  #place="ngModel">
+          quintal
+        </label>
+
+        <label class="radio-inline">
+          <input type="radio" name="lugar" value="jardim"
+          [(ngModel)]="resquestTree.place"  #place="ngModel">
+          jardim
+        </label>
+
+        <label class="radio-inline">
+          <input type="radio" name="lugar" value="escola"
+          [(ngModel)]="resquestTree.place"  #place="ngModel">
+          escola
+        </label>
+      </div>
+
     </div>
+
+    <div class="form-group" *ngIf="resquestTree.place != calcada">
+      <label for="sidewalk_size">Tamanho da calçada</label>
+      <input id="sidewalk_size" [(ngModel)]="resquestTree.sidewalk_size" class="form-control" type="number" name="sidewalk_size" #sidewalk_size="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="photo">URL da foto</label>
+      <input id="photo" [(ngModel)]="resquestTree.photo" class="form-control" type="text" name="photo" #photo="ngModel">
+    </div>
+
+
 
     <div class="form-group" *ngIf="modify">
       <label for="status">Status</label>
-      <input id="status" [(ngModel)]="resquestTree.status" class="form-control" type="text" name="status" #status="ngModel">
+      <input id="status" [(ngModel)]="resquestTree.status" class="form-control" type="text" name="status" disabled #status="ngModel">
     </div>
 
-    <!-- <div class="form-group" *ngIf="modify">
+    <hr *ngIf="modify">
+
+    <h4 *ngIf="modify">Endereço</h4>
+
+    <div class="form-group" >
       <label for="rua">Rua</label>
       <input id="rua" [(ngModel)]="resquestTree.street" class="form-control" type="text" name="street"  #street="ngModel">
     </div>
 
-    <div class="form-group" *ngIf="modify">
+    <div class="form-group">
       <label for="numero">Numero</label>
       <input id="numero" [(ngModel)]="resquestTree.number" class="form-control" type="text" name="number"  #number="ngModel">
     </div>
 
-    <div class="form-group" *ngIf="modify">
+    <div class="form-group" >
       <label for="bairro">Bairro</label>
       <input id="bairro" [(ngModel)]="resquestTree.neighborhood" class="form-control" type="text" name="neighborhood"  #neighborhood="ngModel">
     </div>
 
-    <div class="form-group" *ngIf="modify">
+    <div class="form-group" >
       <label for="complemento">Complemento</label>
       <input id="complemento" [(ngModel)]="resquestTree.complement" class="form-control" type="text" name="complement"  #complement="ngModel">
     </div>
 
 
-    <div class="form-group" *ngIf="modify">
+    <div class="form-group" >
       <label for="cep">Cep</label>
       <input id="cep" [(ngModel)]="resquestTree.zipcode" class="form-control" type="text" name="zipcode"  #zipcode="ngModel">
     </div>
- -->
 
 
 
 
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" *ngIf="modify" (click)= reject(resquestTree)>Rejeitar</button>
+      <button type="button" class="btn btn-success" *ngIf="modify" (click)= approve(resquestTree)>Aprovar</button>
+      <button type="submit" class="btn btn-success" *ngIf="!modify">Confirmar</button>
+      <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
 
-<div class="modal-footer">
-  <button type="button" class="btn btn-danger" *ngIf="modify" (click)= reject(resquestTree)>Rejeitar</button>
-  <button type="button" class="btn btn-success" *ngIf="modify" (click)= approve(resquestTree)>Aprovar</button>
-  <button type="submit" class="btn btn-success" *ngIf="!modify">Confirmar</button>
-  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
-
-</div>
-</form>
+    </div>
+  </form>

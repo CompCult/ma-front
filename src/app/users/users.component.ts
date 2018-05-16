@@ -64,14 +64,14 @@ option(user: User) {
 }
 
 atualizaLista(){
-  this.delay(1000);
+  this.delay(300);
   // delay para tempo de receber os valores do get
   setTimeout(() => {
 
   this.usuarioService.getUsuarios()
   .subscribe(users => this.users = users);
 
-  },1000);
+},300);
 
 }
 

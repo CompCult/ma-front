@@ -41,7 +41,6 @@ export class ResquestTreeComponent implements OnInit {
   }
 
   option(resquest_trees: ResquestTree) {
-    //let resquest_treesE = this.getEndereco(resquest_trees);
     const initialState = {
       title: 'Avaliar pedido',
       resquestTree: resquest_trees,
@@ -64,18 +63,7 @@ export class ResquestTreeComponent implements OnInit {
   }
 
 
-  getEndereco(resquest_trees: ResquestTree){
-    this.userService.getUser(resquest_trees._user).subscribe(user => console.log(user) );
-    console.log(this.userE)
-    resquest_trees.zipcode =this.userE.zipcode;
-    resquest_trees.state =this.userE.state;
-    resquest_trees.street =this.userE.street;
-    resquest_trees.number =this.userE.number;
-    resquest_trees.neighborhood =this.userE.neighborhood;
-    resquest_trees.complement =this.userE.complement;
-    console.log(resquest_trees);
-    return resquest_trees;
-  }
+
 
 
 }

@@ -12,14 +12,14 @@ export class NewResquestTree {
   constructor( _user: number, _type: number, requester_name: string, place: string) {
 
 
-      this._user = _user;
-      this._type = _type;
+    this._user = _user;
+    this._type = _type;
 
-      this.requester_name = requester_name;
-      this.place = place;
+    this.requester_name = requester_name;
+    this.place = place;
 
-    };
-  }
+  };
+}
 
 
 export class ResquestTree {
@@ -43,10 +43,21 @@ export class ResquestTree {
   public city: string;
   public state: string;
 
+  public sidewalk_size: number;
+  public photo: string;
+
+  public location_lat: string;
+  public  location_lng: string;
+  public  quantity: number;
 
 
-  constructor(_id: number, _user: number, _type: number, requester_name: string, place: string, status: string, created_at: string, updated_at: string,  street: string,
-    complement: string, number: number, neighborhood: string, city: string, state: string, zipcode: string) {
+
+
+
+  constructor(_id: number, _user: number, _type: number, requester_name: string, place: string,
+     status: string, created_at: string, updated_at: string,  street: string,
+    complement: string, number: number, neighborhood: string, city: string, state: string,
+    zipcode: string, quantity: number, location_lng: string,location_lat: string, sidewalk_size: number, photo: string) {
 
       this._id = _id;
       this._user = _user;
@@ -56,8 +67,6 @@ export class ResquestTree {
       this.place = place;
       this.created_at = created_at;
       this.updated_at = updated_at;
-
-
       this.street = street;
       this.complement = complement;
       this.number = number;
@@ -65,5 +74,10 @@ export class ResquestTree {
       this.city = city;
       this.state = state;
       this.zipcode = zipcode;
+      this.quantity = quantity;
+      this.location_lat = location_lat;
+      this.location_lng= location_lng;
+      this.sidewalk_size = sidewalk_size;
+      this.photo = photo;
     };
   }
