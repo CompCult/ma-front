@@ -8,6 +8,8 @@ import { UsersComponent } from './users/users.component';
 import { TreesComponent } from './trees/trees.component';
 import { MapComponent } from './map/map.component';
 import { QuizComponent} from './quiz/quiz.component'
+import { QuizAnswerComponent} from './quiz-answer/quiz-answer.component'
+
 import { ResquestTreeComponent } from './resquest-tree/resquest-tree.component';
 import { AuthGuard } from './login/auth.guard';
 
@@ -16,6 +18,7 @@ const APP_ROUTES: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent},
   { path: 'quiz', component: QuizComponent, canActivate: [AuthGuard]},
+  { path: 'quizAnswer', component: QuizAnswerComponent, canActivate: [AuthGuard]},
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
   { path: 'resquestTree', component: ResquestTreeComponent, canActivate: [AuthGuard] },
   { path: 'trees', component: TreesComponent, canActivate: [AuthGuard] },

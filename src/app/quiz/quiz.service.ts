@@ -22,11 +22,11 @@ export class QuizService {
   }
 
   updateQuiz(json: any, id:number) {
-    return this.http.put(`${API}/quiz/${id}`, json).map((response: Response) => response.text());
+    return this.http.put(`${API}/quizzes/${id}`, json).map((response: Response) => response.text());
   }
 
   deleteQuiz(json: any, id:number) {
-  return this.http.delete(`${API}/quiz/${id}`, json).map((response: Response) => response.text());
+  return this.http.delete(`${API}/quizzes/${id}`, json).map((response: Response) => response.text());
   }
 
   getQuiz(): Observable<Quiz[]>{

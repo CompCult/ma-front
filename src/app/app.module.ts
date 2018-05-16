@@ -28,6 +28,7 @@ import { MapService } from './map/map.service'
 import { LoginService } from './login/login.service'
 import { QuizService } from './quiz/quiz.service'
 import { ResquestTreeService } from './resquest-tree/resquest-tree.service';
+import { QuizAnswerService } from './quiz-answer/quizAnswer.service'
 import { AuthGuard } from './login/auth.guard';
 
 import { MapComponent } from './map/map.component';
@@ -35,6 +36,8 @@ import { EvaluationnComponent } from './resquest-tree/evaluationn/evaluationn.co
 
 import { QuizComponent } from './quiz/quiz.component';
 import { NewQuizComponent } from './quiz/new-quiz/new-quiz.component';
+import { QuizAnswerComponent } from './quiz-answer/quiz-answer.component';
+import { EvaluationQuizComponent } from './quiz-answer/evaluation-quiz/evaluation-quiz.component';
 
 
 
@@ -52,6 +55,8 @@ import { NewQuizComponent } from './quiz/new-quiz/new-quiz.component';
     EvaluationnComponent,
     QuizComponent,
     NewQuizComponent,
+    QuizAnswerComponent,
+    EvaluationQuizComponent,
 
   ],
   imports: [
@@ -74,13 +79,15 @@ import { NewQuizComponent } from './quiz/new-quiz/new-quiz.component';
     MapService,
     LoginService,
     QuizService,
+    QuizAnswerService,
     AuthGuard
   ],
   entryComponents:[
     NewUsersComponent,
     NewTreeComponent,
     EvaluationnComponent,
-    NewQuizComponent
+    NewQuizComponent,
+    EvaluationQuizComponent
   ],
 
   bootstrap: [AppComponent]

@@ -1,0 +1,78 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <form #quizAnswerForm ="ngForm" (ngSubmit)="create(quizAnswerForm)">
+
+    <h4>Dados da resposta</h4>
+
+    <div class="form-group" >
+      <label for="id">Id</label>
+      <input id="id" [(ngModel)]="quizAnswer._id" class="form-control" type="number" name="_id"  disabled  #_id="ngModel">
+    </div>
+
+
+    <div class="form-group" >
+      <label for="_user">Id Usuario</label>
+      <input id="_user" [(ngModel)]="quizAnswer._user" class="form-control" type="number" name="_user"  disabled  #_user="ngModel">
+    </div>
+
+
+    <div class="form-group" >
+      <label for="_quiz">Id Quiz</label>
+      <input id="_quiz" [(ngModel)]="quizAnswer._quiz" class="form-control" type="number" name="_quiz"  disabled  #_quiz="ngModel">
+    </div>
+
+
+    <div class="form-group">
+      <label>Resposta</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="answer" value="alternative_a"
+          [(ngModel)]="quizAnswer.answer"  #answer="ngModel">
+          Alternatica A
+        </label>
+
+        <label class="radio-inline">
+          <input type="radio" name="answer" value="alternative_b"
+          [(ngModel)]="quizAnswer.answer"  #answer="ngModel">
+          Alternatica B
+        </label>
+
+        <label class="radio-inline">
+          <input type="radio" name="answer" value="alternative_c"
+          [(ngModel)]="quizAnswer.answer"  #answer="ngModel">
+          Alternatica C
+        </label>
+
+        <label class="radio-inline">
+          <input type="radio" name="answer" value="alternative_d"
+          [(ngModel)]="quizAnswer.answer"  #answer="ngModel">
+          Alternatica D
+        </label>
+
+        <label class="radio-inline">
+          <input type="radio" name="answer" value="alternative_e"
+          [(ngModel)]="quizAnswer.answer"  #answer="ngModel">
+          Alternatica E
+        </label>
+
+
+
+      </div>
+
+    </div>
+
+
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger" *ngIf="modify" (click)= reject(quizAnswer)>Invalido</button>
+  <button type="button" class="btn btn-info" *ngIf="modify" (click)= accept(quizAnswer)>Valido</button>
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+
+</div>
+</form>
