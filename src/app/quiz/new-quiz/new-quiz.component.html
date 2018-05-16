@@ -1,0 +1,148 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <form #quizForm ="ngForm" (ngSubmit)="create(quizForm)">
+
+    <h4>Dados Quiz</h4>
+
+    <!-- <div class="form-group" *ngIf="modify">
+      <label for="id">Id</label>
+      <input id="id" [(ngModel)]="quiz._id" class="form-control" type="text" name="_id"  disabled  #_id="ngModel">
+    </div> -->
+
+    <div class="form-group">
+      <label for="title">Titulo</label>
+      <input id="title" [(ngModel)]="quiz.title" class="form-control" type="text" name="title"  #title="ngModel" >
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descrição</label>
+      <input id="description" [(ngModel)]="quiz.description" class="form-control" type="text" name="description"  #description="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="points">Pontos</label>
+      <input id="points" [(ngModel)]="quiz.points" class="form-control" type="number" name="points"  #points="ngModel">
+    </div>
+
+
+    <div class="form-group">
+      <label>Visibilidade</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="is_public" value=true
+          [(ngModel)]="quiz.is_public"  #is_public="ngModel">
+          Publico
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="is_public" value=false
+          [(ngModel)]="quiz.is_public"  #is_public="ngModel">
+          Privado
+        </label>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label>Unico envio</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="single_answer" value=true
+          [(ngModel)]="quiz.single_answer"  #single_answer="ngModel">
+          Uma unica resposta pode ser enviada
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="single_answer" value=false
+          [(ngModel)]="quiz.single_answer"  #single_answer="ngModel">
+          Varias respostas podem ser enviadas
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="alternative_a">Alternatica A</label>
+      <input id="alternative_a" [(ngModel)]="quiz.alternative_a" class="form-control" type="text" name="alternative_a"  #alternative_a="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="alternative_b">Alternatica B</label>
+      <input id="alternative_b" [(ngModel)]="quiz.alternative_b" class="form-control" type="text" name="alternative_b"  #alternative_b="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="alternative_c">Alternatica C</label>
+      <input id="alternative_c" [(ngModel)]="quiz.alternative_c" class="form-control" type="text" name="alternative_c"  #alternative_c="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="alternative_d">Alternatica D</label>
+      <input id="alternative_d" [(ngModel)]="quiz.alternative_d" class="form-control" type="text" name="alternative_d"  #alternative_d="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="alternative_e">Alternatica E</label>
+      <input id="alternative_e" [(ngModel)]="quiz.alternative_e" class="form-control" type="text" name="alternative_e"  #alternative_e="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label>Resposta correta</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="correct_answer" value="alternative_a"
+          [(ngModel)]="quiz.correct_answer"  #correct_answer="ngModel">
+          Alternatica A
+        </label>
+
+        <label class="radio-inline">
+          <input type="radio" name="correct_answer" value="alternative_b"
+          [(ngModel)]="quiz.correct_answer"  #correct_answer="ngModel">
+          Alternatica B
+        </label>
+
+        <label class="radio-inline">
+          <input type="radio" name="correct_answer" value="alternative_c"
+          [(ngModel)]="quiz.correct_answer"  #correct_answer="ngModel">
+          Alternatica C
+        </label>
+
+        <label class="radio-inline">
+          <input type="radio" name="correct_answer" value="alternative_d"
+          [(ngModel)]="quiz.correct_answer"  #correct_answer="ngModel">
+          Alternatica D
+        </label>
+
+        <label class="radio-inline">
+          <input type="radio" name="correct_answer" value="alternative_e"
+          [(ngModel)]="quiz.correct_answer"  #correct_answer="ngModel">
+          Alternatica E
+        </label>
+
+
+
+      </div>
+
+    </div>
+
+    <!-- <div class="form-group" *ngIf="modify">
+      <label for="dataAniversario">Data de Aniversario</label>
+      <input id="dataAniversario" [(ngModel)]="user.birth" class="form-control" type="text"  bsDatepicker name="birth"  #birth="ngModel">
+    </div> -->
+
+
+
+
+<div class="modal-footer">
+  <button type="submit" class="btn btn-success" *ngIf="!modify">Criar</button>
+  <button type="button" class="btn btn-danger" *ngIf="modify" (click)= delete(user)>Deletar</button>
+  <button type="button" class="btn btn-info" *ngIf="modify" (click)= modifyUserUsuario(user)>Modificar</button>
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+
+</div>
+</form>
