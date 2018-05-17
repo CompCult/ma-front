@@ -59,6 +59,12 @@ export class NewQuizComponent implements OnInit {
 
     }
 
-
+    isPublic(isPublic:boolean){
+      if (this.quiz.is_public == true){
+        return "true";
+      }else{
+        return "false";
+      }
+    }
 
   }

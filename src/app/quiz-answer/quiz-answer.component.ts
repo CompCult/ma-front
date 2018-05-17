@@ -61,4 +61,7 @@ export class QuizAnswerComponent implements OnInit {
       setTimeout(() => { console.log('delay') },ms);
     }
 
+
+  
+
     }

@@ -35,13 +35,13 @@
       <label>Visibilidade</label>
       <div class="form-control">
         <label class="radio-inline">
-          <input type="radio" name="is_public" value=true
+          <input type="radio" name="is_public" value="true"
           [(ngModel)]="quiz.is_public"  #is_public="ngModel">
           Publico
         </label>
 
         <label class="inline">
-          <input type="radio" name="is_public" value=false
+          <input type="radio" name="is_public" value="false"
           [(ngModel)]="quiz.is_public"  #is_public="ngModel">
           Privado
         </label>
@@ -131,18 +131,18 @@
     </div>
 
     <!-- <div class="form-group" *ngIf="modify">
-      <label for="dataAniversario">Data de Aniversario</label>
-      <input id="dataAniversario" [(ngModel)]="user.birth" class="form-control" type="text"  bsDatepicker name="birth"  #birth="ngModel">
-    </div> -->
+    <label for="dataAniversario">Data de Aniversario</label>
+    <input id="dataAniversario" [(ngModel)]="user.birth" class="form-control" type="text"  bsDatepicker name="birth"  #birth="ngModel">
+  </div> -->
 
 
 
 
-<div class="modal-footer">
-  <button type="submit" class="btn btn-success" *ngIf="!modify">Criar</button>
-  <button type="button" class="btn btn-danger" *ngIf="modify" (click)= delete(quiz)>Deletar</button>
-  <button type="button" class="btn btn-info" *ngIf="modify" (click)= modifyUserUsuario(quiz)>Modificar</button>
-  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-success" *ngIf="!modify">Criar</button>
+    <button type="button" class="btn btn-danger" *ngIf="modify" (click)= delete(quiz)>Deletar</button>
+    <button type="button" class="btn btn-info" *ngIf="modify" (click)= modifyUserUsuario(quiz)>Modificar</button>
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
 
-</div>
+  </div>
 </form>
