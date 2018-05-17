@@ -30,6 +30,24 @@
       <input id="senha" [(ngModel)]="password" class="form-control" type="password" name="password">
     </div>
 
+    <!-- type-->
+    <div class="form-group" *ngIf="modify">
+      <label for="type">Tipo</label>
+      <input id="type" [(ngModel)]="user.type" class="form-control" type="text" name="type"  #type="ngModel">
+    </div>
+
+    <!-- institution-->
+    <div class="form-group" *ngIf="modify">
+      <label for="type">Instituição</label>
+      <input id="institution" [(ngModel)]="user.institution" class="form-control" type="text" name="institution"  #institution="ngModel">
+    </div>
+
+    <!--request_limit -->
+    <div class="form-group" *ngIf="modify">
+      <label for="type">Limite de Requisição</label>
+      <input id="request_limit" [(ngModel)]="user.request_limit" class="form-control" type="text" name="request_limit"  #request_limit="ngModel">
+    </div>
+
     <div class="form-group" *ngIf="modify">
       <label for="telefone">Telefone</label>
       <input id="telefone" [(ngModel)]="user.phone" class="form-control" type="text" name="phone"  #phone="ngModel">
@@ -37,7 +55,7 @@
 
     <div class="form-group" *ngIf="modify">
       <label for="dataAniversario">Data de Aniversario</label>
-      <input id="dataAniversario" [(ngModel)]="user.birth" class="form-control" type="text"  bsDatepicker name="birth"  #birth="ngModel">
+      <input id="dataAniversario" [ngModel]="user.birth | date: 'MM/dd/yyyy'" (ngModelChange)="user.birth=$event" class="form-control" type="text"  bsDatepicker name="birth"  #birth="ngModel">
     </div>
 
     <div class="form-group"*ngIf="modify">

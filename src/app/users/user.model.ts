@@ -18,10 +18,15 @@ export class User{
   public sec_points: string;
   public banned_until: string;
   public created_at: string;
+  public type: string;
+  public institution: string;
+  public request_limit: string;
 
 
-  constructor(id: number, name: string,picture: string, email: string, password: string, birth: string, sex: string, points: string, phone: string, street: string,
-              complement: string, number: number, neighborhood: string, city: string, state: string, zipcode: string,  sec_points: string,banned_until: string,created_at: string) {
+  constructor(id: number, name: string,picture: string, email: string, password: string, birth: string,
+              sex: string, points: string, phone: string, street: string, complement: string, number: number,
+              neighborhood: string, city: string, state: string, zipcode: string,  sec_points: string,
+              banned_until: string,created_at: string, type: string, institution: string, request_limit: string) {
     this._id = id;
     this.name = name;
     this.picture = picture;
@@ -41,6 +46,8 @@ export class User{
     this.sec_points = sec_points;
     this.banned_until = banned_until;
     this.created_at = created_at;
-
+    this.type = type;
+    this.institution = institution;
+    this.request_limit = request_limit;
   };
 }
