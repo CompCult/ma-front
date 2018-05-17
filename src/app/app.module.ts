@@ -38,6 +38,10 @@ import { QuizComponent } from './quiz/quiz.component';
 import { NewQuizComponent } from './quiz/new-quiz/new-quiz.component';
 import { QuizAnswerComponent } from './quiz-answer/quiz-answer.component';
 import { EvaluationQuizComponent } from './quiz-answer/evaluation-quiz/evaluation-quiz.component';
+import { MissionsComponent } from './missions/missions.component';
+import { NewMissionComponent } from './missions/new-mission/new-mission.component';
+import { MissionAnswerComponent } from './mission-answer/mission-answer.component';
+import { EvaluationMissionComponent } from './mission-answer/evaluation-mission/evaluation-mission.component';
 
 
 
@@ -57,6 +61,10 @@ import { EvaluationQuizComponent } from './quiz-answer/evaluation-quiz/evaluatio
     NewQuizComponent,
     QuizAnswerComponent,
     EvaluationQuizComponent,
+    MissionsComponent,
+    NewMissionComponent,
+    MissionAnswerComponent,
+    EvaluationMissionComponent,
 
   ],
   imports: [
