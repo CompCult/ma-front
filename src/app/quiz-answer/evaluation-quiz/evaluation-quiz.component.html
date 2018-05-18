@@ -6,7 +6,7 @@
 </div>
 <div class="modal-body">
 
-  <form #quizAnswerForm ="ngForm" (ngSubmit)="create(quizAnswerForm)">
+  <form #quizAnswerForm ="ngForm" >
 
     <h4>Dados da resposta</h4>
 
@@ -70,8 +70,8 @@
 
 
 <div class="modal-footer">
-  <button type="button" class="btn btn-danger" *ngIf="modify" (click)= reject(quizAnswer)>Invalido</button>
-  <button type="button" class="btn btn-info" *ngIf="modify" (click)= accept(quizAnswer)>Valido</button>
+  <button type="button" class="btn btn-danger"  (click)= reject(quizAnswer)>Invalido</button>
+  <button type="button" class="btn btn-info"  (click)= accept(quizAnswer)>Valido</button>
   <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
 
 </div>
