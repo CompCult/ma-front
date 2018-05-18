@@ -55,7 +55,9 @@
 
     <div class="form-group" *ngIf="modify">
       <label for="dataAniversario">Data de Aniversario</label>
-      <input id="dataAniversario" [ngModel]="user.birth | date: 'MM/dd/yyyy'" (ngModelChange)="user.birth=$event" class="form-control" type="text"  bsDatepicker name="birth"  #birth="ngModel">
+      <input bsDatepicker id="dataAniversario"  class="form-control" type="text"
+      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="user.birth"
+      value="{{user.birth | date:'dd/MM/yyyy'}}" name="birth">
     </div>
 
     <div class="form-group"*ngIf="modify">
