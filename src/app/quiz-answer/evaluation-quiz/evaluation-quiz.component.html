@@ -27,6 +27,13 @@
       <input id="_quiz" [(ngModel)]="quizAnswer._quiz" class="form-control" type="number" name="_quiz"  disabled  #_quiz="ngModel">
     </div>
 
+    <div class="form-group">
+      <label for="dataAniversario">Data da Resposta</label>
+      <input bsDatepicker id="created_at"  class="form-control" type="text"
+      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="quizAnswer.created_at"
+      value="{{quizAnswer.created_at | date:'dd/MM/yyyy'}}" name="created_at">
+    </div>
+
 
     <div class="form-group">
       <label>Resposta</label>
