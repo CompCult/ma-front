@@ -11,7 +11,8 @@ import {MapService} from './map.service'
 export class MapComponent implements OnInit {
 
   y = -7.216521;
- x = -35.909413;
+  x = -35.909413;
+  status:Boolean = true;
 
   trees: Map[]=[];
 
@@ -26,4 +27,14 @@ export class MapComponent implements OnInit {
     return parseFloat(string);
   }
 
+  markerIconMapUrl() {
+      if(this.status == true){
+        return '../assets/img/pin_green_map.png';
+      }else if(this.status == false){
+        return '../assets/img/pin_red_map.png';
+      }else{
+        return '../assets/img/pin_yellow_map.png';
+      }
+
+     }
 }
