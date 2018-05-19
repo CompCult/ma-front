@@ -17,6 +17,7 @@ export class TreesComponent implements OnInit {
 
   bsModalRef: BsModalRef;
   trees: Tree[] = [];
+  status:Boolean = true;
 
   constructor(private modalService: BsModalService, private treeService: TreeService) { }
 
@@ -29,7 +30,7 @@ export class TreesComponent implements OnInit {
     };
     this.bsModalRef = this.modalService.show(NewTreeComponent, {initialState});
     this.bsModalRef.content.closeBtnName = 'Close';
-    
+
   }
 
   option(tree: Tree) {
@@ -48,6 +49,17 @@ export class TreesComponent implements OnInit {
     this.treeService.getObjetos()
     .subscribe(trees => this.trees = trees);
   }
+
+  markerIconTreeUrl() {
+      if(this.status == true){
+        return "../assets/img/pin_green.png";
+      }else if(this.status == false){
+        return '../assets/img/pin_red_map.png';
+      }else{
+        return '../assets/img/pin_yellow_map.png';
+      }
+
+     }
 
   ngOnInit() {
     this.getListaArvores();
