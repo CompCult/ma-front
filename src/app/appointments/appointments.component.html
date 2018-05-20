@@ -1,0 +1,34 @@
+<div class="top-space" >
+
+  <nav class="navbar navbar-dark my-nav ">
+    <span class="navbar-brand">Lista de Eventos</span>
+
+
+    <form class="form-inline navbar-right">
+      <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Search">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit">Procurar</button>
+    </form>
+  </nav>
+
+</div>
+
+<br>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>ID do Criador</th>
+    <th>NOME</th>
+    <th>Descrição</th>
+  </tr>
+  <tr *ngFor="let appointment of appointments">
+    <td>{{appointment._id}}</td>
+    <td>{{appointment._user}}</td>
+    <td>{{appointment.name}}</td>
+    <td>{{appointment.description}}</td>
+  </tr>
+</table>
+
+<div class="fixed-action-btn" >
+  <button class="btn btn-success" (click)="create()" ><span> Criar Evento</span></button>
+</div>

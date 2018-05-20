@@ -42,6 +42,10 @@ import { MissionsComponent } from './missions/missions.component';
 import { NewMissionComponent } from './missions/new-mission/new-mission.component';
 import { MissionAnswerComponent } from './mission-answer/mission-answer.component';
 import { EvaluationMissionComponent } from './mission-answer/evaluation-mission/evaluation-mission.component';
+import { AppointmentsComponent } from './appointments/appointments.component';
+import { AppointmentService } from './appointments/appointment.service';
+import { NewAppointmentsComponent } from './appointments/new-appointments/new-appointments.component';
+import { AppointmentRequestComponent } from './appointment-request/appointment-request.component';
 
 
 
@@ -65,6 +69,9 @@ import { EvaluationMissionComponent } from './mission-answer/evaluation-mission/
     NewMissionComponent,
     MissionAnswerComponent,
     EvaluationMissionComponent,
+    AppointmentsComponent,
+    NewAppointmentsComponent,
+    AppointmentRequestComponent,
 
   ],
   imports: [
@@ -88,14 +95,16 @@ import { EvaluationMissionComponent } from './mission-answer/evaluation-mission/
     LoginService,
     QuizService,
     QuizAnswerService,
-    AuthGuard
+    AuthGuard,
+    AppointmentService
   ],
   entryComponents:[
     NewUsersComponent,
     NewTreeComponent,
     EvaluationnComponent,
     NewQuizComponent,
-    EvaluationQuizComponent
+    EvaluationQuizComponent,
+    NewAppointmentsComponent
   ],
 
   bootstrap: [AppComponent]

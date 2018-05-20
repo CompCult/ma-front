@@ -6,7 +6,7 @@
 
   <div *ngIf="showMenu" class="navbar-collapse" id="navbarSupportedContent">
 
-    <ul class="navbar-nav">
+    <ul class="navbar-nav mr-auto">
 
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="users">Usuarios<span class="sr-only">(current)</span></a>
@@ -38,8 +38,19 @@
 
       </li>
 
+      <li ngbDropdown class="d-inline-block ">
+        <a class="nav-link"  id="dropdownBasic4" routerLinkActive="active"  ngbDropdownToggle >
+          Agenda
+        </a>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic4">
+          <button class="dropdown-item" routerLink="appointment">Eventos</button>
+          <hr>
+          <button class="dropdown-item" routerLink="quizAnswer">Pedidos Eventos</button>
+        </div>
+      </li>
+
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="map">Mapas<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="map">Mapa<span class="sr-only">(current)</span></a>
       </li>
 
     </ul>
