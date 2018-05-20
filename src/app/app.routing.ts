@@ -13,6 +13,7 @@ import { QuizAnswerComponent} from './quiz-answer/quiz-answer.component'
 import { ResquestTreeComponent } from './resquest-tree/resquest-tree.component';
 import { AuthGuard } from './login/auth.guard';
 import { AppointmentsComponent } from './appointments/appointments.component';
+import { AppointmentRequestComponent } from './appointment-request/appointment-request.component';
 
 
 const APP_ROUTES: Routes = [
@@ -24,7 +25,8 @@ const APP_ROUTES: Routes = [
   { path: 'resquestTree', component: ResquestTreeComponent, canActivate: [AuthGuard] },
   { path: 'trees', component: TreesComponent, canActivate: [AuthGuard] },
   { path: 'map', component: MapComponent, canActivate: [AuthGuard] },
-  { path: 'appointment', component: AppointmentsComponent, canActivate: [AuthGuard] }
+  { path: 'appointment', component: AppointmentsComponent, canActivate: [AuthGuard] },
+  { path: 'Appointmentrequest', component: AppointmentRequestComponent, canActivate: [AuthGuard] }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);

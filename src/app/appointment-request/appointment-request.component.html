@@ -1,0 +1,30 @@
+<div class="top-space" >
+
+  <nav class="navbar navbar-dark my-nav ">
+    <span class="navbar-brand">Lista de Solicitações de Eventos</span>
+
+
+    <form class="form-inline navbar-right">
+      <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Search">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit">Procurar</button>
+    </form>
+  </nav>
+
+</div>
+
+<br>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>ID do Criador</th>
+    <th>ID do evento</th>
+    <th>Mensagem</th>
+  </tr>
+  <tr *ngFor="let appointment of appointmentsRequest">
+    <td>{{appointment._id}}</td>
+    <td>{{appointment._user}}</td>
+    <td>{{appointment._appointment}}</td>
+    <td>{{appointment.message}}</td>
+  </tr>
+</table>

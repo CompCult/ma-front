@@ -46,6 +46,7 @@ import { AppointmentsComponent } from './appointments/appointments.component';
 import { AppointmentService } from './appointments/appointment.service';
 import { NewAppointmentsComponent } from './appointments/new-appointments/new-appointments.component';
 import { AppointmentRequestComponent } from './appointment-request/appointment-request.component';
+import { AppointmentRequestService } from './appointment-request/AppointmentRequest.service';
 
 
 
@@ -96,7 +97,8 @@ import { AppointmentRequestComponent } from './appointment-request/appointment-r
     QuizService,
     QuizAnswerService,
     AuthGuard,
-    AppointmentService
+    AppointmentService,
+    AppointmentRequestService
   ],
   entryComponents:[
     NewUsersComponent,
