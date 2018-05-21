@@ -54,6 +54,24 @@ export class EvaluationMissionComponent implements OnInit {
         }
 
 
+        accept(missionAnswer: MissionAnswer){
+          console.log(this.missionAnswer);
+          missionAnswer.status = "valido";
+          this.missionAnswerService.updateMissionAnswer(this.missionAnswer, missionAnswer._id).subscribe();
+          //função para enviar um objeto para o componete pai
+          this.onClose('');
+        }
+
+        reject(missionAnswer: MissionAnswer){
+          console.log(this.missionAnswer);
+          missionAnswer.status = "invalido";
+          this.missionAnswerService.updateMissionAnswer(this.missionAnswer, missionAnswer._id).subscribe();
+          //função para enviar um objeto para o componete pai
+          this.onClose('');
+        }
+
+
+
         ngOnInit() {
         }
 
