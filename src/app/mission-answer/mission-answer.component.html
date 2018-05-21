@@ -1,3 +1,32 @@
-<p>
-  mission-answer works!
-</p>
+<div class="top-space" >
+
+  <nav class="navbar navbar-dark my-nav ">
+    <span class="navbar-brand">Gerenciar as respostas das Missoes</span>
+
+
+    <form class="form-inline navbar-right">
+      <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Search">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit">Procurar</button>
+    </form>
+  </nav>
+
+</div>
+
+<br>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>USUARIO</th>
+    <th>MISSÂO</th>
+    <th>OPÇÕES</th>
+  </tr>
+  <tr *ngFor="let missionAnswer of missionAnswers">
+    <td>{{missionAnswer._id}}</td>
+    <td>{{missionAnswer._user}}</td>
+    <td>{{qumissionAnsweriz._mission}}</td>
+    <td>
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="option(missionAnswer)">opções</button>
+    </td>
+  </tr>
+</table>

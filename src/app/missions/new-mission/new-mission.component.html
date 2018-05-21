@@ -1,3 +1,233 @@
-<p>
-  new-mission works!
-</p>
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <form #missionForm ="ngForm" (ngSubmit)="create(missionForm)">
+
+    <h4>Dados Missao</h4>
+
+    <div class="form-group" *ngIf="modify">
+      <label for="id">Id</label>
+      <input id="id" [(ngModel)]="mission._id" class="form-control" type="text" name="_id"  disabled  #_id="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Nome</label>
+      <input id="name" [(ngModel)]="mission.name" class="form-control" type="text" name="name"  #name="ngModel" >
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descrição</label>
+      <input id="description" [(ngModel)]="mission.description" class="form-control" type="text" name="description"  #description="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="end_message">Mensagem final</label>
+      <input id="end_message" [(ngModel)]="mission.end_message" class="form-control" type="text" name="end_message"  #end_message="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="points">Pontos</label>
+      <input id="points" [(ngModel)]="mission.points" class="form-control" type="number" name="points"  #points="ngModel">
+    </div>
+
+
+    <div class="form-group" *ngIf="modify">
+      <label for="secret_code">Codigo Secreto</label>
+      <input id="secret_code" [(ngModel)]="mission.secret_code" class="form-control" type="text" name="secret_code" disabled  #secret_code="ngModel">
+    </div>
+
+
+    <div class="form-group">
+      <label>Visibilidade</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="is_public" value="true"
+          [(ngModel)]="mission.is_public"  #is_public="ngModel">
+          Publico
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="is_public" value="false"
+          [(ngModel)]="mission.is_public"  #is_public="ngModel">
+          Privado
+        </label>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label>Grupo</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="is_grupal" value="true"
+          [(ngModel)]="mission.is_grupal"  #is_grupal="ngModel">
+          Resposta em grupo
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="is_grupal" value="false"
+          [(ngModel)]="mission.is_grupal"  #is_grupal="ngModel">
+          Resposta Individual
+        </label>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label>Unico envio</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="single_answer" value=true
+          [(ngModel)]="mission.single_answer"  #single_answer="ngModel">
+          Uma unica resposta pode ser enviada
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="single_answer" value=false
+          [(ngModel)]="mission.single_answer"  #single_answer="ngModel">
+          Varias respostas podem ser enviadas
+        </label>
+      </div>
+    </div>
+
+
+    <hr>
+
+    <h4 >Tipos de envio</h4>
+
+    <div class="form-group">
+      <label>Imagem</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="has_image" value=true
+          [(ngModel)]="mission.has_image"  #has_image="ngModel">
+          sim
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="single_answer" value=false
+          [(ngModel)]="mission.has_image"  #has_image="ngModel">
+          nao
+        </label>
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Video</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="has_video" value=true
+          [(ngModel)]="mission.has_video"  #has_video="ngModel">
+          sim
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="has_video" value=false
+          [(ngModel)]="mission.has_video"  #has_video="ngModel">
+          nao
+        </label>
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Texto</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="has_text" value=true
+          [(ngModel)]="mission.has_text"  #has_text="ngModel">
+          sim
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="single_answer" value=false
+          [(ngModel)]="mission.has_text"  #has_text="ngModel">
+          nao
+        </label>
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Audio</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="has_audio" value=true
+          [(ngModel)]="mission.has_audio"  #has_audio="ngModel">
+          sim
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="has_audio" value=false
+          [(ngModel)]="mission.has_audio"  #has_audio="ngModel">
+          nao
+        </label>
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Geolocalização</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="has_geolocation" value=true
+          [(ngModel)]="mission.has_geolocation"  #has_geolocation="ngModel">
+          sim
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="has_geolocation" value=false
+          [(ngModel)]="mission.has_geolocation"  #has_geolocation="ngModel">
+          nao
+        </label>
+
+      </div>
+    </div>
+
+
+
+
+
+      <hr>
+
+
+    <div class="form-group">
+      <label for="dataAniversario">Data de Início</label>
+      <input bsDatepicker id="start_time"  class="form-control" type="text"
+      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="mission.start_time"
+      value="{{mission.start_time | date:'dd/MM/yyyy'}}" name="start_time">
+    </div>
+
+    <div class="form-group">
+      <label for="dataAniversario">Data de Fim</label>
+      <input bsDatepicker id="end_time"  class="form-control" type="text"
+      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="mission.end_time"
+      value="{{mission.end_time | date:'dd/MM/yyyy'}}" name="end_time">
+    </div>
+
+
+    <div class="form-group" *ngIf="modify">
+      <label for="dataAniversario">Criado em:</label>
+      <input bsDatepicker id="created_at"  class="form-control" type="text"
+      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="mission.created_at"
+      value="{{mission.created_at | date:'dd/MM/yyyy'}}" name="created_at">
+    </div>
+
+
+
+
+
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-success" *ngIf="!modify">Criar</button>
+    <button type="button" class="btn btn-danger" *ngIf="modify" (click)= delete(mission)>Deletar</button>
+    <button type="button" class="btn btn-info" *ngIf="modify" (click)= modifymission(mission)>Modificar</button>
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+
+  </div>
+</form>

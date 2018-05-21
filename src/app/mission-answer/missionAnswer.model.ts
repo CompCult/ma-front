@@ -1,4 +1,4 @@
-export class AnswerMission {
+export class MissionAnswer {
 
   public _id: number;
   public _user: number;

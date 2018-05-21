@@ -103,7 +103,8 @@ import { AppointmentRequestComponent } from './appointment-request/appointment-r
     AppointmentService,
     AppointmentRequestService,
     MissionService,
-    MissionAnswerService
+    MissionAnswerService,
+
   ],
   entryComponents:[
     NewUsersComponent,
@@ -111,7 +112,9 @@ import { AppointmentRequestComponent } from './appointment-request/appointment-r
     EvaluationnComponent,
     NewQuizComponent,
     EvaluationQuizComponent,
-    NewAppointmentsComponent
+    NewAppointmentsComponent,
+    EvaluationMissionComponent,
+    NewMissionComponent
   ],
 
   bootstrap: [AppComponent]

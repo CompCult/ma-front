@@ -21,11 +21,11 @@ export class MissionService {
     return this.http.post(`${API}/missions`, json).map((response: Response) => response.json());
   }
 
-  updateQuiz(json: any, id:number) {
+  updateMissions(json: any, id:number) {
     return this.http.put(`${API}/missions/${id}`, json).map((response: Response) => response.text());
   }
 
-  deleteQuiz(json: any, id:number) {
+  deleteMissions(json: any, id:number) {
   return this.http.delete(`${API}/missions/${id}`, json).map((response: Response) => response.text());
   }
 

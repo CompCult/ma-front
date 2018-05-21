@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/catch'
 
 import { API } from '../app.api'
- import { AnswerMission } from './missionAnswer.model';
+ import { MissionAnswer } from './missionAnswer.model';
 
 import {ErrorHandler} from '../app.error-handler'
 
@@ -17,19 +17,19 @@ export class MissionAnswerService {
 
   constructor(private http: Http){}
 
-  createMissions(json: any) {
+  createMissionAnswer(json: any) {
     return this.http.post(`${API}/missions`, json).map((response: Response) => response.json());
   }
 
-  updateQuiz(json: any, id:number) {
+  updateMissionAnswer(json: any, id:number) {
     return this.http.put(`${API}/missions/${id}`, json).map((response: Response) => response.text());
   }
 
-  deleteQuiz(json: any, id:number) {
+  deleteMissionAnswer(json: any, id:number) {
   return this.http.delete(`${API}/missions/${id}`, json).map((response: Response) => response.text());
   }
 
-   getQuiz(): Observable<AnswerMission[]>{
+   getMissionAnswer(): Observable<MissionAnswer[]>{
      return this.http.get(`${API}/missions`)
      .map(response => response.json())
      .catch(ErrorHandler.handleError)
