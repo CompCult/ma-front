@@ -20,11 +20,17 @@
     <th>ID do Criador</th>
     <th>ID do evento</th>
     <th>Mensagem</th>
+    <th>Data De Solicitação</th>
+    <th>Modificação</th>
+    <th>Status</th>
   </tr>
   <tr *ngFor="let appointment of appointmentsRequest">
     <td>{{appointment._id}}</td>
     <td>{{appointment._user}}</td>
     <td>{{appointment._appointment}}</td>
     <td>{{appointment.message}}</td>
+    <td>{{appointment.created_at | date:'dd/MM/yyyy'}}</td>
+    <td>{{appointment.updated_at | date:'dd/MM/yyyy'}}</td>
+    <td>{{appointment.status}}</td>
   </tr>
 </table>
