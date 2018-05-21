@@ -27,8 +27,12 @@ import { TreeService } from './trees/tree.service'
 import { MapService } from './map/map.service'
 import { LoginService } from './login/login.service'
 import { QuizService } from './quiz/quiz.service'
+import { MissionService } from './missions/mission.service'
+import { MissionAnswerService } from './mission-answer/missionAnswer.service'
 import { ResquestTreeService } from './resquest-tree/resquest-tree.service';
 import { QuizAnswerService } from './quiz-answer/quizAnswer.service'
+import { AppointmentRequestService } from './appointment-request/AppointmentRequest.service';
+
 import { AuthGuard } from './login/auth.guard';
 
 import { MapComponent } from './map/map.component';
@@ -46,7 +50,6 @@ import { AppointmentsComponent } from './appointments/appointments.component';
 import { AppointmentService } from './appointments/appointment.service';
 import { NewAppointmentsComponent } from './appointments/new-appointments/new-appointments.component';
 import { AppointmentRequestComponent } from './appointment-request/appointment-request.component';
-import { AppointmentRequestService } from './appointment-request/AppointmentRequest.service';
 
 
 
@@ -98,7 +101,9 @@ import { AppointmentRequestService } from './appointment-request/AppointmentRequ
     QuizAnswerService,
     AuthGuard,
     AppointmentService,
-    AppointmentRequestService
+    AppointmentRequestService,
+    MissionService,
+    MissionAnswerService
   ],
   entryComponents:[
     NewUsersComponent,
