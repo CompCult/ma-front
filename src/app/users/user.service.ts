@@ -34,6 +34,13 @@ export class UserService {
   return this.http.delete(`${API}/users/${id}`, json).map((response: Response) => response.text());
   }
 
+
+  search(field: string, param: string): Observable<User[]>{
+    return this.http.get(`${API}/users/query/fields?${field}=${param}`)
+    .map(response => response.json())
+    .catch(ErrorHandler.handleError)
+  }
+
   getUsuarios(): Observable<User[]>{
     return this.http.get(`${API}/users`)
     .map(response => response.json())

@@ -6,6 +6,9 @@ import { User } from './user.model';
 import { UserService } from './user.service';
 import { NewUsersComponent } from './new-users/new-users.component';
 
+import { SearchService } from '../search/search.service'
+import { Search } from '../search/search.model'
+
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
@@ -22,28 +25,31 @@ export class UsersComponent implements OnInit {
   pesquisaPAram ="name";
 
 
+  searcher = new Search();
+
+
   users: User[];
   myData:any;
   bsModalRef: BsModalRef;
 
-constructor(private modalService: BsModalService, private usuarioService: UserService) {}
+  constructor(private modalService: BsModalService, private usuarioService: UserService, private searchService: SearchService) {}
 
-create() {
-  const initialState = {
-    title: 'Criar Usuario',
-    user: new NewUser(null,null,null,null),
-    mensage: 'Usuario criado com sucesso',
-    modify: false,
-    password: ""
-  };
-  this.bsModalRef = this.modalService.show(NewUsersComponent, {initialState});
-  this.bsModalRef.content.closeBtnName = 'Close';
+  create() {
+    const initialState = {
+      title: 'Criar Usuario',
+      user: new NewUser(null,null,null,null),
+      mensage: 'Usuario criado com sucesso',
+      modify: false,
+      password: ""
+    };
+    this.bsModalRef = this.modalService.show(NewUsersComponent, {initialState});
+    this.bsModalRef.content.closeBtnName = 'Close';
 
-  // funcao que recebe valores do modal
-  this.bsModalRef.content.onClose = (myData) => {
-      this.atualizaLista();
-      this.bsModalRef.hide();
-      this.myData = myData;
+    // funcao que recebe valores do modal
+    this.bsModalRef.content.onClose = (myData) => {
+    this.atualizaLista();
+    this.bsModalRef.hide();
+    this.myData = myData;
   };
 
 
@@ -62,10 +68,10 @@ option(user: User) {
 
   // funcao que recebe valores do modal
   this.bsModalRef.content.onClose = (myData) => {
-      this.atualizaLista();
-      this.bsModalRef.hide();
-      this.myData = myData;
-  };
+  this.atualizaLista();
+  this.bsModalRef.hide();
+  this.myData = myData;
+};
 }
 
 change(tipo: String){
@@ -91,6 +97,17 @@ atualizaLista(){
 
 },300);
 
+}
+
+search(searchForm){
+  this.delay(300);
+  // delay para tempo de receber os valores do get
+  setTimeout(() => {
+
+  this.usuarioService.search(this.pesquisaPAram, this.searcher.elementoPesquisa)
+  .subscribe(users => this.users = users);
+
+},300);
 }
 
 ngOnInit() {

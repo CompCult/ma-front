@@ -32,6 +32,7 @@ import { MissionAnswerService } from './mission-answer/missionAnswer.service'
 import { ResquestTreeService } from './resquest-tree/resquest-tree.service';
 import { QuizAnswerService } from './quiz-answer/quizAnswer.service'
 import { AppointmentRequestService } from './appointment-request/AppointmentRequest.service';
+import { SearchService } from './search/search.service';
 
 import { AuthGuard } from './login/auth.guard';
 
@@ -104,6 +105,7 @@ import { AppointmentRequestComponent } from './appointment-request/appointment-r
     AppointmentRequestService,
     MissionService,
     MissionAnswerService,
+    SearchService
 
   ],
   entryComponents:[
