@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef } from '@angular/core';
 
 import { ResquestTree, NewResquestTree } from './resquest-tree.model';
 import {ResquestTreeService} from './resquest-tree.service';
@@ -21,9 +21,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 export class ResquestTreeComponent implements OnInit {
 
   bsModalRef: BsModalRef;
+  modalRef: BsModalRef;
   resquest_trees: ResquestTree[] = [];
-
-
   userE: User;
 
   constructor(private modalService: BsModalService, private resquestTreeService: ResquestTreeService, private userService: UserService) { }
@@ -55,6 +54,14 @@ export class ResquestTreeComponent implements OnInit {
   getListaArvores(){
     this.resquestTreeService.getResquest_trees()
     .subscribe(resquest_trees => this.resquest_trees = resquest_trees);
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
+  toNumber(string) {
+    return parseFloat(string);
   }
 
   ngOnInit() {
