@@ -8,6 +8,9 @@ import 'rxjs/add/operator/catch'
 import { API } from '../app.api'
 import { QuizAnswer } from './quizAnswer.model';
 
+
+import { User } from '.././users/user.model';
+
 import {ErrorHandler} from '../app.error-handler'
 
 

@@ -5,10 +5,22 @@
 
 
     <form class="form-inline navbar-right">
-      <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Search">
-      <button class="btn btn-primary my-2 my-sm-0" type="submit">Procurar</button>
-    </form>
-  </nav>
+      <div class="btn-group" dropdown>
+        <button id="button-basic" dropdownToggle type="button" class="btn btn-success dropdown-toggle"
+        aria-controls="dropdown-basic">
+        {{pesquisaButton}} <span class="caret"></span>
+      </button>
+      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+      role="menu" aria-labelledby="button-basic">
+      <li ><button class="dropdown-item" (click)="change('name')" >Nome</button></li>
+      <li ><button class="dropdown-item" (click)="change('email')">Email</button></li>
+      <li ><button class="dropdown-item" (click)="change('id')">ID</button></li>
+    </ul>
+  </div>
+  <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Search">
+  <button class="btn btn-primary my-2 my-sm-0" type="submit">Procurar</button>
+</form>
+</nav>
 
 </div>
 

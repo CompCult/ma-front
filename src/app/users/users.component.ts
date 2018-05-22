@@ -17,6 +17,11 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class UsersComponent implements OnInit {
 
+
+  pesquisaButton ="Pesquisar por";
+  pesquisaPAram ="name";
+
+
   users: User[];
   myData:any;
   bsModalRef: BsModalRef;
@@ -61,6 +66,19 @@ option(user: User) {
       this.bsModalRef.hide();
       this.myData = myData;
   };
+}
+
+change(tipo: String){
+  if(tipo == "name"){
+    this.pesquisaButton ="nome";
+    this.pesquisaPAram ="name";
+  }else if( tipo == "email"){
+    this.pesquisaPAram = "email";
+    this.pesquisaButton= "email";
+  }else{
+    this.pesquisaPAram = "_id";
+    this.pesquisaButton = "ID";
+  }
 }
 
 atualizaLista(){
