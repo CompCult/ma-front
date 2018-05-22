@@ -19,12 +19,29 @@
     <th>ID</th>
     <th>USUARIO</th>
     <th>MISSÂO</th>
+    <th>MAPA</th>
     <th>OPÇÕES</th>
   </tr>
   <tr *ngFor="let missionAnswer of missionAnswers">
     <td>{{missionAnswer._id}}</td>
     <td>{{missionAnswer._user}}</td>
     <td>{{qumissionAnsweriz._mission}}</td>
+    <td><button type="button"(click)="openModal(template)">
+      <img [src]="'../assets/img/pin_red_map.png'" width="43" height="43">
+      </button>
+      <ng-template #template >
+        <div class="modal-content">
+          <div class="modal-body">
+            <agm-map class="modal-map" [latitude]="toNumber(missionAnswer.location_lat)" [longitude]="toNumber(resquest.location_lng)" [zoom]="15" >
+              <agm-marker [latitude]="toNumber(missionAnswer.location_lat)"
+                          [longitude]="toNumber(missionAnswer.location_lng)"
+                          [iconUrl]="'../assets/img/pin_red_map.png'">
+              </agm-marker>
+            </agm-map>
+          </div>
+        </div>
+      </ng-template>
+    </td>
     <td>
       <button class="btn btn-outline-success my-2 my-sm-0" (click)="option(missionAnswer)">opções</button>
     </td>

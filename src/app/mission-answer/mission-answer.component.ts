@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef } from '@angular/core';
 
 import { MissionAnswer } from './missionAnswer.model';
 import { MissionAnswerService } from './missionAnswer.service'
@@ -19,6 +19,7 @@ export class MissionAnswerComponent implements OnInit {
   missionAnswers: MissionAnswer[];
   myData:any;
   bsModalRef: BsModalRef;
+  modalRef: BsModalRef;
 
 constructor(private modalService: BsModalService, private missionAnswerService: MissionAnswerService) {}
 
@@ -54,12 +55,22 @@ updateList(){
 
 }
 
-ngOnInit() {
-  this.updateList();
+openModal(template: TemplateRef<any>) {
+  this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+}
+
+toNumber(string) {
+  return parseFloat(string);
 }
 
 delay(ms: number) {
   setTimeout(() => { console.log('delay') },ms);
 }
+
+ngOnInit() {
+  this.updateList();
+}
+
+
 
 }
