@@ -17,20 +17,38 @@
 <table>
   <tr>
     <th>ID</th>
-    <th>ID do Criador</th>
-    <th>ID do evento</th>
-    <th>Mensagem</th>
-    <th>Data De Solicitação</th>
+    <th>Solicitante</th>
+    <th>Evento</th>
+    <th>Solicitação</th>
     <th>Modificação</th>
     <th>Status</th>
+    <th>Ações</th>
+
   </tr>
   <tr *ngFor="let appointment of appointmentsRequest">
     <td>{{appointment._id}}</td>
     <td>{{appointment._user}}</td>
     <td>{{appointment._appointment}}</td>
-    <td>{{appointment.message}}</td>
     <td>{{appointment.created_at | date:'dd/MM/yyyy'}}</td>
     <td>{{appointment.updated_at | date:'dd/MM/yyyy'}}</td>
     <td>{{appointment.status}}</td>
+    <td>
+      <button type="button" class="btn btn-outline-success my-2 my-sm-0" (click)="openModal(template)">Mensagem e Opções</button>
+      <ng-template #template>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Menssagem</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>{{appointment.message}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)= reject(appointment)>Negar</button>
+          <button type="button" class="btn btn-success" (click)= approve(appointment)>Aprovar</button>
+        </div>
+      </ng-template>
+    </td>
   </tr>
 </table>

@@ -15,8 +15,16 @@ export class AppointmentRequestService{
 
   constructor(private http: Http){}
 
+  update(json: any, id:number) {
+    return this.http.put(`${API}/appointment_requests/${id}`, json).map((response: Response) => response.text());
+  }
+
+  delete(json: any, id:number) {
+    return this.http.delete(`${API}/appointment_requests/${id}`, json).map((response: Response) => response.text());
+  }
+
   getAppointmentRequest(): Observable<AppointmentRequest[]>{
-    return this.http.get(`${API}/appointment_requests`) 
+    return this.http.get(`${API}/appointment_requests`)
     .map(response => response.json())
     .catch(ErrorHandler.handleError)
   }
