@@ -31,7 +31,7 @@ export class NewAppointmentsComponent implements OnInit {
 
   create(appointmentForm){
     this.appointmentService.createAppointment(this.appointment).subscribe();
-    this.router.navigate(['appointment']);
+    //this.router.navigate(['appointment']);
     //função para enviar um objeto para o componete pai
     this.onClose(this.appointment);
   }

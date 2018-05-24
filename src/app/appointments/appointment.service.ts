@@ -24,4 +24,12 @@ export class AppointmentService{
   createAppointment(json: any){
     return this.http.post(`${API}/appointment`, json).map((response: Response) => response.json());
   }
+
+  delete(json: any,id:number){
+    return this.http.delete(`${API}/appointment/${id}`).map((response: Response) => response.text());
+  }
+
+  save(json: any,id:number){
+    return this.http.post(`${API}/appointment/${id}`, json).map((response: Response) => response.text());
+  }
 }

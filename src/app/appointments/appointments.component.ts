@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef } from '@angular/core';
 import { Appointment } from './appointment.model';
 import { AppointmentService } from './appointment.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -14,6 +14,7 @@ export class AppointmentsComponent implements OnInit {
   appointments: Appointment[];
   bsModalRef: BsModalRef;
   myData:any;
+  modalRef: BsModalRef;
 
   constructor(private modalService: BsModalService,private appointmentService: AppointmentService) { }
 
@@ -24,18 +25,38 @@ export class AppointmentsComponent implements OnInit {
 
     // funcao que recebe valores do modal
     this.bsModalRef.content.onClose = (myData) => {
-        this.ngOnInit();
-        this.bsModalRef.hide();
-        this.myData = myData;
+      this.refresh();
+      this.bsModalRef.hide();
+      this.myData = myData;
     };
   }
 
-  ngOnInit() {
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  delete(appointment:Appointment){
+    this.appointmentService.delete(appointment, appointment._id).subscribe();
+    this.refresh();
+    this.modalRef.hide();
+  }
+
+  save(appointment:Appointment){
+    this.appointmentService.save(appointment, appointment._id).subscribe();
+    this.refresh();
+    this.modalRef.hide();
+  }
+
+  refresh(){
     setTimeout(() => {
 
     this.appointmentService.getAppointment()
     .subscribe(appointment => this.appointments = appointment);
     },300);
+  }
+
+  ngOnInit() {
+      this.refresh();
   }
 
 }

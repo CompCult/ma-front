@@ -26,6 +26,20 @@
     </div>
 
     <div class="form-group">
+      <label for="start_date">Dia do início</label>
+      <input bsDatepicker id="start_date"  class="form-control" type="text"
+      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="appointment.start_date"
+      value="{{appointment.start_date | date:'dd/MM/yyyy'}}" name="start_date">
+    </div>
+
+    <div class="form-group">
+      <label for="start_date">Dia do Fim</label>
+      <input bsDatepicker id="end_date"  class="form-control" type="text"
+      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="appointment.end_date"
+      value="{{appointment.end_date | date:'dd/MM/yyyy'}}" name="end_date">
+    </div>
+
+    <div class="form-group">
       <label for="description">Descrição</label>
       <input id="description" [(ngModel)]="appointment.description" class="form-control" type="text" name="description" #description="ngModel">
     </div>
@@ -40,23 +54,8 @@
       <input id="type" [(ngModel)]="appointment.type" class="form-control" type="text" name="type" #type="ngModel">
     </div>
 
-    <div class="form-group">
-      <label for="start_date">Dia do início</label>
-      <input bsDatepicker id="start_date"  class="form-control" type="text"
-      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="appointment.start_date"
-      value="{{appointment.start_date | date:'dd/MM/yyyy'}}" name="start_date">
-    </div>
-
-    <div class="form-group">
-      <label for="start_date">Dia do Fim</label>
-      <input bsDatepicker id="end_date"  class="form-control" type="text"
-      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="appointment.end_date"
-      value="{{appointment.end_date | date:'dd/MM/yyyy'}}" name="end_date">
-    </div>
-
-
 <div class="modal-footer">
-  <button type="submit" class="btn btn-success" *ngIf="!modify">Confirmar</button>
+  <button type="submit" class="btn btn-success" >Confirmar</button>
   <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
 
 </div>

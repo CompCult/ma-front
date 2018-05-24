@@ -19,19 +19,55 @@
     <th>ID</th>
     <th>ID do Criador</th>
     <th>NOME</th>
-    <th>Descrição</th>
     <th>Local</th>
     <th>Data de inicio</th>
     <th>Data de fim</th>
+    <th>Descrição e Opções</th>
   </tr>
   <tr *ngFor="let appointment of appointments">
     <td>{{appointment._id}}</td>
     <td>{{appointment._user}}</td>
     <td>{{appointment.name}}</td>
-    <td>{{appointment.description}}</td>
     <td>{{appointment.place}}</td>
     <td>{{appointment.start_date | date:'dd/MM/yyyy'}}</td>
     <td>{{appointment.end_date | date:'dd/MM/yyyy'}}</td>
+    <td>
+      <button type="button" class="btn btn-outline-success my-2 my-sm-0" (click)="openModal(template)">Mensagem e Opções</button>
+      <ng-template #template>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Evento</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <label for="dataAniversario">Data de inicio</label>
+          <input bsDatepicker id="start_date"  class="form-control" type="text"
+          [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="appointment.start_date"
+          value="{{appointment.start_date | date:'dd/MM/yyyy'}}" name="start_date">
+
+          <label for="dataAniversario">Data de fim</label>
+          <input bsDatepicker id="end_date"  class="form-control" type="text"
+          [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="appointment.end_date"
+          value="{{appointment.end_date | date:'dd/MM/yyyy'}}" name="end_date">
+
+          <label for="nome">Nome</label>
+          <input id="nome" [(ngModel)]="appointment.name" class="form-control" type="text" name="name"  #name="ngModel" >
+
+          <label for="nome">Local</label>
+          <input id="place" [(ngModel)]="appointment.place" class="form-control" type="text" name="place"  #place="ngModel" >
+
+          <label for="nome">Descrição</label>
+          <textarea rows="4" cols="50" [innerHTML] = "appointment.description" ></textarea>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)= delete(appointment)>Deletar Evento</button>
+          <button type="button" class="btn btn-success" (click)= save(appointment)>Salvar</button>
+        </div>
+      </ng-template>
+    </td>
   </tr>
 </table>
 
