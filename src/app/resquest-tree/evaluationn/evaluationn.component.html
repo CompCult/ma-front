@@ -30,46 +30,26 @@
       <input id="nome" [(ngModel)]="resquestTree.requester_name" class="form-control" type="text" name="requester_name"  #requester_name="ngModel">
     </div>
 
+
+
     <div class="form-group">
       <label>Lugar</label>
-      <div class="form-control">
-        <label class="radio-inline">
-          <input type="radio" name="lugar" value="calcada"
-          [(ngModel)]="resquestTree.place"  #place="ngModel">
-          calçada
-        </label>
+      <select id="place" [(ngModel)]="resquestTree.place" class="form-control" name="type" (click)= checkType() #place="ngModel">
+        <option value="calcada">Calçada</option>
+        <option value="canteiro" >Canteiro</option>
+        <option value="quintal" >Quintal</option>
+        <option value="jardim" >Jardim</option>
+        <option value="escola" >Escola</option>
 
-        <label class="radio-inline">
-          <input type="radio" name="lugar" value="canteiro"
-          [(ngModel)]="resquestTree.place"  #place="ngModel">
-          canteiro
-        </label>
-
-        <label class="radio-inline">
-          <input type="radio" name="lugar" value="quintal"
-          [(ngModel)]="resquestTree.place"  #place="ngModel">
-          quintal
-        </label>
-
-        <label class="radio-inline">
-          <input type="radio" name="lugar" value="jardim"
-          [(ngModel)]="resquestTree.place"  #place="ngModel">
-          jardim
-        </label>
-
-        <label class="radio-inline">
-          <input type="radio" name="lugar" value="escola"
-          [(ngModel)]="resquestTree.place"  #place="ngModel">
-          escola
-        </label>
-      </div>
-
+      </select>
     </div>
 
-    <!-- <div class="form-group" *ngIf="resquestTree.place != calcada">
+
+
+    <div class="form-group" *ngIf="checking">
       <label for="sidewalk_size">Tamanho da calçada</label>
       <input id="sidewalk_size" [(ngModel)]="resquestTree.sidewalk_size" class="form-control" type="number" name="sidewalk_size" #sidewalk_size="ngModel">
-    </div> -->
+    </div>
 
     <div class="form-group">
       <label for="photo">URL da foto</label>

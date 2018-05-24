@@ -26,6 +26,19 @@ export class EvaluationnComponent implements OnInit {
 
   }
 
+  checking = false;
+  checkType(){
+    if(this.resquestTree.place == "calcada" ){
+      this.checking= true;
+    }else{
+      this.checking =false;
+    }
+  }
+
+
+
+
+
   create(resquestForm){
     console.log(this.resquestTree);
     this.resquestTreeService.createResquest(this.resquestTree).subscribe();
