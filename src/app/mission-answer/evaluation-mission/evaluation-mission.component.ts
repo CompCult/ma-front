@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 
 
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -6,6 +6,9 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { MissionAnswer } from '../missionAnswer.model';
 
 import { MissionAnswerService } from '../missionAnswer.service';
+
+
+
 
 
 import{ NgForm } from '@angular/forms';
@@ -27,7 +30,7 @@ export class EvaluationMissionComponent implements OnInit {
         onClose:any;
         password:string ="";
 
-        constructor(public bsModalRef: BsModalRef, public missionAnswerService: MissionAnswerService, private router: Router) {}
+        constructor(public bsModalRef: BsModalRef, public missionAnswerService: MissionAnswerService, private router: Router, private modalService: BsModalService) {}
 
         create(missionAnswerForm){
 
@@ -69,6 +72,20 @@ export class EvaluationMissionComponent implements OnInit {
           //função para enviar um objeto para o componete pai
           this.onClose('');
         }
+
+        toNumber(string) {
+          return parseFloat(string);
+        }
+
+
+
+
+        modalRef: BsModalRef;
+
+        openModal(template: TemplateRef<any>) {
+          this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+        }
+
 
 
 

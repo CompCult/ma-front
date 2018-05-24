@@ -77,8 +77,9 @@
 
 
 <div class="modal-footer">
-  <button type="button" class="btn btn-danger"  (click)= reject(quizAnswer)>Invalido</button>
+  <button type="button" class="btn btn-warning"  (click)= reject(quizAnswer)>Invalido</button>
   <button type="button" class="btn btn-info"  (click)= accept(quizAnswer)>Valido</button>
+  <button type="button" class="btn btn-danger"  (click)= delete(quizAnswer)>Deletar</button>
   <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
 
 </div>

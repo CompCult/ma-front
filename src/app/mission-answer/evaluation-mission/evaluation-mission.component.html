@@ -41,41 +41,53 @@
       value="{{missionAnswer.created_at | date:'dd/MM/yyyy'}}" name="created_at" disabled>
     </div>
 
-
+    <hr>
     <div class=""  *ngIf="missionAnswer.image">
-      <img src="{{missionAnswer.image}}" alt="">
+      <img src="{{missionAnswer.image}}" alt="" height="600" width="430">
     </div>
 
+    <hr>
     <div class=""  *ngIf="missionAnswer.text_msg">
       <h5>{{missionAnswer.text_msg}}</h5>
     </div>
 
+    <hr>
+
     <div class=""  *ngIf="missionAnswer.video">
-      <video width="320" height="240" controls>
+      <video width="450" height="360" controls>
         <source src="{{missionAnswer.video}}" type="video/mp4">
         </video>
       </div>
 
+
+      <hr>
+
       <div class=""  *ngIf="missionAnswer.audio">
         <audio controls>
-          <source src="horse.ogg" type="audio/wav">
+          <source src="{{missionAnswer.audio}" type="audio/wav">
 
           </audio>
         </div>
+        <hr>
+
+        <button type="button"(click)="openModal(template)">
+          <img [src]="'../assets/img/pin_red_map.png'" width="43" height="43">
+          </button>
+          <ng-template #template >
+            <div class="modal-content">
+              <div class="modal-body">
+                <agm-map class="modal-map" [latitude]="toNumber(missionAnswer.location_lat)" [longitude]="toNumber(missionAnswer.location_lng)" [zoom]="15" >
+                  <agm-marker [latitude]="toNumber(missionAnswer.location_lat)"
+                              [longitude]="toNumber(missionAnswer.location_lng)"
+                              [iconUrl]="'../assets/img/pin_red_map.png'">
+                  </agm-marker>
+                </agm-map>
+              </div>
+            </div>
+          </ng-template>
 
 
-
-        <!-- public image: string; //link da imagem
-        public audio: string;  // link do áudio
-        public video: string;
-        public text_msg: string; //(renomear de text para text_msg)
-        public location_lat: string; //latitutde do gps
-        public location_lng: string; / -->
-
-
-
-
-
+        <hr>
 
         <div class="form-group" >
           <label for="status">Status</label>
@@ -84,9 +96,13 @@
 
 
 
+
+
+
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger"  (click)= reject(missionAnswer)>Invalido</button>
+          <button type="button" class="btn btn-warning"  (click)= reject(missionAnswer)>Invalido</button>
           <button type="button" class="btn btn-info"  (click)= accept(missionAnswer)>Valido</button>
+          <button type="button" class="btn btn-danger"  (click)= delete(missionAnswer)>Deletar</button>
           <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
 
         </div>

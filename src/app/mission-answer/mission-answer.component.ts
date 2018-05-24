@@ -59,10 +59,6 @@ openModal(template: TemplateRef<any>) {
   this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
 }
 
-toNumber(string) {
-  return parseFloat(string);
-}
-
 delay(ms: number) {
   setTimeout(() => { console.log('delay') },ms);
 }

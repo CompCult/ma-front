@@ -18,19 +18,19 @@ export class MissionAnswerService {
   constructor(private http: Http){}
 
   createMissionAnswer(json: any) {
-    return this.http.post(`${API}/missions`, json).map((response: Response) => response.json());
+    return this.http.post(`${API}/missions_answers`, json).map((response: Response) => response.json());
   }
 
   updateMissionAnswer(json: any, id:number) {
-    return this.http.put(`${API}/missions/${id}`, json).map((response: Response) => response.text());
+    return this.http.put(`${API}/missions_answers/${id}`, json).map((response: Response) => response.text());
   }
 
   deleteMissionAnswer(json: any, id:number) {
-  return this.http.delete(`${API}/missions/${id}`, json).map((response: Response) => response.text());
+  return this.http.delete(`${API}/missions_answers/${id}`, json).map((response: Response) => response.text());
   }
 
    getMissionAnswer(): Observable<MissionAnswer[]>{
-     return this.http.get(`${API}/missions`)
+     return this.http.get(`${API}/missions_answers`)
      .map(response => response.json())
      .catch(ErrorHandler.handleError)
    }
