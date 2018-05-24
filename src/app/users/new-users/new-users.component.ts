@@ -27,6 +27,15 @@ export class NewUsersComponent implements OnInit {
 
   constructor(public bsModalRef: BsModalRef, public userService: UserService,private router: Router) {}
 
+  checking = false;
+  checkType(){
+    if(this.user.type == "estudante" || this.user.type == "professor"){
+      this.checking= true;
+    }else{
+      this.checking =false;
+    }
+  }
+
   create(userForm){
     if(this.password != ""){
       this.user.password= this.password;
@@ -48,14 +57,6 @@ export class NewUsersComponent implements OnInit {
     this.onClose('');
   }
 
-  delete(user: User){
-
-    console.log(this.user);
-    this.userService.deleteUser(this.user, user._id).subscribe();
-
-    //função para enviar um objeto para o componete pai
-    this.onClose('');
-  }
 
 
   ngOnInit() {

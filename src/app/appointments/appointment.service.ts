@@ -30,6 +30,6 @@ export class AppointmentService{
   }
 
   save(json: any,id:number){
-    return this.http.post(`${API}/appointment/${id}`, json).map((response: Response) => response.text());
+    return this.http.put(`${API}/appointment/${id}`, json).map((response: Response) => response.text());
   }
 }

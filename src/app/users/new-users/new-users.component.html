@@ -33,11 +33,17 @@
     <!-- type-->
     <div class="form-group" *ngIf="modify">
       <label for="type">Tipo</label>
-      <input id="type" [(ngModel)]="user.type" class="form-control" type="text" name="type"  #type="ngModel">
+      <select id="type" [(ngModel)]="user.type" class="form-control" name="type" (click)= checkType() #type="ngModel">
+        <option value="professor">Professor</option>
+        <option value="estudante" >Estudante</option>
+        <option value="gestor" >Gestor</option>
+        <option value="usuario comum" >Usuario comum</option>
+
+      </select>
     </div>
 
     <!-- institution-->
-    <div class="form-group" *ngIf="modify">
+    <div class="form-group" *ngIf="checking" >
       <label for="type">Instituição</label>
       <input id="institution" [(ngModel)]="user.institution" class="form-control" type="text" name="institution"  #institution="ngModel">
     </div>
@@ -152,7 +158,6 @@
 
 <div class="modal-footer">
   <button type="submit" class="btn btn-success" *ngIf="!modify">Confirmar</button>
-  <button type="button" class="btn btn-danger" *ngIf="modify" (click)= delete(user)>Deletar</button>
   <button type="button" class="btn btn-info" *ngIf="modify" (click)= modifyUserUsuario(user)>Salvar</button>
   <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
 
