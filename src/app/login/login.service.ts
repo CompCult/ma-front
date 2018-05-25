@@ -30,6 +30,7 @@ export class LoginService {
 
   showMenuEmitter = new EventEmitter<boolean>();
   showUserEmitter = new EventEmitter<string>();
+  showErrorEmitter = new EventEmitter<boolean>();
 
   constructor(private http: Http, private router: Router){}
 
@@ -40,7 +41,8 @@ export class LoginService {
   // }
 
   login(json: any){
-    return this.http.post(`${API}/users/auth`, json).map((response: Response) => response.json());
+    return this.http.post(`${API}/users/auth`, json).map((response: Response) => response.json())
+    .catch(ErrorHandler.handleError);
   }
 
   createSession(credential){
@@ -52,15 +54,13 @@ export class LoginService {
       this.showMenu= true;
       this.showMenuEmitter.emit(true);
       this.showUserEmitter.emit(this.userType);
+      this.showErrorEmitter.emit(false);
       this.router.navigate(['/users']);
     }else{
+      this.showErrorEmitter.emit(true);
       this.router.navigate(['/login']);
     }
 
-  }
-
-  errorLogin():boolean{
-    return !this.logged;
   }
 
   loggout(){

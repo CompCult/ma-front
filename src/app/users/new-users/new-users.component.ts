@@ -24,6 +24,7 @@ export class NewUsersComponent implements OnInit {
   modify: boolean;
   onClose:any;
   password:string ="";
+  modifyPassword:boolean = false;
 
   constructor(public bsModalRef: BsModalRef, public userService: UserService,private router: Router) {}
 
@@ -48,16 +49,25 @@ export class NewUsersComponent implements OnInit {
 
   modifyUserUsuario(user: User){
     console.log(this.user);
-    if(this.password!= ""){
+    if(!this.modifyPassword){
+      delete this.user.password;
+    }else{
       this.user.password= this.password;
     }
-
+    console.log(this.user);
     this.userService.updateUser(this.user, user._id).subscribe();
     //função para enviar um objeto para o componete pai
     this.onClose('');
   }
 
-
+  setPasswordModify(){
+    if(this.modifyPassword){
+      this.modifyPassword =false;
+    }else{
+      this.modifyPassword =true;
+    }
+  //  delete this.user.password;
+  }
 
   ngOnInit() {
 
