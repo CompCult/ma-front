@@ -26,7 +26,7 @@ export class LoginService {
 
   logged = false;
   showMenu = false;
-  userStatus: string;
+  userType: string;
 
   showMenuEmitter = new EventEmitter<boolean>();
   showUserEmitter = new EventEmitter<string>();
@@ -44,16 +44,24 @@ export class LoginService {
   }
 
   createSession(credential){
-    window.sessionStorage.setItem('user', credential._body);
-    this.userStatus = <string> credential.type;
+    if((credential.type === "gestor") ||(credential.type === "professor")){
+      window.sessionStorage.setItem('user', credential._body);
+      this.userType = <string> credential.type;
 
-    this.logged =true;
-    this.showMenu= true;
-    this.showMenuEmitter.emit(true);
-    this.showUserEmitter.emit(this.userStatus);
-    this.router.navigate(['/users']);
+      this.logged =true;
+      this.showMenu= true;
+      this.showMenuEmitter.emit(true);
+      this.showUserEmitter.emit(this.userType);
+      this.router.navigate(['/users']);
+    }else{
+      this.router.navigate(['/login']);
+    }
+
   }
 
+  errorLogin():boolean{
+    return !this.logged;
+  }
 
   loggout(){
 
@@ -70,9 +78,8 @@ export class LoginService {
   }
 
   getUserStatus():any{
-    console.log(this.userStatus);
-    return this.userStatus;
+    console.log(this.userType);
+    return this.userType;
   }
-
 
 }

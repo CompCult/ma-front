@@ -39,10 +39,7 @@ export class PanelComponent implements OnInit {
     this.loginService.showUserEmitter.subscribe(user => {
      this.userStatus = user;
      this.cdref.detectChanges();
-     console.log(this.userStatus);
     });
-
-    console.log(this.userStatus);
 
   }
 
