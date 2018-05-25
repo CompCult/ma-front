@@ -18,14 +18,14 @@
   <tr>
     <th>ID</th>
     <th>USUARIO</th>
-    <!-- <th>MISSÂO</th> -->
+    <th>MISSÂO</th>
 
     <th>OPÇÕES</th>
   </tr>
   <tr *ngFor="let missionAnswer of missionAnswers">
     <td>{{missionAnswer._id}}</td>
-    <!-- <td>{{missionAnswer._user.name}}</td> -->
-    <!-- <td>{{missionAnswer._mission.name}}</td> -->
+    <td>{{missionAnswer._user.name}}</td>
+    <td>{{missionAnswer._mission.name}}</td>
     <td>
       <button class="btn btn-outline-success my-2 my-sm-0" (click)="option(missionAnswer)">opções</button>
     </td>
