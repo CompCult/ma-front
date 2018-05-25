@@ -51,6 +51,7 @@ import { AppointmentsComponent } from './appointments/appointments.component';
 import { AppointmentService } from './appointments/appointment.service';
 import { NewAppointmentsComponent } from './appointments/new-appointments/new-appointments.component';
 import { AppointmentRequestComponent } from './appointment-request/appointment-request.component';
+import { InitialPageComponent } from './initial-page/initial-page.component';
 
 
 
@@ -77,6 +78,7 @@ import { AppointmentRequestComponent } from './appointment-request/appointment-r
     AppointmentsComponent,
     NewAppointmentsComponent,
     AppointmentRequestComponent,
+    InitialPageComponent,
 
   ],
   imports: [
