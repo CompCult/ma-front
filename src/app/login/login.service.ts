@@ -55,7 +55,7 @@ export class LoginService {
       this.showMenuEmitter.emit(true);
       this.showUserEmitter.emit(this.userType);
       this.showErrorEmitter.emit(false);
-      this.router.navigate(['/users']);
+      this.router.navigate(['/initial_page']);
     }else{
       this.showErrorEmitter.emit(true);
       this.router.navigate(['/login']);
