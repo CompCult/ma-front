@@ -59,7 +59,7 @@
           <input id="place" [(ngModel)]="appointment.place" class="form-control" type="text" name="place"  #place="ngModel" >
 
           <label for="nome">Descrição</label>
-          <textarea rows="4" cols="50" [innerHTML] = "appointment.description" ></textarea>
+          <textarea rows="4" cols="50" [(ngModel)]="appointment.description" name="description"  #description="ngModel" [innerHTML] = "appointment.description" ></textarea>
 
         </div>
         <div class="modal-footer">
