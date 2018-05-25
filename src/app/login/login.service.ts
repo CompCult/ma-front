@@ -10,6 +10,7 @@ import { API } from '../app.api'
 import { Router } from '@angular/router';
 
 import {ErrorHandler} from '../app.error-handler'
+import { User } from '../users/user.model';
 
 
 export class FinalUser {
@@ -25,8 +26,10 @@ export class LoginService {
 
   logged = false;
   showMenu = false;
+  userStatus: string;
 
   showMenuEmitter = new EventEmitter<boolean>();
+  showUserEmitter = new EventEmitter<string>();
 
   constructor(private http: Http, private router: Router){}
 
@@ -42,9 +45,12 @@ export class LoginService {
 
   createSession(credential){
     window.sessionStorage.setItem('user', credential._body);
+    this.userStatus = <string> credential.type;
+
     this.logged =true;
     this.showMenu= true;
     this.showMenuEmitter.emit(true);
+    this.showUserEmitter.emit(this.userStatus);
     this.router.navigate(['/users']);
   }
 
@@ -63,7 +69,10 @@ export class LoginService {
     return this.logged
   }
 
-
+  getUserStatus():any{
+    console.log(this.userStatus);
+    return this.userStatus;
+  }
 
 
 }

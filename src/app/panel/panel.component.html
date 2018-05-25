@@ -8,11 +8,11 @@
 
     <ul class="navbar-nav mr-auto">
 
-      <li class="nav-item" routerLinkActive="active">
+      <li *ngIf="isManeger()" class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="users">Usuarios<span class="sr-only">(current)</span></a>
       </li>
 
-      <li ngbDropdown class="d-inline-block ">
+      <li *ngIf="isManeger()" ngbDropdown class="d-inline-block ">
         <a class="nav-link"  id="dropdownBasic3" routerLinkActive="active"  ngbDropdownToggle >
           Pedidos
         </a>
@@ -51,7 +51,7 @@
 
       </li>
 
-      <li ngbDropdown class="d-inline-block ">
+      <li *ngIf="isManeger()" ngbDropdown class="d-inline-block ">
         <a class="nav-link"  id="dropdownBasic4" routerLinkActive="active"  ngbDropdownToggle >
           Agenda
         </a>
@@ -62,10 +62,9 @@
         </div>
       </li>
 
-      <li class="nav-item" routerLinkActive="active">
+      <li *ngIf="isManeger()" class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="map">Mapa<span class="sr-only">(current)</span></a>
       </li>
-
     </ul>
 
     <ul class="navbar-nav navbar-right">
