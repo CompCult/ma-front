@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   user: FinalUser = new FinalUser();
   error: boolean;
 
-  constructor(private loginService: LoginService,private cdref: ChangeDetectorRef, private errorHandler:ErrorHandler) { }
+  constructor(private loginService: LoginService,private cdref: ChangeDetectorRef) { }
 
 
   login(){
