@@ -27,8 +27,8 @@
   </tr>
   <tr *ngFor="let appointment of appointmentsRequest">
     <td>{{appointment._id}}</td>
-    <td>{{appointment._user}}</td>
-    <td>{{appointment._appointment}}</td>
+    <td>{{appointment._user.name}}</td>
+    <td>{{appointment._appointment.name}}</td>
     <td>{{appointment.created_at | date:'dd/MM/yyyy'}}</td>
     <td>{{appointment.updated_at | date:'dd/MM/yyyy'}}</td>
     <td>{{appointment.status}}</td>
@@ -45,8 +45,8 @@
           <p>{{appointment.message}}</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" (click)= reject(appointment)>Negar</button>
-          <button type="button" class="btn btn-success" (click)= approve(appointment)>Aprovar</button>
+          <button *ngIf="showOptions(appointment)" type="button" class="btn btn-danger" (click)= reject(appointment)>Negar</button>
+          <button *ngIf="showOptions(appointment)" type="button" class="btn btn-success" (click)= approve(appointment)>Aprovar</button>
         </div>
       </ng-template>
     </td>

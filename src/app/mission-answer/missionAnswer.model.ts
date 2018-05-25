@@ -43,6 +43,7 @@ export class MissionAnswer {
     start_time: string; //data de início da missão
     end_time:string; // data de fim da missão
     created_at: string;
+    _user:number;
   };
   public _group: number;
   public status: string;// válida/inválida/pendente

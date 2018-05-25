@@ -13,6 +13,7 @@ import { MissionAnswerService } from '../missionAnswer.service';
 
 import{ NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../../login/login.service';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class EvaluationMissionComponent implements OnInit {
         onClose:any;
         password:string ="";
 
-        constructor(public bsModalRef: BsModalRef, public missionAnswerService: MissionAnswerService, private router: Router, private modalService: BsModalService) {}
+        constructor(public bsModalRef: BsModalRef,public loginService: LoginService, public missionAnswerService: MissionAnswerService, private router: Router, private modalService: BsModalService) {}
 
         create(missionAnswerForm){
 
@@ -86,7 +87,19 @@ export class EvaluationMissionComponent implements OnInit {
           this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
         }
 
+        showOptions():boolean{
 
+          if(this.loginService.getUserStatus() == "gestor"){
+            return true;
+          }else if(this.missionAnswer._user == null){
+            return false;
+          }else if(this.loginService.getUserId() === this.missionAnswer._mission._user){
+            return true;
+          }else{
+            return false;
+          }
+
+        }
 
 
         ngOnInit() {

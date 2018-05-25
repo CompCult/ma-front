@@ -10,6 +10,7 @@ import { QuizService } from '../quiz.service';
 
 import{ NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../../login/login.service';
 
 @Component({
   selector: 'app-new-quiz',
@@ -19,7 +20,7 @@ import { Router } from '@angular/router';
 export class NewQuizComponent implements OnInit {
 
 
-    title: string;
+    title: string = "Quiz";
     closeBtnName: string;
     mensagem: string;
     quiz: Quiz;
@@ -27,10 +28,11 @@ export class NewQuizComponent implements OnInit {
     onClose:any;
     password:string ="";
 
-    constructor(public bsModalRef: BsModalRef, public quizService: QuizService, private router: Router) {}
+    constructor(public bsModalRef: BsModalRef, public loginService: LoginService,public quizService: QuizService, private router: Router) {}
 
     create(userForm){
 
+      this.quiz._user = this.loginService.getUserId();
       this.quizService.createQuiz(this.quiz).subscribe();
       this.router.navigate(['quiz']);
       //função para enviar um objeto para o componete pai
@@ -94,6 +96,20 @@ export class NewQuizComponent implements OnInit {
       }else{
       this.quiz.single_answer = false;
       }
+}
+
+showOptions():boolean{
+
+  if(this.quiz._user == null){
+    return false;
+  }else if(this.loginService.getUserStatus() == "gestor"){
+    return true;
+  }else if(this.loginService.getUserId() === this.quiz._user){
+    return true;
+  }else{
+    return false;
+  }
+
 }
 
   }

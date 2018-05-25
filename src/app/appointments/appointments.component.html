@@ -63,8 +63,8 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" (click)= delete(appointment)>Deletar Evento</button>
-          <button type="button" class="btn btn-success" (click)= save(appointment)>Salvar</button>
+          <button *ngIf="showOptions(appointment)" type="button" class="btn btn-danger" (click)= delete(appointment)>Deletar Evento</button>
+          <button *ngIf="showOptions(appointment)" type="button" class="btn btn-success" (click)= save(appointment)>Salvar</button>
         </div>
       </ng-template>
     </td>

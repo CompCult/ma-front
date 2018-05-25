@@ -3,6 +3,7 @@ import { AppointmentRequest } from './appointmentRequest.model';
 import { AppointmentRequestService } from './AppointmentRequest.service';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-appointment-request',
@@ -14,21 +15,22 @@ export class AppointmentRequestComponent implements OnInit {
   appointmentsRequest: AppointmentRequest[];
   modalRef: BsModalRef;
   appointmentRequest:AppointmentRequest;
+  id: number;
 
-  constructor(private modalService: BsModalService,private appointmentrequestService: AppointmentRequestService) { }
+  constructor(private modalService: BsModalService,private appointmentrequestService: AppointmentRequestService
+              ,private loginService: LoginService) { }
 
   ngOnInit() {
-    setTimeout(() => {
-
-    this.appointmentrequestService.getAppointmentRequest()
-    .subscribe(appointmentsRequest => this.appointmentsRequest = appointmentsRequest);
-    },300);
+    this.refresh();
+    this.id = this.loginService.getUserId();
+    console.log(this.id);
   }
 
   reject(appointmentRequest2: AppointmentRequest){
     this.appointmentRequest = appointmentRequest2;
     this.appointmentRequest.status ="Negado";
     this.appointmentrequestService.delete(this.appointmentRequest, appointmentRequest2._id).subscribe();
+    this.refresh();
     this.modalRef.hide();
 
   }
@@ -36,11 +38,31 @@ export class AppointmentRequestComponent implements OnInit {
     this.appointmentRequest = appointmentRequest2;
     this.appointmentRequest.status ="Aprovado";
     this.appointmentrequestService.update(this.appointmentRequest, appointmentRequest2._id).subscribe();
+    this.refresh();
     this.modalRef.hide();
   }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+  }
+
+  refresh(){
+    setTimeout(() => {
+
+    this.appointmentrequestService.getAppointmentRequest()
+    .subscribe(appointmentsRequest => this.appointmentsRequest = appointmentsRequest);
+    },300);
+  }
+
+  showOptions(appointment:AppointmentRequest):boolean{
+    if(this.loginService.getUserStatus() === "gestor"){
+      return true;
+    }else if(this.loginService.getUserId() === appointment._appointment._user){
+      return true;
+    }else{
+      return false;
+    }
+
   }
 
 }

@@ -20,7 +20,8 @@ export class MissionsComponent implements OnInit {
   myData:any;
   bsModalRef: BsModalRef;
 
-constructor(private modalService: BsModalService, private missionService: MissionService) {}
+constructor(private modalService: BsModalService,
+            private missionService: MissionService) {}
 
 
 
@@ -75,6 +76,9 @@ updateList(){
   },1000);
 
 }
+
+
+
 
 ngOnInit() {
   this.updateList();

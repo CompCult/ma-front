@@ -106,9 +106,9 @@
 
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-warning"  (click)= reject(missionAnswer)>Invalido</button>
-          <button type="button" class="btn btn-info"  (click)= accept(missionAnswer)>Valido</button>
-          <button type="button" class="btn btn-danger"  (click)= delete(missionAnswer)>Deletar</button>
+          <button *ngIf="showOptions()" type="button" class="btn btn-warning"  (click)= reject(missionAnswer)>Invalido</button>
+          <button *ngIf="showOptions()" type="button" class="btn btn-info"  (click)= accept(missionAnswer)>Valido</button>
+          <button *ngIf="showOptions()" type="button" class="btn btn-danger"  (click)= delete(missionAnswer)>Deletar</button>
           <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
 
         </div>

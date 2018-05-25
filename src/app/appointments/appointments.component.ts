@@ -3,6 +3,7 @@ import { Appointment } from './appointment.model';
 import { AppointmentService } from './appointment.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { NewAppointmentsComponent } from './new-appointments/new-appointments.component';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-appointments',
@@ -16,7 +17,8 @@ export class AppointmentsComponent implements OnInit {
   myData:any;
   modalRef: BsModalRef;
 
-  constructor(private modalService: BsModalService,private appointmentService: AppointmentService) { }
+  constructor(private modalService: BsModalService,private loginService: LoginService,
+              private appointmentService: AppointmentService) { }
 
   create() {
 
@@ -53,6 +55,17 @@ export class AppointmentsComponent implements OnInit {
     this.appointmentService.getAppointment()
     .subscribe(appointment => this.appointments = appointment);
     },300);
+  }
+
+  showOptions(appointment:Appointment):boolean{
+    if(this.loginService.getUserStatus() === "gestor"){
+      return true;
+    }else if(this.loginService.getUserId() === appointment._user){
+      return true;
+    }else{
+      return false;
+    }
+
   }
 
   ngOnInit() {

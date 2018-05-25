@@ -154,8 +154,8 @@
 
   <div class="modal-footer">
     <button type="submit" class="btn btn-success" *ngIf="!modify">Criar</button>
-    <button type="button" class="btn btn-danger" *ngIf="modify" (click)= delete(quiz)>Deletar</button>
-    <button type="button" class="btn btn-info" *ngIf="modify" (click)= modifyUserUsuario(quiz)>Modificar</button>
+    <button *ngIf="showOptions()" type="button" class="btn btn-danger"  (click)= delete(quiz)>Deletar</button>
+    <button *ngIf="showOptions()" type="button" class="btn btn-info"  (click)= modifyUserUsuario(quiz)>Modificar</button>
     <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
 
   </div>

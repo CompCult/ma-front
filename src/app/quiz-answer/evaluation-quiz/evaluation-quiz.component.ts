@@ -10,6 +10,7 @@ import { QuizAnswerService } from '../quizAnswer.service';
 
 import{ NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../../login/login.service';
 
 @Component({
   selector: 'app-evaluation-quiz',
@@ -27,7 +28,7 @@ export class EvaluationQuizComponent implements OnInit {
       onClose:any;
 
 
-      constructor(public bsModalRef: BsModalRef, public quizAnswerService: QuizAnswerService, private router: Router) {}
+      constructor(public bsModalRef: BsModalRef, public loginService: LoginService,public quizAnswerService: QuizAnswerService, private router: Router) {}
 
 
       accept(quizAnswer: QuizAnswer){
@@ -62,7 +63,23 @@ export class EvaluationQuizComponent implements OnInit {
 
       }
 
-      
+      showOptions():boolean{
+
+        if(this.quizAnswer._quiz._user == null){
+          return false;
+        }else if(this.loginService.getUserStatus() == "gestor"){
+          return true;
+        }else if(this.loginService.getUserId() === this.quizAnswer._quiz._user){
+          return true;
+        }else{
+          return false;
+        }
+
+      }
+
+      showOptions2():boolean{
+        return this.showOptions() && this.quizAnswer.approved;
+      }
 
 
 

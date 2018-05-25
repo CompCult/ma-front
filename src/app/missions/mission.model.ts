@@ -17,30 +17,7 @@ export class Mission {
   public start_time: string; //data de início da missão
   public end_time:string; // data de fim da missão
   public created_at: string;
-  public _user:{
-    _id: number;
-    name: string;
-    picture: string;
-    email: string;
-    birth: string;
-    password: string;
-    sex: string;
-    points: string;
-    phone: string;
-    street: string;
-    zipcode: string;
-    number: number;
-    complement: string;
-    neighborhood: string;
-    city: string;
-    state: string;
-    sec_points: string;
-    banned_until: string;
-    created_at: string;
-    type: string;
-    institution: string;
-    request_limit: string;
-  }
+  public _user:number;
 
 
   constructor(_id:number , name: string, description: string, points: number, secret_code: string,

@@ -16,10 +16,10 @@
     </div>
 
 
-    <div class="form-group" >
+    <!-- <div class="form-group" >
       <label for="_user">Id Usuario</label>
       <input id="_user" [(ngModel)]="quizAnswer._user.name" class="form-control" type="text" name="name"  disabled  #name="ngModel">
-    </div>
+    </div> -->
 
 
     <div class="form-group" >
@@ -77,17 +77,17 @@
 
 
     <div class="form-group" >
-      <label for="_user">Id Usuario</label>
-      <input id="_user" [(ngModel)]="quizAnswer.approved" class="form-control" type="text" name="approved"  disabled  #approved="ngModel">
+      <label for="status">Status</label>
+      <input id="status" [(ngModel)]="quizAnswer.approved" class="form-control" type="text" name="approved"  disabled  #approved="ngModel">
     </div>
 
 
 
 
 <div class="modal-footer">
-  <button type="button" class="btn btn-warning"  (click)= reject(quizAnswer)>Invalido</button>
-  <button type="button" class="btn btn-info"  (click)= accept(quizAnswer)>Valido</button>
-  <button type="button" class="btn btn-danger"  (click)= delete(quizAnswer)>Deletar</button>
+  <button *ngIf="showOptions2()" type="button" class="btn btn-warning"  (click)= reject(quizAnswer)>Invalido</button>
+  <button *ngIf="showOptions2()" type="button" class="btn btn-info"  (click)= accept(quizAnswer)>Valido</button>
+  <button *ngIf="showOptions()" type="button" class="btn btn-danger"  (click)= delete(quizAnswer)>Deletar</button>
   <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
 
 </div>

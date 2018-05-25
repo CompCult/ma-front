@@ -33,17 +33,17 @@ export class NewMissionComponent implements OnInit {
       modify: boolean;
       onClose:any;
       password:string ="";
+      id:number;
 
       constructor(public bsModalRef: BsModalRef, public missionService: MissionService, private router: Router, public loginService: LoginService) {}
 
       create(missionForm){
-        let user: User = new User(null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
-        user._id =  this.loginService.getUserId();
-        this.mission._user = user;
+        //let user: User = new User(null,"null",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+        this.mission._user = this.loginService.getUserId();
         console.log(this.mission._user)
         this.modifyBoolean();
         this.missionService.createMissions(this.mission).subscribe();
-        
+
         //função para enviar um objeto para o componete pai
         this.onClose(this.mission);
       }
@@ -212,6 +212,18 @@ export class NewMissionComponent implements OnInit {
         }
       }
 
+      showOptions():boolean{
 
+        if(this.loginService.getUserStatus() == "gestor"){
+          return true;
+        }else if(this.mission._id == null){
+          return false;
+        }else if(this.loginService.getUserId() === this.mission._user){
+          return true;
+        }else{
+          return false;
+        }
+
+      }
 
     }
