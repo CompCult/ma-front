@@ -7,6 +7,12 @@ import { Mission } from '../mission.model';
 
 import { MissionService } from '../mission.service';
 
+import { LoginService } from '../../login/login.service';
+
+
+
+import { User } from '../../users/user.model';
+
 
 import{ NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -28,12 +34,16 @@ export class NewMissionComponent implements OnInit {
       onClose:any;
       password:string ="";
 
-      constructor(public bsModalRef: BsModalRef, public missionService: MissionService, private router: Router) {}
+      constructor(public bsModalRef: BsModalRef, public missionService: MissionService, private router: Router, public loginService: LoginService) {}
 
       create(missionForm){
+        let user: User = new User(null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+        user._id =  this.loginService.getUserId();
+        this.mission._user = user;
+        console.log(this.mission._user)
         this.modifyBoolean();
         this.missionService.createMissions(this.mission).subscribe();
-        this.router.navigate(['mission']);
+        
         //função para enviar um objeto para o componete pai
         this.onClose(this.mission);
       }

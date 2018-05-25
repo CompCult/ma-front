@@ -10,6 +10,32 @@
 
     <h4>Dados Missao</h4>
 
+    <hr>
+
+
+  <div class="form-group" required>
+    <label for="dataAniversario">Data de Início</label>
+    <input bsDatepicker id="start_time"  class="form-control" type="text"
+    [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="mission.start_time"
+    value="{{mission.start_time | date:'dd/MM/yyyy'}}" name="start_time">
+  </div>
+
+  <div class="form-group" required>
+    <label for="dataAniversario">Data de Fim</label>
+    <input bsDatepicker id="end_time"  class="form-control" type="text"
+    [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="mission.end_time"
+    value="{{mission.end_time | date:'dd/MM/yyyy'}}" name="end_time">
+  </div>
+
+
+  <div class="form-group" *ngIf="modify">
+    <label for="dataAniversario">Criado em:</label>
+    <input bsDatepicker id="created_at"  class="form-control" type="text"
+    [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="mission.created_at"
+    value="{{mission.created_at | date:'dd/MM/yyyy'}}" name="created_at">
+  </div>
+
+<hr>
     <div class="form-group" *ngIf="modify">
       <label for="id">Id</label>
       <input id="id" [(ngModel)]="mission._id" class="form-control" type="text" name="_id"  disabled  #_id="ngModel">
@@ -194,30 +220,7 @@
 
 
 
-      <hr>
 
-
-    <div class="form-group" required>
-      <label for="dataAniversario">Data de Início</label>
-      <input bsDatepicker id="start_time"  class="form-control" type="text"
-      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="mission.start_time"
-      value="{{mission.start_time | date:'dd/MM/yyyy'}}" name="start_time">
-    </div>
-
-    <div class="form-group" required>
-      <label for="dataAniversario">Data de Fim</label>
-      <input bsDatepicker id="end_time"  class="form-control" type="text"
-      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="mission.end_time"
-      value="{{mission.end_time | date:'dd/MM/yyyy'}}" name="end_time">
-    </div>
-
-
-    <div class="form-group" *ngIf="modify">
-      <label for="dataAniversario">Criado em:</label>
-      <input bsDatepicker id="created_at"  class="form-control" type="text"
-      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="mission.created_at"
-      value="{{mission.created_at | date:'dd/MM/yyyy'}}" name="created_at">
-    </div>
 
 
 
