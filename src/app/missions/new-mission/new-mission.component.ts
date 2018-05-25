@@ -31,7 +31,7 @@ export class NewMissionComponent implements OnInit {
       constructor(public bsModalRef: BsModalRef, public missionService: MissionService, private router: Router) {}
 
       create(missionForm){
-
+        this.modifyBoolean();
         this.missionService.createMissions(this.mission).subscribe();
         this.router.navigate(['mission']);
         //função para enviar um objeto para o componete pai
@@ -39,14 +39,16 @@ export class NewMissionComponent implements OnInit {
       }
 
       modifymission(mission: Mission){
+        this.modifyBoolean();
         console.log(this.mission);
-        this.missionService.updateMissions(this.mission, mission._id).subscribe();
+        console.log(mission);
+        this.missionService.updateMissions(mission, mission._id).subscribe();
         //função para enviar um objeto para o componete pai
         this.onClose('');
       }
 
       delete(mission: Mission){
-
+        this.modifyBoolean();
         console.log(this.mission);
         this.missionService.deleteMissions(this.mission, mission._id).subscribe();
 
@@ -55,17 +57,151 @@ export class NewMissionComponent implements OnInit {
       }
 
 
+
+
+      isPublic:string = "false";
+      isGrupal:string= "false";
+      single= "false";
+      text:string= "false";
+      image= "false";
+      video= "false";
+      audio= "false";
+      geolocation= "false";
+
+
+
       ngOnInit() {
+        this.isPublicF();
+        this.isGroupF();
+        this.isSingle();
+        this.imageF();
+        this.videoF();
+        this.audioF();
+        this.geolocationF();
+        this.textF();
+
 
 
       }
 
-      isPublic(isPublic:boolean){
+      isPublicF(){
         if (this.mission.is_public == true){
-          return "true";
+        this.isPublic="true";
         }else{
-          return "false";
+        this.isPublic="false";
         }
       }
+
+      isGroupF(){
+        if (this.mission.is_grupal == true){
+        this.isGrupal="true";
+        }else{
+        this.isGrupal="false";
+        }
+      }
+
+      isSingle(){
+        if (this.mission.single_answer == true){
+        this.single="true";
+        }else{
+        this.single="false";
+        }
+      }
+
+      imageF(){
+        if (this.mission.has_image == true){
+        this.image="true";
+        }else{
+        this.image="false";
+        }
+      }
+
+      videoF(){
+        if (this.mission.has_video == true){
+        this.video="true";
+        }else{
+        this.video="false";
+        }
+      }
+
+      audioF(){
+        if (this.mission.has_audio == true){
+        this.audio="true";
+        }else{
+        this.audio="false";
+        }
+      }
+
+
+      geolocationF(){
+        if (this.mission.has_geolocation == true){
+        this.geolocation="true";
+        }else{
+        this.geolocation="false";
+        }
+      }
+
+      textF(){
+        if (this.mission.has_text == true){
+        this.text="true";
+        }
+        if (this.mission.has_text == false){
+        this.text="false";
+        }
+      }
+
+
+      modifyBoolean(){
+        if (this.text == "true"){
+        this.mission.has_text = true;
+        }
+        if (this.text == "false"){
+        this.mission.has_text = false;
+        }
+
+        if (this.geolocation == "true"){
+        this.mission.has_geolocation = true;
+        }else{
+        this.mission.has_geolocation = false;
+        }
+
+        if (this.audio == "true"){
+        this.mission.has_audio = true;
+        }else{
+        this.mission.has_audio = false;
+        }
+
+        if (this.video == "true"){
+        this.mission.has_video = true;
+        }else{
+        this.mission.has_video = false;
+        }
+
+        if (this.image == "true"){
+        this.mission.has_image = true;
+        }else{
+        this.mission.has_image = false;
+        }
+
+        if (this.single == "true"){
+        this.mission.single_answer = true;
+        }else{
+        this.mission.single_answer = false;
+        }
+
+        if (this.isGrupal == "true"){
+        this.mission.is_grupal = true;
+        }else{
+        this.mission.is_grupal = false;
+        }
+
+        if (this.isPublic == "true"){
+        this.mission.is_public = true;
+        }else{
+        this.mission.is_public = false;
+        }
+      }
+
+
 
     }

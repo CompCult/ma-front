@@ -62,6 +62,6 @@ export class QuizAnswerComponent implements OnInit {
     }
 
 
-  
+
 
     }

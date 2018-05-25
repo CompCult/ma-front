@@ -32,7 +32,7 @@ export class EvaluationQuizComponent implements OnInit {
 
       accept(quizAnswer: QuizAnswer){
         console.log(this.quizAnswer);
-        quizAnswer.status = "valido";
+
         this.quizAnswerService.updateQuiz_answers(this.quizAnswer, quizAnswer._id).subscribe();
         //função para enviar um objeto para o componete pai
         this.onClose('');
@@ -40,7 +40,7 @@ export class EvaluationQuizComponent implements OnInit {
 
       reject(quizAnswer: QuizAnswer){
         console.log(this.quizAnswer);
-        quizAnswer.status = "invalido";
+        
         this.quizAnswerService.updateQuiz_answers(this.quizAnswer, quizAnswer._id).subscribe();
         //função para enviar um objeto para o componete pai
         this.onClose('');
