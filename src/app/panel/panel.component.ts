@@ -24,6 +24,11 @@ export class PanelComponent implements OnInit {
     }
   }
 
+  logout(){
+    this.loginService.loggout();
+    this.showMenu = false;
+  }
+
   ngOnInit() {
 
     this.loginService.showMenuEmitter.subscribe(show => {

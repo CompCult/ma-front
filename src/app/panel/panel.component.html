@@ -51,7 +51,7 @@
 
       </li>
 
-      <li *ngIf="isManeger()" ngbDropdown class="d-inline-block ">
+      <li  ngbDropdown class="d-inline-block ">
         <a class="nav-link"  id="dropdownBasic4" routerLinkActive="active"  ngbDropdownToggle >
           Agenda
         </a>
@@ -69,7 +69,7 @@
 
     <ul class="navbar-nav navbar-right">
       <div class="navbar-right nav-item">
-        <a class="nav-link" routerLink="login" >Logout</a>
+        <a class="nav-link" routerLink="login" (click) = "logout()" >Logout</a>
       </div>
     </ul>
   </div>
