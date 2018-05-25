@@ -18,13 +18,13 @@
 
     <div class="form-group" >
       <label for="_user">Id Usuario</label>
-      <input id="_user" [(ngModel)]="missionAnswer._user" class="form-control" type="number" name="_user"  disabled  #_user="ngModel">
+      <input id="_user" [(ngModel)]="missionAnswer._user.name" class="form-control" type="text" name="name"  disabled  #name="ngModel">
     </div>
 
 
     <div class="form-group" >
       <label for="_quiz">Id Missao</label>
-      <input id="_quiz" [(ngModel)]="missionAnswer._mission" class="form-control" type="number" name="_mission"  disabled  #_mission="ngModel">
+      <input id="_quiz" [(ngModel)]="missionAnswer._mission.name" class="form-control" type="text" name="name"  disabled  #name="ngModel">
     </div>
 
     <div class="form-group" >
@@ -62,7 +62,7 @@
 
       <hr>
 
-  
+
 
 
         <audio controls *ngIf="missionAnswer.audio">

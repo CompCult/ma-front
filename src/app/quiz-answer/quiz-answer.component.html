@@ -17,14 +17,14 @@
 <table>
   <tr>
     <th>ID</th>
-    <th>ID Usuario</th>
-    <th>ID QUIZ</th>
+    <th>Usuario</th>
+    <th>QUIZ</th>
     <th>OPÇÕES</th>
   </tr>
   <tr *ngFor="let quizAnswer of quizAnswers">
     <td>{{quizAnswer._id}}</td>
-    <td>{{quizAnswer._user}}</td>
-    <td>{{quizAnswer._quiz}}</td>
+    <td>{{quizAnswer._user.name}}</td>
+    <td>{{quizAnswer._quiz.title}}</td>
     <td>
       <button class="btn btn-outline-success my-2 my-sm-0" (click)="option(quizAnswer)">opções</button>
     </td>

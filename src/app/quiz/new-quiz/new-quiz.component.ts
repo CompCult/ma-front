@@ -38,8 +38,9 @@ export class NewQuizComponent implements OnInit {
     }
 
     modifyUserUsuario(quiz: Quiz){
+      this.modifyBoolean();
       console.log(this.quiz);
-      this.quizService.updateQuiz(this.quiz, quiz._id).subscribe();
+      this.quizService.updateQuiz(this.quiz, this.quiz._id).subscribe();
       //função para enviar um objeto para o componete pai
       this.onClose('');
     }
@@ -54,17 +55,45 @@ export class NewQuizComponent implements OnInit {
     }
 
 
+
+    isPublic = "false";
+    single = "false";
     ngOnInit() {
+      this.isPublicF();
+      this.isSingleF();
 
 
     }
 
-    isPublic(isPublic:boolean){
+    isPublicF(){
       if (this.quiz.is_public == true){
-        return "true";
+      this.isPublic="true";
       }else{
-        return "false";
+      this.isPublic="false";
       }
     }
+
+    isSingleF(){
+      if (this.quiz.single_answer == true){
+      this.single="true";
+      }else{
+      this.single="false";
+      }
+    }
+
+    modifyBoolean(){
+      if (this.isPublic == "true"){
+      this.quiz.is_public = true;
+      }
+      if (this.isPublic == "false"){
+      this.quiz.is_public = false;
+      }
+
+      if (this.single == "true"){
+      this.quiz.single_answer = true;
+      }else{
+      this.quiz.single_answer = false;
+      }
+}
 
   }

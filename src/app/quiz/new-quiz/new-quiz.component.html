@@ -35,14 +35,14 @@
       <label>Visibilidade</label>
       <div class="form-control">
         <label class="radio-inline">
-          <input type="radio" name="is_public" value="true"
-          [(ngModel)]="quiz.is_public"  #is_public="ngModel">
+          <input type="radio" name="isPublic" value="true"
+          [(ngModel)]="isPublic"  >
           Publico
         </label>
 
         <label class="inline">
-          <input type="radio" name="is_public" value="false"
-          [(ngModel)]="quiz.is_public"  #is_public="ngModel">
+          <input type="radio" name="isPublic" value="false"
+          [(ngModel)]="isPublic"  >
           Privado
         </label>
       </div>
@@ -53,14 +53,14 @@
       <label>Unico envio</label>
       <div class="form-control">
         <label class="radio-inline">
-          <input type="radio" name="single_answer" value=true
-          [(ngModel)]="quiz.single_answer"  #single_answer="ngModel">
+          <input type="radio" name="single" value=true
+          [(ngModel)]="single"  >
           Uma unica resposta pode ser enviada
         </label>
 
         <label class="inline">
-          <input type="radio" name="single_answer" value=false
-          [(ngModel)]="quiz.single_answer"  #single_answer="ngModel">
+          <input type="radio" name="single" value=false
+          [(ngModel)]="single" >
           Varias respostas podem ser enviadas
         </label>
       </div>
