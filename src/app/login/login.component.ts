@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.showErrorEmitter.subscribe(error => {
       this.error = error;
-      this.cdref.detectChanges();
+      
     })
 
 
