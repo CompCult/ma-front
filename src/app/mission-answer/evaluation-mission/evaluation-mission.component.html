@@ -62,12 +62,18 @@
 
       <hr>
 
-      <div class=""  *ngIf="missionAnswer.audio">
-        <audio controls>
-          <source src="{{missionAnswer.audio}" type="audio/wav">
+  
 
-          </audio>
-        </div>
+
+        <audio controls *ngIf="missionAnswer.audio">
+    <source src="{{missionAnswer.audio}}" type="audio/wav">
+    <source src="horse.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+  </audio>
+
+
+
+
         <hr>
 
         <button type="button"(click)="openModal(template)">

@@ -21,6 +21,7 @@ export class EvaluationnComponent implements OnInit {
   mensage: string;
   resquestTree: ResquestTree;
   modify: boolean;
+    onClose:any;
 
   constructor(public bsModalRef: BsModalRef, public resquestTreeService: ResquestTreeService) {
 
@@ -42,21 +43,45 @@ export class EvaluationnComponent implements OnInit {
   create(resquestForm){
     console.log(this.resquestTree);
     this.resquestTreeService.createResquest(this.resquestTree).subscribe();
-    this.bsModalRef.hide();
+    ;
+
+    this.onClose('');
   }
+
 
   reject(resquestTree: ResquestTree){
       this.resquestTree.status ="Rejeitado"
       console.log(this.resquestTree);
       this.resquestTreeService.delete(this.resquestTree, resquestTree._id).subscribe();
-      this.bsModalRef.hide();
 
-}
+
+      this.onClose('');
+    }
+
+
     approve(resquestTree: ResquestTree){
       this.resquestTree.status ="Aprovado"
       this.resquestTreeService.update(this.resquestTree, resquestTree._id).subscribe();
-      this.bsModalRef.hide();
+
+
+
+      this.onClose('');
     }
+    
+
+
+
+    delete(resquestTree: ResquestTree){
+
+      console.log(this.resquestTree);
+      this.resquestTreeService.delete(this.resquestTree, resquestTree._id).subscribe();
+
+      //função para enviar um objeto para o componete pai
+
+
+        this.onClose('');
+      }
+
 
 
   ngOnInit() {

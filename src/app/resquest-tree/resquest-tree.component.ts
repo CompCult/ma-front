@@ -20,10 +20,12 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class ResquestTreeComponent implements OnInit {
 
+
+
+  myData:any;
   bsModalRef: BsModalRef;
   modalRef: BsModalRef;
   resquest_trees: ResquestTree[] = [];
-  userE: User;
 
   constructor(private modalService: BsModalService, private resquestTreeService: ResquestTreeService, private userService: UserService) { }
 
@@ -37,6 +39,13 @@ export class ResquestTreeComponent implements OnInit {
     this.bsModalRef = this.modalService.show(EvaluationnComponent, {initialState});
     this.bsModalRef.content.closeBtnName = 'Close';
 
+
+    this.bsModalRef.content.onClose = (myData) => {
+        this.updateList();
+        this.bsModalRef.hide();
+        this.myData = myData;
+    };
+
   }
 
   option(resquest_trees: ResquestTree) {
@@ -48,7 +57,11 @@ export class ResquestTreeComponent implements OnInit {
     };
     this.bsModalRef = this.modalService.show(EvaluationnComponent, {initialState});
     this.bsModalRef.content.closeBtnName = 'Close';
-    this.ngOnInit()
+    this.bsModalRef.content.onClose = (myData) => {
+        this.updateList();
+        this.bsModalRef.hide();
+        this.myData = myData;
+    };
   }
 
   getListaArvores(){
@@ -69,6 +82,23 @@ export class ResquestTreeComponent implements OnInit {
 
   }
 
+
+  updateList(){
+    this.delay(1000);
+    // delay para tempo de receber os valores do get
+    setTimeout(() => {
+
+    this.resquestTreeService.getResquest_trees()
+    .subscribe(resquest_trees => this.resquest_trees = resquest_trees);
+
+    },1000);
+
+  }
+
+
+  delay(ms: number) {
+    setTimeout(() => { console.log('delay') },ms);
+  }
 
 
 
