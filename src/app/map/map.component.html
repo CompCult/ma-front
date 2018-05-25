@@ -4,7 +4,7 @@
     <agm-marker *ngFor="let map of trees"
                 [latitude]="toNumber(map.location_lat)"
                 [longitude]="toNumber(map.location_lng)"
-                [iconUrl]="markerIconMapUrl()">
+                [iconUrl]="markerIconMapUrl(map)">
       <agm-info-window> <b> <i>{{map.name}}</i> </b> </agm-info-window>
     </agm-marker>
   </agm-map>

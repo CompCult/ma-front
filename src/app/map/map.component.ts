@@ -27,13 +27,13 @@ export class MapComponent implements OnInit {
     return parseFloat(string);
   }
 
-  markerIconMapUrl() {
-      if(this.status == true){
+  markerIconMapUrl(map:Map) {
+      if(map._request.status == "Aprovado"){
         return '../assets/img/pin_green_map.png';
-      }else if(this.status == false){
-        return '../assets/img/pin_red_map.png';
-      }else{
+      }else if(map._request.status == "Pendente"){
         return '../assets/img/pin_yellow_map.png';
+      }else{
+        return '../assets/img/pin_red_map.png';      
       }
 
      }
