@@ -24,7 +24,7 @@ export class QuizAnswerComponent implements OnInit {
 
     option(quizAnswer: QuizAnswer) {
       const initialState = {
-        title: 'Resposta ',
+
         quizAnswer: quizAnswer,
         mensage: 'Usuario criado com sucesso',
         modify: true,

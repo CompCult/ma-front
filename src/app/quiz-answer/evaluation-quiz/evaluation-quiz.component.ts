@@ -20,7 +20,7 @@ import { LoginService } from '../../login/login.service';
 export class EvaluationQuizComponent implements OnInit {
 
 
-      title: string;
+      title = "Resposta Quizzes";
       closeBtnName: string;
       mensagem: string;
       quizAnswer: QuizAnswer;
@@ -65,10 +65,10 @@ export class EvaluationQuizComponent implements OnInit {
 
       showOptions():boolean{
 
-        if(this.quizAnswer._quiz._user == null){
-          return false;
-        }else if(this.loginService.getUserStatus() == "gestor"){
+        if(this.loginService.getUserStatus() == "gestor"){
           return true;
+        }else if(this.quizAnswer._quiz._user == null){
+          return false;
         }else if(this.loginService.getUserId() === this.quizAnswer._quiz._user){
           return true;
         }else{
@@ -78,7 +78,7 @@ export class EvaluationQuizComponent implements OnInit {
       }
 
       showOptions2():boolean{
-        return this.showOptions() && this.quizAnswer.approved;
+        return this.showOptions() && !(this.quizAnswer.approved);
       }
 
 
