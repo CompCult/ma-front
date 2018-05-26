@@ -28,12 +28,18 @@ export class MapComponent implements OnInit {
   }
 
   markerIconMapUrl(map:Map) {
+    if(map._request == null){
+      return '../assets/img/pin_red_map.png';
+    }
       if(map._request.status == "Aprovado"){
+        console.log("gree");
         return '../assets/img/pin_green_map.png';
       }else if(map._request.status == "Pendente"){
+        console.log("yellow");
         return '../assets/img/pin_yellow_map.png';
       }else{
-        return '../assets/img/pin_red_map.png';      
+        console.log("red");
+        return '../assets/img/pin_red_map.png';
       }
 
      }
