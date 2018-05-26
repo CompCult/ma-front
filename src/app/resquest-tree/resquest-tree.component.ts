@@ -82,6 +82,15 @@ export class ResquestTreeComponent implements OnInit {
 
   }
 
+  markerIconMapUrl(resquest:ResquestTree):string {
+      if(resquest.status == "Aprovado"){
+        return '../assets/img/pin_green_map.png';
+      }else if(resquest.status == "Pendente"){
+        return '../assets/img/pin_yellow_map.png';
+      }else{
+        return '../assets/img/pin_red_map.png';
+      }
+     }
 
   updateList(){
     this.delay(1000);

@@ -29,7 +29,7 @@
     <td>{{resquest.place}}</td>
     <td>{{resquest.status}}</td>
     <td><button type="button"(click)="openModal(template)">
-        <img [src]="'../assets/img/pin_red_map.png'" width="43" height="43">
+        <img [src]="markerIconMapUrl(resquest)" width="43" height="43">
         </button>
         <ng-template #template >
           <div class="modal-content">
@@ -37,7 +37,7 @@
               <agm-map class="modal-map" [latitude]="toNumber(resquest.location_lat)" [longitude]="toNumber(resquest.location_lng)" [zoom]="15" >
                 <agm-marker [latitude]="toNumber(resquest.location_lat)"
                             [longitude]="toNumber(resquest.location_lng)"
-                            [iconUrl]="'../assets/img/pin_red_map.png'">
+                            [iconUrl]="markerIconMapUrl(resquest)">
                 </agm-marker>
               </agm-map>
             </div>
