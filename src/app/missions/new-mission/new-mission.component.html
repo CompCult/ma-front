@@ -32,7 +32,7 @@
     <label for="dataAniversario">Criado em:</label>
     <input bsDatepicker id="created_at" disabled class="form-control" type="text"
     [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="mission.created_at"
-    value="{{mission.created_at | date:'dd/MM/yyyy'}}" name="created_at">
+    value="{{mission.created_at | date:'dd/MM/yyyy'}}" name="created_at" disabled>
   </div>
 
 <hr>

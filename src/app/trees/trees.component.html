@@ -20,6 +20,7 @@
     <th></th>
     <th>NOME</th>
     <th>DESCRIÇÃO</th>
+    <th>QUANTIDADE</th>
     <th>AÇÕES</th>
   </tr>
   <tr *ngFor="let tree of trees">
@@ -27,6 +28,7 @@
     <td><img [src]="markerIconTreeUrl()" width="43" height="43"></td>
     <td>{{tree.name}}</td>
     <td>{{tree.description}}</td>
+    <td>{{tree.ammount_available}}</td>
     <td>
         <button class="btn btn-outline-success my-2 my-sm-0" (click)="option(tree)">Opções</button>
     </td>

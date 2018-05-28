@@ -3,7 +3,7 @@ export class Tree {
   public _id: number;
   public name: string;
   public description: string;
-  public amount_avaliable: number;
+  public ammount_available: number;
   public photo: string;
 
 
@@ -12,6 +12,6 @@ export class Tree {
     this.name = name;
     this.description = description;
     this.photo = photo;
-    this.amount_avaliable = amount_avaliable;
+    this.ammount_available = amount_avaliable;
     };
 }

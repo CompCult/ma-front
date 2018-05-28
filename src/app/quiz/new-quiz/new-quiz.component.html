@@ -80,6 +80,13 @@
       value="{{quiz.end_time | date:'dd/MM/yyyy'}}" name="end_time">
     </div>
 
+    <div class="form-group" *ngIf="modify">
+      <label for="dataAniversario">Criado em:</label>
+      <input bsDatepicker id="created_at" disabled class="form-control" type="text"
+      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="quiz.created_at"
+      value="{{quiz.created_at | date:'dd/MM/yyyy'}}" name="created_at" disabled>
+    </div>
+
     <div class="form-group">
       <label for="alternative_a">Alternativa A</label>
       <input id="alternative_a" [(ngModel)]="quiz.alternative_a" class="form-control" type="text" name="alternative_a"  #alternative_a="ngModel">
