@@ -5,6 +5,12 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { ResquestTree } from '../resquest-tree.model';
 import { ResquestTreeService } from '../resquest-tree.service';
+import { TreeService} from '../../trees/tree.service'
+import { Tree} from '../../trees/tree.model'
+
+
+import { User} from '../../users/user.model'
+import { UserService} from '../../users/user.service'
 
 import{ NgForm } from '@angular/forms';
 
@@ -23,7 +29,8 @@ export class EvaluationnComponent implements OnInit {
   modify: boolean;
     onClose:any;
 
-  constructor(public bsModalRef: BsModalRef, public resquestTreeService: ResquestTreeService) {
+  constructor(public bsModalRef: BsModalRef, public resquestTreeService: ResquestTreeService,
+    public treeService:TreeService, public userService: UserService) {
 
   }
 
@@ -67,7 +74,7 @@ export class EvaluationnComponent implements OnInit {
 
       this.onClose('');
     }
-    
+
 
 
 
@@ -83,8 +90,12 @@ export class EvaluationnComponent implements OnInit {
       }
 
 
-
+  trees: Tree[]
+  users : User[]
   ngOnInit() {
-
+    this.treeService.getObjetos()
+    .subscribe(trees => this.trees = trees);
+    this.userService.getUsuarios()
+    .subscribe(users => this.users = users);
   }
 }
