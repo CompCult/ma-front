@@ -101,6 +101,44 @@ export class EvaluationMissionComponent implements OnInit {
 
         }
 
+        image :boolean =false;
+        seeImage(){
+          if(this.image){
+            this.image =false;
+          }else{
+            this.image =true;
+          }
+        }
+
+        video :boolean =false;
+        seeVideo(){
+          if(this.video){
+            this.video =false;
+          }else{
+            this.video =true;
+          }
+        }
+
+        audio :boolean =false;
+        seeAudio(){
+          if(this.audio){
+            this.audio =false;
+          }else{
+            this.audio =true;
+          }
+        }
+
+        text :boolean =false;
+        seeText(){
+          if(this.text){
+            this.text =false;
+          }else{
+            this.text =true;
+          }
+        }
+
+
+
 
         ngOnInit() {
         }
