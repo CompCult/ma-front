@@ -215,7 +215,7 @@ export class NewMissionComponent implements OnInit {
       showOptions():boolean{
 
         if(this.loginService.getUserStatus() == "gestor"){
-          return true;
+          return true && this.modify;
         }else if(this.mission._id == null){
           return false;
         }else if(this.loginService.getUserId() === this.mission._user){

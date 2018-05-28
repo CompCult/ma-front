@@ -101,7 +101,7 @@ export class NewQuizComponent implements OnInit {
 showOptions():boolean{
 
   if(this.loginService.getUserStatus() == "gestor"){
-    return true;
+    return true && this.modify;
   }else if(this.quiz._user == null){
     return false;
   }else if(this.loginService.getUserId() === this.quiz._user){
