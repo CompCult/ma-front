@@ -8,7 +8,7 @@
 
   <form #missionForm ="ngForm" (ngSubmit)="create(missionForm)">
 
-    <h4>Dados Missao</h4>
+    <h4>Dados Missão</h4>
 
     <hr>
 
@@ -30,7 +30,7 @@
 
   <div class="form-group" *ngIf="modify">
     <label for="dataAniversario">Criado em:</label>
-    <input bsDatepicker id="created_at"  class="form-control" type="text"
+    <input bsDatepicker id="created_at" disabled class="form-control" type="text"
     [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="mission.created_at"
     value="{{mission.created_at | date:'dd/MM/yyyy'}}" name="created_at">
   </div>
@@ -63,7 +63,7 @@
 
 
     <div class="form-group" *ngIf="modify">
-      <label for="secret_code">Codigo Secreto</label>
+      <label for="secret_code">Código Secreto</label>
       <input id="secret_code" [(ngModel)]="mission.secret_code" class="form-control" type="text" name="secret_code" disabled  #secret_code="ngModel" required>
     </div>
 
@@ -74,7 +74,7 @@
         <label class="radio-inline">
           <input type="radio" name="isPublic" value="true"
           [(ngModel)]="isPublic">
-          Publico
+          Público
         </label>
 
         <label class="inline">
@@ -105,18 +105,18 @@
 
 
     <div class="form-group" required>
-      <label>Unico envio</label>
+      <label>Único envio</label>
       <div class="form-control">
         <label class="radio-inline">
           <input type="radio" name="single" value="true"
           [(ngModel)]="single" >
-          Uma unica resposta pode ser enviada
+          Uma única resposta pode ser enviada
         </label>
 
         <label class="inline">
           <input type="radio" name="single" value="false"
           [(ngModel)]="single" >
-          Varias respostas podem ser enviadas
+          Várias respostas podem ser enviadas
         </label>
       </div>
     </div>
@@ -132,31 +132,31 @@
         <label class="radio-inline">
           <input type="radio" name="image" value="true"
           [(ngModel)]="image"  >
-          sim
+          Sim
         </label>
 
         <label class="inline">
           <input type="radio" name="image" value="false"
           [(ngModel)]="image"  >
-          nao
+          Não
         </label>
 
       </div>
     </div>
 
     <div class="form-group" required>
-      <label>Video</label>
+      <label>Vídeo</label>
       <div class="form-control">
         <label class="radio-inline">
           <input type="radio" name="video" value="true"
           [(ngModel)]="video" >
-          sim
+          Sim
         </label>
 
         <label class="inline">
           <input type="radio" name="has_video" value="false"
           [(ngModel)]="video" >
-          nao
+          Não
         </label>
 
       </div>
@@ -168,31 +168,31 @@
         <label class="radio-inline">
           <input type="radio" name="text" value="true"
           [(ngModel)]="text"  >
-          sim
+          Sim
         </label>
 
         <label class="inline">
           <input type="radio" name="text" value="false"
           [(ngModel)]="text"  >
-          nao
+          Não
         </label>
 
       </div>
     </div>
 
     <div class="form-group" required>
-      <label>Audio</label>
+      <label>Áudio</label>
       <div class="form-control">
         <label class="radio-inline">
           <input type="radio" name="audio" value="true"
           [(ngModel)]="audio"  >
-          sim
+          Sim
         </label>
 
         <label class="inline">
           <input type="radio" name="audio" value="false"
           [(ngModel)]="audio" >
-          nao
+          Não
         </label>
 
       </div>
@@ -204,13 +204,13 @@
         <label class="radio-inline">
           <input type="radio" name="geolocation" value="true"
           [(ngModel)]="geolocation"  >
-          sim
+          Sim
         </label>
 
         <label class="inline">
           <input type="radio" name="geolocation" value="false"
           [(ngModel)]="geolocation" >
-          nao
+          Não
         </label>
 
       </div>

@@ -28,8 +28,8 @@ export class AppointmentRequestComponent implements OnInit {
 
   reject(appointmentRequest2: AppointmentRequest){
     this.appointmentRequest = appointmentRequest2;
-    this.appointmentRequest.status ="Negado";
-    this.appointmentrequestService.delete(this.appointmentRequest, appointmentRequest2._id).subscribe();
+    this.appointmentRequest.status ="Rejeitado";
+    this.appointmentrequestService.update(this.appointmentRequest, appointmentRequest2._id).subscribe();
     this.refresh();
     this.modalRef.hide();
 

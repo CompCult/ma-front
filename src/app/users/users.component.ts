@@ -36,14 +36,14 @@ export class UsersComponent implements OnInit {
 
   create() {
     const initialState = {
-      title: 'Criar Usuario',
+      title: 'Criar Usuário',
       user: new NewUser(null,null,null,null),
-      mensage: 'Usuario criado com sucesso',
+      mensage: 'Usuário criado com sucesso',
       modify: false,
       password: ""
     };
     this.bsModalRef = this.modalService.show(NewUsersComponent, {initialState});
-    this.bsModalRef.content.closeBtnName = 'Close';
+    this.bsModalRef.content.closeBtnName = 'Fechar';
 
     // funcao que recebe valores do modal
     this.bsModalRef.content.onClose = (myData) => {
@@ -57,14 +57,14 @@ export class UsersComponent implements OnInit {
 
 option(user: User) {
   const initialState = {
-    title: 'Opçoes de Usuario',
+    title: 'Opções de Usuário',
     user: user,
-    mensage: 'Usuario criado com sucesso',
+    mensage: 'Usuário criado com sucesso',
     modify: true,
     password: ""
   };
   this.bsModalRef = this.modalService.show(NewUsersComponent, {initialState});
-  this.bsModalRef.content.closeBtnName = 'Close';
+  this.bsModalRef.content.closeBtnName = 'Fechar';
 
   // funcao que recebe valores do modal
   this.bsModalRef.content.onClose = (myData) => {

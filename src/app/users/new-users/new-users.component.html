@@ -39,7 +39,7 @@
         <option value="professor">Professor</option>
         <option value="estudante" >Estudante</option>
         <option value="gestor" >Gestor</option>
-        <option value="usuario comum" >Usuario comum</option>
+        <option value="usuario comum" >Usuário comum</option>
 
       </select>
     </div>
@@ -62,7 +62,7 @@
     </div>
 
     <div class="form-group" *ngIf="modify">
-      <label for="dataAniversario">Data de Aniversario</label>
+      <label for="dataAniversario">Data de Aniversário</label>
       <input bsDatepicker id="dataAniversario"  class="form-control" type="text"
       [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="user.birth"
       value="{{user.birth | date:'dd/MM/yyyy'}}" name="birth">
@@ -72,13 +72,13 @@
       <label>Genero</label>
       <div class="form-control">
         <label class="radio-inline">
-          <input type="radio" name="sex" value="masculino"
+          <input type="radio" name="sex" value="Masculino"
           [(ngModel)]="user.sex"  #sex="ngModel">
           Masculino
         </label>
 
         <label class="inline">
-          <input type="radio" name="sex" value="feminino"
+          <input type="radio" name="sex" value="Feminino"
           [(ngModel)]="user.sex"  #sex="ngModel">
           Feminino
         </label>
@@ -97,7 +97,7 @@
     </div>
 
     <div class="form-group" *ngIf="modify">
-      <label for="numero">Numero</label>
+      <label for="numero">Número</label>
       <input id="numero" [(ngModel)]="user.number" class="form-control" type="text" name="number"  #number="ngModel">
     </div>
 

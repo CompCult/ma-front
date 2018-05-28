@@ -27,14 +27,14 @@ constructor(private modalService: BsModalService,
 
 create() {
   const initialState = {
-    title: 'Criar Novo Missão',
+    title: 'Criar Nova Missão',
     mission: new Mission(null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null),
     mensage: 'Missao criado com sucesso',
     modify: false,
     password: ""
   };
   this.bsModalRef = this.modalService.show(NewMissionComponent, {initialState});
-  this.bsModalRef.content.closeBtnName = 'Close';
+  this.bsModalRef.content.closeBtnName = 'Fechar';
 
   // funcao que recebe valores do modal
   this.bsModalRef.content.onClose = (myData) => {
@@ -48,14 +48,14 @@ create() {
 
 option(mission: Mission) {
   const initialState = {
-    title: 'Opçoes de Missões',
+    title: 'Opções de Missões',
     mission: mission,
     mensage: 'Missoes criado com sucesso',
     modify: true,
     password: ""
   };
   this.bsModalRef = this.modalService.show(NewMissionComponent, {initialState});
-  this.bsModalRef.content.closeBtnName = 'Close';
+  this.bsModalRef.content.closeBtnName = 'Fechar';
 
   // funcao que recebe valores do modal
   this.bsModalRef.content.onClose = (myData) => {

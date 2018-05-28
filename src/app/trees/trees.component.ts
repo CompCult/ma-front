@@ -23,25 +23,25 @@ export class TreesComponent implements OnInit {
 
   create() {
     const initialState = {
-      title: 'Criar Objeto',
+      title: 'Criar Árvore',
       tree: new Tree(null,null,null,null,null),
-      mensage: 'Objeto adicionado com sucesso',
+      mensage: 'Árvore adicionada com sucesso',
       modify: false
     };
     this.bsModalRef = this.modalService.show(NewTreeComponent, {initialState});
-    this.bsModalRef.content.closeBtnName = 'Close';
+    this.bsModalRef.content.closeBtnName = 'Fechar';
 
   }
 
   option(tree: Tree) {
     const initialState = {
-      title: 'Criar Objeto',
+      title: 'Opções Árvore',
       tree: tree,
       mensage: 'Objeto adicionado com sucesso',
       modify: true
     };
     this.bsModalRef = this.modalService.show(NewTreeComponent, {initialState});
-    this.bsModalRef.content.closeBtnName = 'Close';
+    this.bsModalRef.content.closeBtnName = 'Fechar';
     this.ngOnInit()
   }
 

@@ -31,7 +31,7 @@ export class QuizAnswerComponent implements OnInit {
         password: ""
       };
       this.bsModalRef = this.modalService.show(EvaluationQuizComponent, {initialState});
-      this.bsModalRef.content.closeBtnName = 'Close';
+      this.bsModalRef.content.closeBtnName = 'Fechar';
 
       // funcao que recebe valores do modal
       this.bsModalRef.content.onClose = (myData) => {

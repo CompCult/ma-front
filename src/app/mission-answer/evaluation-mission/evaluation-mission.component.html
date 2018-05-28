@@ -17,13 +17,13 @@
 
 
     <div class="form-group" >
-      <label for="_user">Id Usuario</label>
+      <label for="_user">Id Usuário</label>
       <input id="_user" [(ngModel)]="missionAnswer._user.name" class="form-control" type="text" name="name"  disabled  #name="ngModel">
     </div>
 
 
     <div class="form-group" >
-      <label for="_quiz">Id Missao</label>
+      <label for="_quiz">Id Missão</label>
       <input id="_quiz" [(ngModel)]="missionAnswer._mission.name" class="form-control" type="text" name="mission_name"  disabled  #name="ngModel">
     </div>
 
@@ -106,8 +106,8 @@
 
 
         <div class="modal-footer">
-          <button *ngIf="showOptions()" type="button" class="btn btn-warning"  (click)= reject(missionAnswer)>Invalido</button>
-          <button *ngIf="showOptions()" type="button" class="btn btn-info"  (click)= accept(missionAnswer)>Valido</button>
+          <button *ngIf="showOptions()" type="button" class="btn btn-warning"  (click)= reject(missionAnswer)>Inválido</button>
+          <button *ngIf="showOptions()" type="button" class="btn btn-info"  (click)= accept(missionAnswer)>Válido</button>
           <button *ngIf="showOptions()" type="button" class="btn btn-danger"  (click)= delete(missionAnswer)>Deletar</button>
           <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
 

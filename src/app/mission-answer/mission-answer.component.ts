@@ -26,14 +26,14 @@ constructor(private modalService: BsModalService, private missionAnswerService: 
 
 option(missionAnswer: MissionAnswer) {
   const initialState = {
-    title: 'Opçoes de Missões',
+    title: 'Opções de Missões',
     missionAnswer: missionAnswer,
-    mensage: 'Missoes criado com sucesso',
+    mensage: 'Missões criadas com sucesso',
     modify: true,
     password: ""
   };
   this.bsModalRef = this.modalService.show(EvaluationMissionComponent, {initialState});
-  this.bsModalRef.content.closeBtnName = 'Close';
+  this.bsModalRef.content.closeBtnName = 'Fechar';
 
   // funcao que recebe valores do modal
   this.bsModalRef.content.onClose = (myData) => {

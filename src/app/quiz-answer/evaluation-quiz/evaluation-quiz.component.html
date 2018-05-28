@@ -29,7 +29,7 @@
 
     <div class="form-group">
       <label for="dataAniversario">Data da Resposta</label>
-      <input bsDatepicker id="created_at"  class="form-control" type="text"
+      <input bsDatepicker id="created_at" disabled class="form-control" type="text"
       [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="quizAnswer.created_at"
       value="{{quizAnswer.created_at | date:'dd/MM/yyyy'}}" name="created_at">
     </div>
@@ -41,31 +41,31 @@
         <label class="radio-inline">
           <input type="radio" name="answer" value="a"
           [(ngModel)]="quizAnswer.answer"  #answer="ngModel">
-          Alternatica A
+          Alternativa A
         </label>
 
         <label class="radio-inline">
           <input type="radio" name="answer" value="b"
           [(ngModel)]="quizAnswer.answer"  #answer="ngModel">
-          Alternatica B
+          Alternativa B
         </label>
 
         <label class="radio-inline">
           <input type="radio" name="answer" value="c"
           [(ngModel)]="quizAnswer.answer"  #answer="ngModel">
-          Alternatica C
+          Alternativa C
         </label>
 
         <label class="radio-inline">
           <input type="radio" name="answer" value="d"
           [(ngModel)]="quizAnswer.answer"  #answer="ngModel">
-          Alternatica D
+          Alternativa D
         </label>
 
         <label class="radio-inline">
           <input type="radio" name="answer" value="e"
           [(ngModel)]="quizAnswer.answer"  #answer="ngModel">
-          Alternatica E
+          Alternativa E
         </label>
 
 
@@ -85,8 +85,8 @@
 
 
 <div class="modal-footer">
-  <button *ngIf="showOptions2()" type="button" class="btn btn-warning"  (click)= reject(quizAnswer)>Invalido</button>
-  <button *ngIf="showOptions2()" type="button" class="btn btn-info"  (click)= accept(quizAnswer)>Valido</button>
+  <button *ngIf="showOptions2()" type="button" class="btn btn-warning"  (click)= reject(quizAnswer)>Inválido</button>
+  <button *ngIf="showOptions2()" type="button" class="btn btn-info"  (click)= accept(quizAnswer)>Válido</button>
   <button *ngIf="showOptions()" type="button" class="btn btn-danger"  (click)= delete(quizAnswer)>Deletar</button>
   <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
 
