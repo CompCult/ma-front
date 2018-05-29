@@ -10,6 +10,12 @@
 
     <h4>Dados Pessoais</h4>
 
+    <div class="form-group">
+      <label for="id">Imagem</label>
+      <br>
+      <img [src]="getImageUser()" alt="" height="200" width="200">
+    </div>
+
     <div class="form-group" *ngIf="modify">
       <label for="id">Id</label>
       <input id="id" [(ngModel)]="user._id" class="form-control" type="text" name="_id"  disabled  #_id="ngModel">

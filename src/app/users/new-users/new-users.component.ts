@@ -69,6 +69,14 @@ export class NewUsersComponent implements OnInit {
   //  delete this.user.password;
   }
 
+  getImageUser():String{
+    if(this.user.picture == null){
+      return '../assets/img/default_User8.png';
+    }else{
+      return this.user.picture;
+    }
+  }
+
   ngOnInit() {
 
 
