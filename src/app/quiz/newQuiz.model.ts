@@ -15,6 +15,7 @@ export class Quiz {
   public start_time: string;
   public end_time: string;
   public _user:number;
+  public secret_code:string;
 
   constructor(_id:number ,title: string, description: string, points: number, is_public: boolean, single_answer: boolean, alternative_a: string, alternative_b: string,
      alternative_c: string, alternative_d: string, alternative_e: string, correct_answer: string, start_time: string, end_time: string){
