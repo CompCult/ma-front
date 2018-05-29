@@ -66,6 +66,14 @@ export class EvaluationMissionComponent implements OnInit {
           this.onClose('');
         }
 
+        pedant(missionAnswer: MissionAnswer){
+          console.log(this.missionAnswer);
+          missionAnswer.status = "Pendente";
+          this.missionAnswerService.updateMissionAnswer(this.missionAnswer, missionAnswer._id).subscribe();
+          //função para enviar um objeto para o componete pai
+          this.onClose('');
+        }
+
         reject(missionAnswer: MissionAnswer){
           console.log(this.missionAnswer);
           missionAnswer.status = "Rejeitado";

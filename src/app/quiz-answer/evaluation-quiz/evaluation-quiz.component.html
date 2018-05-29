@@ -85,8 +85,9 @@
 
 
 <div class="modal-footer">
-  <button *ngIf="showOptions2()" type="button" class="btn btn-warning"  (click)= reject(quizAnswer)>Inválido</button>
   <button *ngIf="showOptions2()" type="button" class="btn btn-info"  (click)= accept(quizAnswer)>Válido</button>
+  <button *ngIf="showOptions2()" type="button" class="btn btn-secondary"  (click)= pedant(quizAnswer)>Pendente</button>
+  <button *ngIf="showOptions2()" type="button" class="btn btn-warning"  (click)= reject(quizAnswer)>Inválido</button>
   <button *ngIf="showOptions()" type="button" class="btn btn-danger"  (click)= delete(quizAnswer)>Deletar</button>
   <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
 

@@ -15,7 +15,7 @@
       <input id="id" [(ngModel)]="resquestTree._id" class="form-control" type="number" name="_id"  #_id="ngModel" disabled>
     </div>
 
-    
+
 
     <div class="form-group">
       <label>Usuário</label>
@@ -110,8 +110,10 @@
 
 
     <div class="modal-footer">
-      <button type="button" class="btn btn-warning" *ngIf="modify" (click)= reject(resquestTree)>Rejeitar</button>
       <button type="button" class="btn btn-success" *ngIf="modify" (click)= approve(resquestTree)>Aprovar</button>
+      <button type="button" class="btn btn-secondary" *ngIf="modify" (click)= pedant(resquestTree)>Pendente</button>
+      <button type="button" class="btn btn-warning" *ngIf="modify" (click)= reject(resquestTree)>Rejeitar</button>
+
       <button type="button" class="btn btn-danger"  *ngIf="modify" (click)= delete(resquestTree)>Deletar</button>
       <button type="submit" class="btn btn-success" *ngIf="!modify">Confirmar</button>
       <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>

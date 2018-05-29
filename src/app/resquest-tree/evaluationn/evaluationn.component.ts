@@ -65,6 +65,15 @@ export class EvaluationnComponent implements OnInit {
       this.onClose('');
     }
 
+    pedant(resquestTree: ResquestTree){
+        this.resquestTree.status ="Pendente"
+        console.log(this.resquestTree);
+        this.resquestTreeService.delete(this.resquestTree, resquestTree._id).subscribe();
+
+
+        this.onClose('');
+      }
+
 
     approve(resquestTree: ResquestTree){
       this.resquestTree.status ="Aprovado"
