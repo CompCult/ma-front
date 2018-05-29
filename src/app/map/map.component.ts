@@ -27,6 +27,21 @@ export class MapComponent implements OnInit {
     return parseFloat(string);
   }
 
+  treeStatus(tree:Map):string{
+    if(tree._request === null){
+      return "Status: Pendente";
+    }else{
+      return "Status: " + tree._request.status;
+    }
+  }
+
+  treeStatusBoolean(tree:Map):boolean{
+    if(tree._request == null){
+      return false;
+    }
+    return true;
+  }
+
   markerIconMapUrl(map:Map) {
     if(map._request == null){
       return '../assets/img/pin_red_map.png';

@@ -5,6 +5,16 @@
                 [latitude]="toNumber(map.location_lat)"
                 [longitude]="toNumber(map.location_lng)"
                 [iconUrl]="markerIconMapUrl(map)">
-      <agm-info-window> <b> <i>{{map.name}}</i> </b> </agm-info-window>
+      <agm-info-window>
+        <div>
+          <i>Nome: {{map.name}}</i>
+          <br>
+          <i [innerHtml]="treeStatus(map)"></i>
+          <br>
+          <i *ngIf = "treeStatusBoolean(map)" >Nome : {{map._request.requester_name}}</i>
+          <br>
+          <i *ngIf = "treeStatusBoolean(map)" >Lugar : {{map._request.place}}</i>
+        </div>
+      </agm-info-window>
     </agm-marker>
   </agm-map>
