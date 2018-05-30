@@ -1,0 +1,45 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <form #localForm ="ngForm" (ngSubmit)="create(localForm)">
+
+    <h4>Dados do Local</h4>
+
+    <div class="form-group" *ngIf="modify">
+      <label for="id">Id</label>
+      <input id="id" [(ngModel)]="local._id" class="form-control" type="number" name="_id"  disabled  #_id="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input id="nome" [(ngModel)]="local.name" class="form-control" type="text" name="name"  #name="ngModel" >
+    </div>
+
+    <div class="form-group" *ngIf="modify">
+      <label for="dataAniversario">Criado em:</label>
+      <input bsDatepicker id="created_at" disabled class="form-control" type="text"
+      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="local.created_at"
+      value="{{local.created_at | date:'dd/MM/yyyy'}}" name="created_at" disabled>
+    </div>
+
+    <div class="form-group" *ngIf="modify">
+      <label for="dataAniversario">Atualizado em:</label>
+      <input bsDatepicker id="updated_at" disabled class="form-control" type="text"
+      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="local.updated_at"
+      value="{{local.updated_at | date:'dd/MM/yyyy'}}" name="updated_at" disabled>
+    </div>
+
+
+<div class="modal-footer">
+  <button type="submit" class="btn btn-success" *ngIf="!modify">Criar</button>
+  <button type="button" class="btn btn-info" *ngIf="modify" (click)= modifyLocal(local)>Salvar</button>
+  <button type="button" class="btn btn-danger" *ngIf="modify" (click)= deleteLocal(local)>Deletar</button>
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+
+</div>
+</form>
