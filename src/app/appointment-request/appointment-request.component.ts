@@ -16,15 +16,12 @@ export class AppointmentRequestComponent implements OnInit {
   modalRef: BsModalRef;
   appointmentRequest:AppointmentRequest;
   id: number;
+  atualiza:boolean;
 
   constructor(private modalService: BsModalService,private appointmentrequestService: AppointmentRequestService
               ,private loginService: LoginService) { }
 
-  ngOnInit() {
-    this.refresh();
-    this.id = this.loginService.getUserId();
-    console.log(this.id);
-  }
+
 
   reject(appointmentRequest2: AppointmentRequest){
     this.appointmentRequest = appointmentRequest2;
@@ -62,7 +59,26 @@ export class AppointmentRequestComponent implements OnInit {
     }else{
       return false;
     }
+  }
 
+  atualizaAutomatico(){
+    if(this.atualiza){
+     setTimeout(() => {
+       this.refresh();
+       this.atualizaAutomatico();
+     },20000);
+     }
+  }
+
+  ngOnInit() {
+    this.refresh();
+    this.id = this.loginService.getUserId();
+    this.atualiza = true;
+    this.atualizaAutomatico();
+  }
+
+  ngOnDestroy() {
+    this.atualiza = false;
   }
 
 }

@@ -16,6 +16,7 @@ export class AppointmentsComponent implements OnInit {
   bsModalRef: BsModalRef;
   myData:any;
   modalRef: BsModalRef;
+  atualiza:boolean;
 
   constructor(private modalService: BsModalService,private loginService: LoginService,
               private appointmentService: AppointmentService) { }
@@ -68,8 +69,23 @@ export class AppointmentsComponent implements OnInit {
 
   }
 
+  atualizaAutomatico(){
+    if(this.atualiza){
+     setTimeout(() => {
+       this.refresh();
+       this.atualizaAutomatico();
+     },20000);
+     }
+  }
+
   ngOnInit() {
       this.refresh();
+      this.atualiza = true;
+      this.atualizaAutomatico();
+  }
+
+  ngOnDestroy() {
+    this.atualiza = false;
   }
 
 }

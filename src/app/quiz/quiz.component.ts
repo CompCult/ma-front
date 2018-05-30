@@ -19,6 +19,7 @@ export class QuizComponent implements OnInit {
     quizzes: Quiz[];
     myData:any;
     bsModalRef: BsModalRef;
+    atualiza:boolean;
 
   constructor(private modalService: BsModalService, private quizService: QuizService) {}
 
@@ -65,7 +66,6 @@ export class QuizComponent implements OnInit {
   }
 
   updateList(){
-    this.delay(1000);
     // delay para tempo de receber os valores do get
     setTimeout(() => {
 
@@ -76,12 +76,23 @@ export class QuizComponent implements OnInit {
 
   }
 
+  atualizaAutomatico(){
+    if(this.atualiza){
+     setTimeout(() => {
+       this.updateList();
+       this.atualizaAutomatico();
+     },20000);
+     }
+  }
+
   ngOnInit() {
     this.updateList();
+    this.atualiza = true;
+    this.atualizaAutomatico();
   }
 
-  delay(ms: number) {
-    setTimeout(() => { console.log('delay') },ms);
+  ngOnDestroy() {
+    this.atualiza = false;
   }
 
-  }
+}
