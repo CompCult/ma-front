@@ -32,6 +32,7 @@ import { MissionAnswerService } from './mission-answer/missionAnswer.service'
 import { ResquestTreeService } from './resquest-tree/resquest-tree.service';
 import { QuizAnswerService } from './quiz-answer/quizAnswer.service'
 import { AppointmentRequestService } from './appointment-request/AppointmentRequest.service';
+import {LocalService} from './local/local.service';
 import { SearchService } from './search/search.service';
 
 import { AuthGuard } from './login/auth.guard';
@@ -52,6 +53,8 @@ import { AppointmentService } from './appointments/appointment.service';
 import { NewAppointmentsComponent } from './appointments/new-appointments/new-appointments.component';
 import { AppointmentRequestComponent } from './appointment-request/appointment-request.component';
 import { InitialPageComponent } from './initial-page/initial-page.component';
+import { LocalComponent } from './local/local.component';
+import { LocalOptionsComponent } from './local/local-options/local-options.component';
 
 
 
@@ -79,6 +82,8 @@ import { InitialPageComponent } from './initial-page/initial-page.component';
     NewAppointmentsComponent,
     AppointmentRequestComponent,
     InitialPageComponent,
+    LocalComponent,
+    LocalOptionsComponent,
 
   ],
   imports: [
@@ -107,7 +112,8 @@ import { InitialPageComponent } from './initial-page/initial-page.component';
     AppointmentRequestService,
     MissionService,
     MissionAnswerService,
-    SearchService
+    SearchService,
+    LocalService
 
   ],
   entryComponents:[
@@ -118,7 +124,8 @@ import { InitialPageComponent } from './initial-page/initial-page.component';
     EvaluationQuizComponent,
     NewAppointmentsComponent,
     EvaluationMissionComponent,
-    NewMissionComponent
+    NewMissionComponent,
+    LocalOptionsComponent
   ],
 
   bootstrap: [AppComponent]

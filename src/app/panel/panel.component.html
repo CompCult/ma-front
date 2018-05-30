@@ -25,6 +25,10 @@
 
       </li>
 
+      <li *ngIf="isManeger()" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="local">Locais<span class="sr-only">(current)</span></a>
+      </li>
+
       <li ngbDropdown class="d-inline-block ">
         <a class="nav-link"  id="dropdownBasic4" routerLinkActive="active"  ngbDropdownToggle >
           Quiz
