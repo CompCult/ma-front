@@ -1,10 +1,10 @@
 <nav class="navbar my-nav navbar-expand-lg navbar-dark">
 
-  <a class="navbar-brand" routerLinkActive="active" routerLink="initial_page">Minha Árvore</a>
+  <a class="navbar-brand" routerLinkActive="active" routerLink="">Minha Árvore</a>
 
 
 
-  <div *ngIf="showMenu" class="navbar-collapse" id="navbarSupportedContent">
+  <div class="navbar-collapse" id="navbarSupportedContent">
 
     <ul class="navbar-nav mr-auto">
 
@@ -29,7 +29,7 @@
         <a class="nav-link" routerLink="local">Locais<span class="sr-only">(current)</span></a>
       </li>
 
-      <li ngbDropdown class="d-inline-block ">
+      <li *ngIf="showMenu" ngbDropdown class="d-inline-block ">
         <a class="nav-link"  id="dropdownBasic4" routerLinkActive="active"  ngbDropdownToggle >
           Quiz
         </a>
@@ -42,7 +42,7 @@
 
       </li>
 
-      <li ngbDropdown class="d-inline-block ">
+      <li *ngIf="showMenu" ngbDropdown class="d-inline-block ">
         <a class="nav-link"  id="dropdownBasic5" routerLinkActive="active"  ngbDropdownToggle >
           Missões
         </a>
@@ -55,7 +55,7 @@
 
       </li>
 
-      <li  ngbDropdown class="d-inline-block ">
+      <li *ngIf="showMenu" ngbDropdown class="d-inline-block ">
         <a class="nav-link"  id="dropdownBasic4" routerLinkActive="active"  ngbDropdownToggle >
           Agenda
         </a>
@@ -73,7 +73,7 @@
 
     <ul class="navbar-nav navbar-right">
       <div class="navbar-right nav-item">
-        <a class="nav-link" routerLink="login" (click) = "logout()" >Logout</a>
+        <a class="nav-link" routerLink="login" (click) = "logout()" >{{loginMensage}}</a>
       </div>
     </ul>
   </div>
@@ -89,13 +89,6 @@
 </section>
 
 
-<footer class="fixed-bottom  my-nav">
-  <div class="row">
-    <div class="col"></div>
-    <div class="col"><img src="../assets/img/logoUFCG.png" width="50" height="40"></div>
-    <div class="col"><img src="../assets/img/dsc.png" width="70" height="40"></div>
-    <div class="col"><img src="../assets/img/compcult.png" width="50" height="40"></div>
-    <div class="col"><img src="../assets/img/prefeitura_cg.png" width="100" height="40"></div>
-    <div class="col"></div>
-  </div>
+<footer >
+  <span style="color: white">@Comcult - inovar aplication - 2018</span>
 </footer>

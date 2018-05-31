@@ -18,10 +18,11 @@ import { ResquestTreeComponent } from './resquest-tree/resquest-tree.component';
 import { AuthGuard } from './login/auth.guard';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { AppointmentRequestComponent } from './appointment-request/appointment-request.component';
+import { IndexComponent } from './index/index.component';
 
 
 const APP_ROUTES: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: IndexComponent },
   { path: 'login', component: LoginComponent},
   { path: 'initial_page', component: InitialPageComponent, canActivate: [AuthGuard]},
   { path: 'local', component: LocalComponent, canActivate: [AuthGuard]},

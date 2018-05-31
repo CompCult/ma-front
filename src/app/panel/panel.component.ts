@@ -12,6 +12,7 @@ export class PanelComponent implements OnInit {
 
   showMenu: boolean;
   userStatus:string;
+  loginMensage:string = "Entrar";
 
   constructor(private loginService: LoginService, private cdref: ChangeDetectorRef) { }
 
@@ -27,12 +28,14 @@ export class PanelComponent implements OnInit {
   logout(){
     this.loginService.loggout();
     this.showMenu = false;
+    this.loginMensage = "Entrar";
   }
 
   ngOnInit() {
 
     this.loginService.showMenuEmitter.subscribe(show => {
      this.showMenu = show;
+     this.loginMensage = "Sair";
      this.cdref.detectChanges();
     });
 

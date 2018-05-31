@@ -55,6 +55,7 @@ import { AppointmentRequestComponent } from './appointment-request/appointment-r
 import { InitialPageComponent } from './initial-page/initial-page.component';
 import { LocalComponent } from './local/local.component';
 import { LocalOptionsComponent } from './local/local-options/local-options.component';
+import { IndexComponent } from './index/index.component';
 
 
 
@@ -84,6 +85,7 @@ import { LocalOptionsComponent } from './local/local-options/local-options.compo
     InitialPageComponent,
     LocalComponent,
     LocalOptionsComponent,
+    IndexComponent,
 
   ],
   imports: [
