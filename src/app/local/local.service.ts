@@ -21,6 +21,10 @@ export class LocalService {
     return this.http.post(`${API}/places`, json).map((response: Response) => response.json());
   }
 
+  showLocal( id:string):  Observable<Local>{
+    return this.http.get(`${API}/places/${id}`).map((response: Response) => response.json());
+  }
+
   updateLocal(json: any, id:number) {
     return this.http.put(`${API}/places/${id}`, json).map((response: Response) => response.text());
   }

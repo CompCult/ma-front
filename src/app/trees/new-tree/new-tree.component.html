@@ -35,6 +35,30 @@
       <input id="foto" [(ngModel)]="tree.photo" class="form-control" type="text" name="photo" #photo="ngModel">
     </div>
 
+    <hr>
+    <h6>LUGARES ONDE A PLANTA PODE SER PLANTADA</h6>
+
+    <div *ngFor="let IDLocal of place" >
+      <div *ngIf="IDLocal">
+        {{IDLocal.name}} <button type="button" class="btn btn-secondary" (click)=removerLocal(IDLocal) >Remover</button>
+      </div>
+
+    </div>
+
+  <div class="btn-group" dropdown>
+    <button id="button-basic" dropdownToggle type="button" class="btn btn-success dropdown-toggle"
+    aria-controls="dropdown-basic">
+    Adicionar Local <span class="caret"></span>
+  </button>
+  <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+  role="menu" aria-labelledby="button-basic">
+  <li ><a class="dropdown-item" (click)="add(locais)" *ngFor="let locais of locals">{{locais.name}}</a></li>
+
+</ul>
+</div>
+
+
+
 
 
 <div class="modal-footer">

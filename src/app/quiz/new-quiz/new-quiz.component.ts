@@ -42,7 +42,8 @@ export class NewQuizComponent implements OnInit {
     modifyUserUsuario(quiz: Quiz){
       this.modifyBoolean();
       console.log(this.quiz);
-      this.quizService.updateQuiz(this.quiz, this.quiz._id).subscribe();
+      this.quizService.updateQuiz(this.quiz, this.quiz._id).subscribe(quiz => console.log(quiz));
+      console.log(this.quiz);
       //função para enviar um objeto para o componete pai
       this.onClose('');
     }
@@ -89,7 +90,8 @@ export class NewQuizComponent implements OnInit {
       }
       if (this.isPublic == "false"){
       this.quiz.is_public = false;
-      }
+      console.log("ta passando por aki")
+        }
 
       if (this.single == "true"){
       this.quiz.single_answer = true;

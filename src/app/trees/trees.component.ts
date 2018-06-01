@@ -24,7 +24,7 @@ export class TreesComponent implements OnInit {
   create() {
     const initialState = {
       title: 'Criar Árvore',
-      tree: new Tree(null,null,null,null,null),
+      tree: new Tree(null,null,null,null,null, []),
       mensage: 'Árvore adicionada com sucesso',
       modify: false
     };

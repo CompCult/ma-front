@@ -6,6 +6,10 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { Tree } from '../tree.model';
 import { TreeService } from '../tree.service';
 
+
+import {Local } from '../../local/local.model'
+import {LocalService } from '../../local/local.service'
+
 import{ NgForm } from '@angular/forms';
 
 
@@ -22,12 +26,13 @@ export class NewTreeComponent implements OnInit {
   tree: Tree;
   modify: boolean;
 
-  constructor(public bsModalRef: BsModalRef, public treeService: TreeService) {
+  constructor(public bsModalRef: BsModalRef, public treeService: TreeService, public localService: LocalService) {
 
   }
 
   create(treeForm){
     console.log(this.tree);
+    this.tree._places =this.place;
     this.treeService.createTree(this.tree).subscribe();
     this.bsModalRef.hide();
   }
@@ -39,15 +44,40 @@ export class NewTreeComponent implements OnInit {
 
 }
     modifyTree(tree: Tree){
+        this.tree._places =this.place;
       this.treeService.updateTree(this.tree, tree._id).subscribe();
       this.bsModalRef.hide();
     }
 
+    place: Local[] = [];
+
+    add(locais){
+      console.log(locais)
+      this.place.push(locais);
+    }
+
+    removerLocal(IDLocal: Local){
+      let placeAux: Local[] = [];
+      for(let i = 0; i <= this.place.length; i++){
+        if(<Local>IDLocal == this.place[i]){
+
+        }else{
+          placeAux.push( this.place[i])
+        }
+      }
+      this.place = placeAux;
+    }
 
 
-
-
+  locals: Local[];
   ngOnInit() {
+    console.log(this.tree)
+    if(this.modify){
+      this.place = this.tree._places;
+    }
+    this.localService.getLocal()
+    .subscribe(locals => this.locals = locals);
+
   }
 
 }

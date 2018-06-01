@@ -1,3 +1,5 @@
+import { Local } from '.././local/local.model';
+
 export class Tree {
 
   public _id: number;
@@ -6,8 +8,7 @@ export class Tree {
   public ammount_available: number;
   public photo: string;
 
-
-  constructor(_id: number, name: string, description: string, photo: string, amount_avaliable: number) {
+  constructor(_id: number, name: string, description: string, photo: string, amount_avaliable: number, public _places: Local[]) {
     this._id = _id;
     this.name = name;
     this.description = description;

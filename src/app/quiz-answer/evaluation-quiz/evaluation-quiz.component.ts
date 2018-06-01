@@ -33,16 +33,16 @@ export class EvaluationQuizComponent implements OnInit {
 
       accept(quizAnswer: QuizAnswer){
         console.log(this.quizAnswer);
-
+        this.quizAnswer.approved = true;
         this.quizAnswerService.updateQuiz_answers(this.quizAnswer, quizAnswer._id).subscribe();
         //função para enviar um objeto para o componete pai
         this.onClose('');
       }
 
       reject(quizAnswer: QuizAnswer){
-        
-        console.log(this.quizAnswer);
 
+        console.log(this.quizAnswer);
+        this.quizAnswer.approved=false;
         this.quizAnswerService.updateQuiz_answers(this.quizAnswer, quizAnswer._id).subscribe();
         //função para enviar um objeto para o componete pai
         this.onClose('');
