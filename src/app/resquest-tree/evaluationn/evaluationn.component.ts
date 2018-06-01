@@ -8,6 +8,8 @@ import { ResquestTreeService } from '../resquest-tree.service';
 import { TreeService} from '../../trees/tree.service'
 import { Tree} from '../../trees/tree.model'
 
+import { Local} from '../../local/local.model'
+
 
 import { User} from '../../users/user.model'
 import { UserService} from '../../users/user.service'
@@ -42,6 +44,13 @@ export class EvaluationnComponent implements OnInit {
       this.checking =false;
     }
   }
+
+  local: Local[] = []
+  checkTypePlace(){
+    console.log("passou aki")
+    //this.local = tree._places;
+  }
+
 
 
 
@@ -97,14 +106,42 @@ export class EvaluationnComponent implements OnInit {
 
         this.onClose('');
       }
+      treeName= "Árvore"
+
+      add(tree: Tree){
+        this.treeName = tree.name;
+        this.resquestTree._type = tree._id;
+        this.local = tree._places;
+      }
+
+
+
+
+      treeLugar = "Lugar"
+
+      addPlace(place: Local){
+        this.treeLugar = place.name;
+        this.resquestTree.place = place.name;
+      }
+
 
 
   trees: Tree[]
   users : User[]
   ngOnInit() {
+
     this.treeService.getObjetos()
     .subscribe(trees => this.trees = trees);
     this.userService.getUsuarios()
     .subscribe(users => this.users = users);
-  }
+
+
+    if(this.modify){
+          this.treeLugar = this.resquestTree.place
+          this.treeService.getObjeto(this.resquestTree._type)
+          .subscribe(tree => this.treeName = tree.name);
+        }
+
+
+}
 }

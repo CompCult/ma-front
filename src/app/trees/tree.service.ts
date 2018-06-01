@@ -29,6 +29,13 @@ export class TreeService {
     return this.http.delete(`${API}/tree_types/${id}`, json).map((response: Response) => response.text());
   }
 
+  getObjeto( id:number): Observable<Tree>{
+    return this.http.get(`${API}/tree_types/${id}`)
+    .map(response => response.json())
+    .catch(ErrorHandler.handleError)
+
+  }
+
   getObjetos(): Observable<Tree[]>{
     return this.http.get(`${API}/tree_types`)
     .map(response => response.json())

@@ -26,99 +26,110 @@
     </div>
 
 
+    <label>Tipo de árvore</label>
+    <br>
+    <div class="btn-group" dropdown>
+      <button id="button-basic" dropdownToggle type="button" class="btn btn-success dropdown-toggle"
+      aria-controls="dropdown-basic">
+      {{treeName}} <span class="caret"></span>
+    </button>
+    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+    role="menu" aria-labelledby="button-basic">
+    <li ><a class="dropdown-item" *ngFor="let tree of trees"  (click)="add(tree)" >{{tree.name}}</a></li>
 
-
-    <div class="form-group">
-      <label>Árvore</label>
-      <select id="place" [(ngModel)]="resquestTree._type" class="form-control" name="_type" #_type="ngModel">
-        <option *ngFor="let tree of trees" value='{{tree._id}}' >{{tree.name}}</option>
-
-      </select>
-    </div>
-
-
-
-    <div class="form-group">
-      <label for="nome">Nome do requisitante</label>
-      <input id="nome" [(ngModel)]="resquestTree.requester_name" class="form-control" type="text" name="requester_name"  #requester_name="ngModel">
-    </div>
-
-
-
-    <div class="form-group">
-      <label>Lugar</label>
-      <select id="place" [(ngModel)]="resquestTree.place" class="form-control" name="type" (click)= checkType() #place="ngModel">
-        <option value="calcada">Calçada</option>
-        <option value="canteiro" >Canteiro</option>
-        <option value="quintal" >Quintal</option>
-        <option value="jardim" >Jardim</option>
-        <option value="escola" >Escola</option>
-
-      </select>
-    </div>
+  </ul>
+</div>
+<br>
 
 
 
-    <div class="form-group" *ngIf="checking">
-      <label for="sidewalk_size">Tamanho da calçada</label>
-      <input id="sidewalk_size" [(ngModel)]="resquestTree.sidewalk_size" class="form-control" type="number" name="sidewalk_size" #sidewalk_size="ngModel">
-    </div>
+<div class="form-group">
+  <label for="nome">Nome do requisitante</label>
+  <input id="nome" [(ngModel)]="resquestTree.requester_name" class="form-control" type="text" name="requester_name"  #requester_name="ngModel">
+</div>
 
-    <div class="form-group">
-      <label for="photo">URL da foto</label>
-      <input id="photo" [(ngModel)]="resquestTree.photo" class="form-control" type="text" name="photo" #photo="ngModel">
-      <br>
-      <img src={{resquestTree.photo}} alt="" height="200" width="200">
-    </div>
+<label>Local do plantio</label>
+<br>
+<div class="btn-group" dropdown>
+  <button id="button-basic" dropdownToggle type="button" class="btn btn-success dropdown-toggle"
+  aria-controls="dropdown-basic">
+  {{treeLugar}} <span class="caret"></span>
+</button>
+<ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+role="menu" aria-labelledby="button-basic">
+<li ><a class="dropdown-item" *ngFor="let place of local"  (click)="addPlace(place)" >{{place.name}}</a></li>
 
-
-
-    <div class="form-group" *ngIf="modify">
-      <label for="status">Status</label>
-      <input id="status" [(ngModel)]="resquestTree.status" class="form-control" type="text" name="status" disabled #status="ngModel">
-    </div>
-
-    <hr *ngIf="modify">
-
-    <h4 *ngIf="modify">Endereço</h4>
-
-    <div class="form-group" >
-      <label for="rua">Rua</label>
-      <input id="rua" [(ngModel)]="resquestTree.street" class="form-control" type="text" name="street"  #street="ngModel">
-    </div>
-
-    <div class="form-group">
-      <label for="numero">Número</label>
-      <input id="numero" [(ngModel)]="resquestTree.number" class="form-control" type="text" name="number"  #number="ngModel">
-    </div>
-
-    <div class="form-group" >
-      <label for="bairro">Bairro</label>
-      <input id="bairro" [(ngModel)]="resquestTree.neighborhood" class="form-control" type="text" name="neighborhood"  #neighborhood="ngModel">
-    </div>
-
-    <div class="form-group" >
-      <label for="complemento">Complemento</label>
-      <input id="complemento" [(ngModel)]="resquestTree.complement" class="form-control" type="text" name="complement"  #complement="ngModel">
-    </div>
-
-
-    <div class="form-group" >
-      <label for="cep">Cep</label>
-      <input id="cep" [(ngModel)]="resquestTree.zipcode" class="form-control" type="text" name="zipcode"  #zipcode="ngModel">
-    </div>
+</ul>
+</div>
+<br>
 
 
 
 
-    <div class="modal-footer">
-      <button type="button" class="btn btn-success" *ngIf="modify" (click)= approve(resquestTree)>Aprovar</button>
-      <button type="button" class="btn btn-secondary" *ngIf="modify" (click)= pedant(resquestTree)>Pendente</button>
-      <button type="button" class="btn btn-warning" *ngIf="modify" (click)= reject(resquestTree)>Rejeitar</button>
 
-      <button type="button" class="btn btn-danger"  *ngIf="modify" (click)= delete(resquestTree)>Deletar</button>
-      <button type="submit" class="btn btn-success" *ngIf="!modify">Confirmar</button>
-      <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
 
-    </div>
-  </form>
+
+<div class="form-group" *ngIf="checking">
+  <label for="sidewalk_size">Tamanho da calçada</label>
+  <input id="sidewalk_size" [(ngModel)]="resquestTree.sidewalk_size" class="form-control" type="number" name="sidewalk_size" #sidewalk_size="ngModel">
+</div>
+
+<div class="form-group">
+  <label for="photo">URL da foto</label>
+  <input id="photo" [(ngModel)]="resquestTree.photo" class="form-control" type="text" name="photo" #photo="ngModel">
+  <br>
+  <img src={{resquestTree.photo}} alt="" height="200" width="200">
+</div>
+
+
+
+<div class="form-group" *ngIf="modify">
+  <label for="status">Status</label>
+  <input id="status" [(ngModel)]="resquestTree.status" class="form-control" type="text" name="status" disabled #status="ngModel">
+</div>
+
+<hr *ngIf="modify">
+
+<h4 *ngIf="modify">Endereço</h4>
+
+<div class="form-group" >
+  <label for="rua">Rua</label>
+  <input id="rua" [(ngModel)]="resquestTree.street" class="form-control" type="text" name="street"  #street="ngModel">
+</div>
+
+<div class="form-group">
+  <label for="numero">Número</label>
+  <input id="numero" [(ngModel)]="resquestTree.number" class="form-control" type="text" name="number"  #number="ngModel">
+</div>
+
+<div class="form-group" >
+  <label for="bairro">Bairro</label>
+  <input id="bairro" [(ngModel)]="resquestTree.neighborhood" class="form-control" type="text" name="neighborhood"  #neighborhood="ngModel">
+</div>
+
+<div class="form-group" >
+  <label for="complemento">Complemento</label>
+  <input id="complemento" [(ngModel)]="resquestTree.complement" class="form-control" type="text" name="complement"  #complement="ngModel">
+</div>
+
+
+
+<div class="form-group" >
+  <label for="cep">Cep</label>
+  <input id="cep" [(ngModel)]="resquestTree.zipcode" class="form-control" type="text" name="zipcode"  #zipcode="ngModel">
+</div>
+
+
+
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-success" *ngIf="modify" (click)= approve(resquestTree)>Aprovar</button>
+  <button type="button" class="btn btn-secondary" *ngIf="modify" (click)= pedant(resquestTree)>Pendente</button>
+  <button type="button" class="btn btn-warning" *ngIf="modify" (click)= reject(resquestTree)>Rejeitar</button>
+
+  <button type="button" class="btn btn-danger"  *ngIf="modify" (click)= delete(resquestTree)>Deletar</button>
+  <button type="submit" class="btn btn-success" *ngIf="!modify">Confirmar</button>
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+
+</div>
+</form>

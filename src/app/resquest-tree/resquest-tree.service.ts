@@ -36,6 +36,16 @@ export class ResquestTreeService {
       return this.http.delete(`${API}/tree_requests/${id}`, json).map((response: Response) => response.text());
     }
 
+
+    getResquest_tree(id: number): Observable<ResquestTree>{
+      return this.http.get(`${API}/tree_requests/${id}`)
+      .map(response => response.json())
+      .catch(ErrorHandler.handleError)
+
+    }
+
+
+
   getResquest_trees(): Observable<ResquestTree[]>{
     return this.http.get(`${API}/tree_requests`)
     .map(response => response.json())
