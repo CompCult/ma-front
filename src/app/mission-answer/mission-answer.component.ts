@@ -79,4 +79,13 @@ ngOnDestroy() {
 }
 
 
+showAnswer(missionAnswer: MissionAnswer): boolean{
+  if (missionAnswer._mission == null || missionAnswer._user==null){
+    return false;
+  }else{
+    return true;
+  }
+}
+
+
 }

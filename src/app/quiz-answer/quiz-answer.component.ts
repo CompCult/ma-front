@@ -68,6 +68,14 @@ export class QuizAnswerComponent implements OnInit {
       this.atualizaAutomatico();
     }
 
+    showAnswer(quizAnswer: QuizAnswer): boolean{
+      if (quizAnswer._quiz == null || quizAnswer._user==null){
+        return false;
+      }else{
+        return true;
+      }
+    }
+
     ngOnDestroy() {
       this.atualiza = false;
     }

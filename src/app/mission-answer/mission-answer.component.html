@@ -23,10 +23,10 @@
     <th>OPÇÕES</th>
   </tr>
   <tr *ngFor="let missionAnswer of missionAnswers">
-    <td>{{missionAnswer._id}}</td>
-    <td>{{missionAnswer._user.name}}</td>
-    <td>{{missionAnswer._mission.name}}</td>
-    <td>
+    <td *ngIf="showAnswer(missionAnswer)">{{missionAnswer._id}}</td>
+    <td *ngIf="showAnswer(missionAnswer)">{{missionAnswer._user.name}}</td>
+    <td *ngIf="showAnswer(missionAnswer)">{{missionAnswer._mission.name}}</td>
+    <td *ngIf="showAnswer(missionAnswer)">
       <button class="btn btn-outline-success my-2 my-sm-0" (click)="option(missionAnswer)">Opções</button>
     </td>
   </tr>

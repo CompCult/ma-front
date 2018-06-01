@@ -22,10 +22,10 @@
     <th>Opções</th>
   </tr>
   <tr *ngFor="let quizAnswer of quizAnswers">
-    <td>{{quizAnswer._id}}</td>
-    <td>{{quizAnswer._user.name}}</td>
-    <td>{{quizAnswer._quiz.title}}</td>
-    <td>
+    <td *ngIf="showAnswer(quizAnswer)">{{quizAnswer._id}}</td>
+    <td *ngIf="showAnswer(quizAnswer)">{{quizAnswer._user.name}}</td>
+    <td *ngIf="showAnswer(quizAnswer)">{{quizAnswer._quiz.title}}</td>
+    <td *ngIf="showAnswer(quizAnswer)">
       <button class="btn btn-outline-success my-2 my-sm-0" (click)="option(quizAnswer)">opções</button>
     </td>
   </tr>
