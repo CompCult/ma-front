@@ -18,6 +18,7 @@ export class TreesComponent implements OnInit {
   bsModalRef: BsModalRef;
   trees: Tree[] = [];
   status:Boolean = true;
+  atualiza:boolean;
 
   constructor(private modalService: BsModalService, private treeService: TreeService) { }
 
@@ -61,9 +62,23 @@ export class TreesComponent implements OnInit {
 
      }
 
+  atualizaAutomatico(){
+    if(this.atualiza){
+     setTimeout(() => {
+       this.getListaArvores();
+       this.atualizaAutomatico();
+     },20000);
+     }
+  }
+
   ngOnInit() {
     this.getListaArvores();
+    this.atualiza = true;
+    this.atualizaAutomatico();
+  }
 
+  ngOnDestroy() {
+    this.atualiza = false;
   }
 
 

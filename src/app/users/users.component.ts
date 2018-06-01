@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
 
   pesquisaButton ="Pesquisar por";
   pesquisaPAram ="name";
-
+  atualiza:boolean;
 
   searcher = new Search();
 
@@ -88,7 +88,6 @@ change(tipo: String){
 }
 
 atualizaLista(){
-  this.delay(300);
   // delay para tempo de receber os valores do get
   setTimeout(() => {
 
@@ -99,8 +98,17 @@ atualizaLista(){
 
 }
 
+atualizaAutomatico(){
+  if(this.atualiza){
+    setTimeout(() => {
+      console.log("atualizou!");
+      this.atualizaLista();
+      this.atualizaAutomatico();
+    },20000);
+  }
+}
+
 search(searchForm){
-  this.delay(300);
   // delay para tempo de receber os valores do get
   setTimeout(() => {
 
@@ -111,11 +119,13 @@ search(searchForm){
 }
 
 ngOnInit() {
+  this.atualiza = true;
   this.atualizaLista();
+  this.atualizaAutomatico();
 }
 
-delay(ms: number) {
-  setTimeout(() => { console.log('delay') },ms);
+ngOnDestroy() {
+  this.atualiza = false;
 }
 
 }

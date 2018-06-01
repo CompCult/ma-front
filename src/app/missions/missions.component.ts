@@ -19,6 +19,7 @@ export class MissionsComponent implements OnInit {
   missions: Mission[];
   myData:any;
   bsModalRef: BsModalRef;
+  atualiza:boolean;
 
 constructor(private modalService: BsModalService,
             private missionService: MissionService) {}
@@ -66,7 +67,6 @@ option(mission: Mission) {
 }
 
 updateList(){
-  this.delay(1000);
   // delay para tempo de receber os valores do get
   setTimeout(() => {
 
@@ -77,15 +77,22 @@ updateList(){
 
 }
 
-
-
+atualizaAutomatico(){
+  if(this.atualiza){
+   setTimeout(() => {
+     this.updateList();
+     this.atualizaAutomatico();
+   },20000);
+   }
+}
 
 ngOnInit() {
   this.updateList();
+  this.atualiza = true;
+  this.atualizaAutomatico();
 }
-
-delay(ms: number) {
-  setTimeout(() => { console.log('delay') },ms);
+ngOnDestroy() {
+  this.atualiza = false;
 }
 
 }

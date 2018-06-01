@@ -1,0 +1,54 @@
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.card {
+  height: 100%;
+}
+
+.imagem {
+  float: left;
+   width: 15%;
+   padding: 5px;
+   margin: 0px 10px 10px 0;
+
+}
+
+.jumbotron {
+    /* background:  #b3ffb3; */
+    background:  none;
+}
+/* Style all font awesome icons */
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 200px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+    opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+    color: forestgreen;
+}
+
+.fa-instagram {
+    color: forestgreen;
+}
+
+.faceButton{
+  background: #3B5998;
+}

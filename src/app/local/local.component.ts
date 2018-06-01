@@ -18,6 +18,7 @@ export class LocalComponent implements OnInit {
   locals: Local[];
   myData:any;
   bsModalRef: BsModalRef;
+  atualiza:boolean;
 
 constructor(private modalService: BsModalService, private LocalService: LocalService) {}
 
@@ -65,7 +66,6 @@ option(local: Local) {
 }
 
 updateList(){
-  this.delay(1000);
   // delay para tempo de receber os valores do get
   setTimeout(() => {
 
@@ -76,12 +76,23 @@ updateList(){
 
 }
 
-ngOnInit() {
-  this.updateList();
+atualizaAutomatico(){
+  if(this.atualiza){
+   setTimeout(() => {
+     this.updateList();
+     this.atualizaAutomatico();
+   },20000);
+   }
 }
 
-delay(ms: number) {
-  setTimeout(() => { console.log('delay') },ms);
+ngOnInit() {
+  this.updateList();
+  this.atualiza = true;
+  this.atualizaAutomatico();
+}
+
+ngOnDestroy() {
+  this.atualiza = false;
 }
 
 }

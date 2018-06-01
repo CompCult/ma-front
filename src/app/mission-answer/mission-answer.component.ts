@@ -20,6 +20,7 @@ export class MissionAnswerComponent implements OnInit {
   myData:any;
   bsModalRef: BsModalRef;
   modalRef: BsModalRef;
+  atualiza:boolean;
 
 constructor(private modalService: BsModalService, private missionAnswerService: MissionAnswerService) {}
 
@@ -44,7 +45,6 @@ option(missionAnswer: MissionAnswer) {
 }
 
 updateList(){
-  this.delay(1000);
   // delay para tempo de receber os valores do get
   setTimeout(() => {
 
@@ -59,14 +59,24 @@ openModal(template: TemplateRef<any>) {
   this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
 }
 
-delay(ms: number) {
-  setTimeout(() => { console.log('delay') },ms);
+atualizaAutomatico(){
+  if(this.atualiza){
+   setTimeout(() => {
+     this.updateList();
+     this.atualizaAutomatico();
+   },20000);
+   }
 }
 
 ngOnInit() {
   this.updateList();
+  this.atualiza = true;
+  this.atualizaAutomatico();
 }
 
+ngOnDestroy() {
+  this.atualiza = false;
+}
 
 
 }

@@ -26,6 +26,7 @@ export class ResquestTreeComponent implements OnInit {
   bsModalRef: BsModalRef;
   modalRef: BsModalRef;
   resquest_trees: ResquestTree[] = [];
+  atualiza:boolean;
 
   constructor(private modalService: BsModalService, private resquestTreeService: ResquestTreeService, private userService: UserService) { }
 
@@ -77,11 +78,6 @@ export class ResquestTreeComponent implements OnInit {
     return parseFloat(string);
   }
 
-  ngOnInit() {
-    this.getListaArvores();
-
-  }
-
   markerIconMapUrl(resquest:ResquestTree):string {
       if(resquest.status == "Aprovado"){
         return '../assets/img/pin_green_map.png';
@@ -93,7 +89,6 @@ export class ResquestTreeComponent implements OnInit {
      }
 
   updateList(){
-    this.delay(1000);
     // delay para tempo de receber os valores do get
     setTimeout(() => {
 
@@ -105,11 +100,23 @@ export class ResquestTreeComponent implements OnInit {
   }
 
 
-  delay(ms: number) {
-    setTimeout(() => { console.log('delay') },ms);
+  atualizaAutomatico(){
+    if(this.atualiza){
+     setTimeout(() => {
+       this.updateList();
+       this.atualizaAutomatico();
+     },20000);
+     }
   }
 
+  ngOnInit() {
+    this.getListaArvores();
+    this.atualiza = true;
+    this.atualizaAutomatico();
+  }
 
-
+  ngOnDestroy() {
+    this.atualiza = false;
+  }
 
 }
