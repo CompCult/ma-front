@@ -54,6 +54,8 @@ export class NewUsersComponent implements OnInit {
     }else{
       this.user.password= this.password;
     }
+
+    delete this.user.picture;
     console.log(this.user);
     this.userService.updateUser(this.user, user._id).subscribe();
     //função para enviar um objeto para o componete pai
