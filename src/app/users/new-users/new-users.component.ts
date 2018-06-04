@@ -41,6 +41,8 @@ export class NewUsersComponent implements OnInit {
     if(this.password != ""){
       this.user.password= this.password;
     }
+
+    delete this.user.picture;
     this.userService.createUser(this.user).subscribe();
     this.router.navigate(['users']);
     //função para enviar um objeto para o componete pai
@@ -48,7 +50,6 @@ export class NewUsersComponent implements OnInit {
   }
 
   modifyUserUsuario(user: User){
-    console.log(this.user);
     if(!this.modifyPassword){
       delete this.user.password;
     }else{
@@ -56,7 +57,7 @@ export class NewUsersComponent implements OnInit {
     }
 
     delete this.user.picture;
-    console.log(this.user);
+
     this.userService.updateUser(this.user, user._id).subscribe();
     //função para enviar um objeto para o componete pai
     this.onClose('');
