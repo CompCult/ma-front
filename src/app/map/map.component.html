@@ -7,11 +7,11 @@
                 [iconUrl]="markerIconMapUrl(map)">
       <agm-info-window>
         <div>
-          <i>Nome: {{map.name}}</i>
+          <i>Nome Árvore: {{map.name}}</i>
           <br>
           <i [innerHtml]="treeStatus(map)"></i>
           <br>
-          <i *ngIf = "treeStatusBoolean(map)" >Nome : {{map._request.requester_name}}</i>
+          <i *ngIf = "treeStatusBoolean(map)" >Solicitante : {{map._request.requester_name}}</i>
           <br>
           <i *ngIf = "treeStatusBoolean(map)" >Lugar : {{map._request.place}}</i>
         </div>

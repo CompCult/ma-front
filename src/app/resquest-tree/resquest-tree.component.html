@@ -19,6 +19,7 @@
     <th>ID</th>
     <th>NOME</th>
     <th>LUGAR</th>
+    <th>TELEFONE</th>
     <th>STATUS</th>
     <th>MAPA</th>
     <th>AÇÕES</th>
@@ -27,12 +28,13 @@
     <td>{{resquest._id}}</td>
     <td>{{resquest.requester_name}}</td>
     <td>{{resquest.place}}</td>
+    <td [innerHtml] = "getPhone(resquest)"></td>
     <td>{{resquest.status}}</td>
-    
+
     <td><button type="button"(click)="openModal(template)">
         <img [src]="markerIconMapUrl(resquest)" width="43" height="43">
         </button>
-        <ng-template #template >
+        <ng-template  #template >
           <div class="modal-content">
             <div class="modal-body">
               <agm-map class="modal-map" [latitude]="toNumber(resquest.location_lat)" [longitude]="toNumber(resquest.location_lng)" [zoom]="15" >

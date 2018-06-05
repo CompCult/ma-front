@@ -99,6 +99,14 @@ export class ResquestTreeComponent implements OnInit {
 
   }
 
+  getPhone(tree:ResquestTree):string{
+    if(tree.requester_phone == null){
+      return "Sem Número";
+    }else{
+      return tree.requester_phone;
+    }
+  }
+
 
   atualizaAutomatico(){
     if(this.atualiza){
