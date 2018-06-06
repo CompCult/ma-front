@@ -25,6 +25,11 @@
       </select>
     </div>
 
+    <div class="form-group" >
+      <label for="id">Numero de Telefone</label>
+      <input id="id" [(ngModel)]="resquestTree.requester_phone" class="form-control" type="number" name="requester_phone"  #requester_phone="ngModel" >
+    </div>
+
 
     <label>Tipo de árvore</label>
     <br>
@@ -81,11 +86,18 @@ role="menu" aria-labelledby="button-basic">
   <img src={{resquestTree.photo}} alt="" height="200" width="200">
 </div>
 
-
+<hr>
 
 <div class="form-group" *ngIf="modify">
   <label for="status">Status</label>
   <input id="status" [(ngModel)]="resquestTree.status" class="form-control" type="text" name="status" disabled #status="ngModel">
+</div>
+
+<div class="form-group" *ngIf="resquestTree.planting_date">
+  <label for="dataAniversario">Plantada em:</label>
+  <input bsDatepicker id="created_at"  class="form-control" type="text"
+  [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="resquestTree.planting_date"
+  value="{{resquestTree.planting_date | date:'dd/MM/yyyy'}}" name="planting_date" disabled>
 </div>
 
 <hr *ngIf="modify">
@@ -129,7 +141,7 @@ role="menu" aria-labelledby="button-basic">
 
   <button type="button" class="btn btn-danger"  *ngIf="modify" (click)= delete(resquestTree)>Deletar</button>
   <button type="submit" class="btn btn-success" *ngIf="!modify">Confirmar</button>
-  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+  <button type="button" class="btn btn-default" (click)= planting(resquestTree) >Plantada</button>
 
 </div>
 </form>

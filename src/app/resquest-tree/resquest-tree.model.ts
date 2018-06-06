@@ -49,6 +49,7 @@ export class ResquestTree {
   public location_lat: string;
   public  location_lng: string;
   public  quantity: number;
+  public planting_date: string;
 
 
 

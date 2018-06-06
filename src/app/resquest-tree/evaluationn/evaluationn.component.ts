@@ -58,8 +58,13 @@ export class EvaluationnComponent implements OnInit {
 
   create(resquestForm){
     console.log(this.resquestTree);
+    this.userService.getUser(this.resquestTree._user)
+    .subscribe(tree => this.resquestTree._user = tree);
+
+
+
     this.resquestTreeService.createResquest(this.resquestTree).subscribe();
-    ;
+  
 
     this.onClose('');
   }
@@ -67,8 +72,9 @@ export class EvaluationnComponent implements OnInit {
 
   reject(resquestTree: ResquestTree){
       this.resquestTree.status ="Rejeitado"
+
       console.log(this.resquestTree);
-      this.resquestTreeService.delete(this.resquestTree, resquestTree._id).subscribe();
+      this.resquestTreeService.update(this.resquestTree, resquestTree._id).subscribe();
 
 
       this.onClose('');
@@ -76,8 +82,9 @@ export class EvaluationnComponent implements OnInit {
 
     pedant(resquestTree: ResquestTree){
         this.resquestTree.status ="Pendente"
+
         console.log(this.resquestTree);
-        this.resquestTreeService.delete(this.resquestTree, resquestTree._id).subscribe();
+        this.resquestTreeService.update(this.resquestTree, resquestTree._id).subscribe();
 
 
         this.onClose('');
@@ -86,6 +93,17 @@ export class EvaluationnComponent implements OnInit {
 
     approve(resquestTree: ResquestTree){
       this.resquestTree.status ="Aprovado"
+
+      this.resquestTreeService.update(this.resquestTree, resquestTree._id).subscribe();
+
+
+
+      this.onClose('');
+    }
+
+
+    planting(resquestTree: ResquestTree){
+        this.resquestTree.status ="Plantada"
       this.resquestTreeService.update(this.resquestTree, resquestTree._id).subscribe();
 
 
@@ -137,6 +155,7 @@ export class EvaluationnComponent implements OnInit {
 
 
     if(this.modify){
+
           this.treeLugar = this.resquestTree.place
           this.treeService.getObjeto(this.resquestTree._type)
           .subscribe(tree => this.treeName = tree.name);

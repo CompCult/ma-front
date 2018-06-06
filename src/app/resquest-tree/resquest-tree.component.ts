@@ -33,7 +33,7 @@ export class ResquestTreeComponent implements OnInit {
   create() {
     const initialState = {
       title: 'Novo pedido',
-      resquestTree: new NewResquestTree(null,null,null,null),
+      resquestTree: new ResquestTree(null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null),
       mensage: 'Objeto adicionado com sucesso',
       modify: false
     };
