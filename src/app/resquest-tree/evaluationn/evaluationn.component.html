@@ -79,9 +79,8 @@ role="menu" aria-labelledby="button-basic">
   <input id="sidewalk_size" [(ngModel)]="resquestTree.sidewalk_size" class="form-control" type="number" name="sidewalk_size" #sidewalk_size="ngModel">
 </div>
 
-<div class="form-group">
-  <label for="photo">URL da foto</label>
-  <input id="photo" [(ngModel)]="resquestTree.photo" class="form-control" type="text" name="photo" #photo="ngModel">
+<div class="form-group" *ngIf="modify">
+  <label for="photo">Foto</label>
   <br>
   <img src={{resquestTree.photo}} alt="" height="200" width="200">
 </div>

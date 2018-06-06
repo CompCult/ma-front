@@ -46,7 +46,7 @@ export class MapComponent implements OnInit {
     if(map._request == null){
       return '../assets/img/pin_red_map.png';
     }
-      if(map._request.status == "Aprovado"){
+      if(map._request.status == "Aprovado" || map._request.status == "Plantada"){
         console.log("gree");
         return '../assets/img/pin_green_map.png';
       }else if(map._request.status == "Pendente"){

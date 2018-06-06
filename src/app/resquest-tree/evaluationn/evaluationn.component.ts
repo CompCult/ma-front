@@ -61,7 +61,7 @@ export class EvaluationnComponent implements OnInit {
     this.userService.getUser(this.resquestTree._user)
     .subscribe(tree => this.resquestTree._user = tree);
 
-
+    delete this.resquestTree.photo;
 
     this.resquestTreeService.createResquest(this.resquestTree).subscribe();
 
@@ -72,7 +72,7 @@ export class EvaluationnComponent implements OnInit {
 
   reject(resquestTree: ResquestTree){
       this.resquestTree.status ="Rejeitado"
-
+      delete this.resquestTree.photo;
       console.log(this.resquestTree);
       this.resquestTreeService.update(this.resquestTree, resquestTree._id).subscribe();
 
@@ -82,7 +82,7 @@ export class EvaluationnComponent implements OnInit {
 
     pedant(resquestTree: ResquestTree){
         this.resquestTree.status ="Pendente"
-
+        delete this.resquestTree.photo;
         console.log(this.resquestTree);
         this.resquestTreeService.update(this.resquestTree, resquestTree._id).subscribe();
 
@@ -93,7 +93,7 @@ export class EvaluationnComponent implements OnInit {
 
     approve(resquestTree: ResquestTree){
       this.resquestTree.status ="Aprovado"
-
+      delete this.resquestTree.photo;
       this.resquestTreeService.update(this.resquestTree, resquestTree._id).subscribe();
 
 
@@ -103,6 +103,7 @@ export class EvaluationnComponent implements OnInit {
 
 
     planting(resquestTree: ResquestTree){
+      delete this.resquestTree.photo;
         this.resquestTree.status ="Plantada"
       this.resquestTreeService.update(this.resquestTree, resquestTree._id).subscribe();
 
