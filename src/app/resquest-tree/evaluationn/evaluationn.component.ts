@@ -38,7 +38,7 @@ export class EvaluationnComponent implements OnInit {
 
   checking = false;
   checkType(){
-    if(this.resquestTree.place == "calcada" ){
+    if(this.resquestTree.place == "Calçada Estreita" || this.resquestTree.place == "Calçada Média" || this.resquestTree.place == "Calçada Grande"  ){
       this.checking= true;
     }else{
       this.checking =false;
@@ -64,7 +64,7 @@ export class EvaluationnComponent implements OnInit {
 
 
     this.resquestTreeService.createResquest(this.resquestTree).subscribe();
-  
+
 
     this.onClose('');
   }
