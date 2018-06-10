@@ -67,7 +67,15 @@ export class EvaluationQuizComponent implements OnInit {
       }
 
 
+      approvedd = "";
+
+
       ngOnInit() {
+        if(this.quizAnswer.approved){
+          this.approvedd = "Aprovado"
+        }else{
+          this.approvedd = "Reprovado"
+        }
 
 
       }
