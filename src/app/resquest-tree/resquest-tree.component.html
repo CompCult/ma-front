@@ -20,6 +20,7 @@
     <th>NOME</th>
     <th>LUGAR</th>
     <th>TELEFONE</th>
+    <th>QUANTIDADE</th>
     <th>STATUS</th>
     <th>MAPA</th>
     <th>AÇÕES</th>
@@ -29,6 +30,7 @@
     <td>{{resquest.requester_name}}</td>
     <td>{{resquest.place}}</td>
     <td [innerHtml] = "getPhone(resquest)"></td>
+    <td>{{resquest.quantity}}</td>
     <td>{{resquest.status}}</td>
 
     <td><button type="button"(click)="openModal(template)">

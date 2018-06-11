@@ -1,6 +1,9 @@
 body {
   padding-top: 54px;
 }
+agm-map {
+  height: 79vh;
+}
 
 @media (min-width: 992px) {
   body {

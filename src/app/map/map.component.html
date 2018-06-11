@@ -1,7 +1,7 @@
 
-  <agm-map [latitude]="y" [longitude]="x" [zoom]="13" class="top-space border">
-
-    <agm-marker *ngFor="let map of trees"
+<agm-map [latitude]="y" [longitude]="x" [zoom]="13" class="top-space border">
+  <ng-container *ngFor="let map of trees">
+    <agm-marker  *ngIf = "treeView(map)"
                 [latitude]="toNumber(map.location_lat)"
                 [longitude]="toNumber(map.location_lng)"
                 [iconUrl]="markerIconMapUrl(map)">
@@ -17,4 +17,5 @@
         </div>
       </agm-info-window>
     </agm-marker>
-  </agm-map>
+  </ng-container>
+</agm-map>

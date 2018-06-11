@@ -42,6 +42,14 @@ export class MapComponent implements OnInit {
     return true;
   }
 
+  treeView(map:Map):boolean{
+    if(map._request == null){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
   markerIconMapUrl(map:Map) {
     if(map._request == null){
       return '../assets/img/pin_red_map.png';

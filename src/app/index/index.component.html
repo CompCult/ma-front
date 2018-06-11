@@ -110,7 +110,27 @@
 
   </div>
 
-
+  <header class="jumbotron my-4">
+    <h1 class="display-5">Mapa de Árvores Plantadas</h1>
+    <agm-map [latitude]="y" [longitude]="x" [zoom]="13" class="top-space border">
+      <ng-container *ngFor="let map of trees">
+        <agm-marker  *ngIf = "treeView(map)"
+                    [latitude]="toNumber(map.location_lat)"
+                    [longitude]="toNumber(map.location_lng)"
+                    [iconUrl]="markerIconMapUrl(map)">
+          <agm-info-window>
+            <div>
+              <i>Nome Árvore: {{map.name}}</i>
+              <br>
+              <i [innerHtml]="treeType(map)"></i>
+              <br>
+              <i *ngIf = "treeStatusBoolean(map)" >Solicitante : {{map._request.requester_name}}</i>
+            </div>
+          </agm-info-window>
+        </agm-marker>
+      </ng-container>
+    </agm-map>
+  </header>
 
   <div class="row text-center jumbotron">
     <h1 class="display-5">Parceiros</h1>
@@ -134,22 +154,3 @@
 
 
 </div>
-<!-- /.container -->
-<!-- <div class="container corpo">
-  <div class="place banner">
-    <h1>aqui uma imagem de minha arvore com a descrição do que é dentro da imagem </h1>
-    <p>e um botao para baixar o app</p>
-  </div>
-  <p>momentos</p>
-  <div class="place fotos">
-      <h2>aqui vão ficar uma lista com 3 fotos do projeto</h2>
-  </div>
-  <p>Comentátios</p>
-  <div class="place Comentátios">
-    <h3>aqui ficara uma lista com 3 comentátios</h3>
-  </div>
-  <p>Parceiros</p>
-  <div class="place parceiros">
-    <h4>aqui ficara os incones e descrição dos parceiros</h4>
-  </div>
-</div> -->
