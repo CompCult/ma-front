@@ -96,7 +96,7 @@ role="menu" aria-labelledby="button-basic">
   <label for="dataAniversario">Plantada em:</label>
   <input bsDatepicker id="created_at"  class="form-control" type="text"
   [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="resquestTree.planting_date"
-  value="{{resquestTree.planting_date | date:'dd/MM/yyyy'}}" name="planting_date" disabled>
+  value="{{resquestTree.planting_date | date:'dd/MM/yyyy'}}" name="planting_date" >
 </div>
 
 <hr *ngIf="modify">
