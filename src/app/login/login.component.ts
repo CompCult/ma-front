@@ -12,25 +12,30 @@ export class LoginComponent implements OnInit {
 
   user: FinalUser = new FinalUser();
   error: boolean;
+  session:boolean = true;
 
   constructor(private loginService: LoginService,private cdref: ChangeDetectorRef) { }
 
 
   login(){
-    this.loginService.login(this.user).subscribe(credential =>
-    this.loginService.createSession(credential)
+    this.loginService.login(this.user).subscribe(credential =>{
+        this.loginService.createSession(credential)
+      }
     );
 
     this.loginService.showErrorEmitter.subscribe(error => {
       this.error = error;
-      
     })
 
 
   }
 
   ngOnInit() {
-    this.loginService.loggout();
+    if(this.session){
+      this.loginService.sessionLogin();
+      this.session = false;
+    }
+
   }
 
 }

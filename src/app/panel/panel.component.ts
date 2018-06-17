@@ -10,7 +10,7 @@ import { User } from '../users/user.model';
 })
 export class PanelComponent implements OnInit {
 
-  showMenu: boolean;
+  showMenu: boolean = false;
   userStatus:string;
   loginMensage:string = "Entrar";
 
@@ -26,16 +26,25 @@ export class PanelComponent implements OnInit {
   }
 
   logout(){
-    this.loginService.loggout();
-    this.showMenu = false;
-    this.loginMensage = "Entrar";
+    if(this.showMenu){
+      this.loginService.loggout();
+    }else{
+      this.loginService.loginPage();
+      this.showMenu = false;
+      this.userStatus = "common";
+    }
   }
 
   ngOnInit() {
-
     this.loginService.showMenuEmitter.subscribe(show => {
      this.showMenu = show;
-     this.loginMensage = "Sair";
+     console.log(this.showMenu);
+     if(this.showMenu){
+       this.loginMensage = "Sair";
+     }else{
+       this.loginMensage = "Entrar";
+     }
+
      this.cdref.detectChanges();
     });
 
@@ -43,6 +52,8 @@ export class PanelComponent implements OnInit {
      this.userStatus = user;
      this.cdref.detectChanges();
     });
+
+
 
   }
 

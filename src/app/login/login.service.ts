@@ -47,9 +47,9 @@ export class LoginService {
     .catch(ErrorHandler.handleError);
   }
 
-  createSession(credential){
+  createSession(credential:User){
     if((credential.type === "gestor") ||(credential.type === "professor")){
-      window.sessionStorage.setItem('user', credential._body);
+      localStorage.setItem('user', JSON.stringify(credential));
       this.userType = <string> credential.type;
       this.userId = <number> credential._id;
       this.logged =true;
@@ -60,20 +60,47 @@ export class LoginService {
       this.showUserIdEmitter.emit(this.userId);
       this.router.navigate(['/initial_page']);
     }else{
+      this.showMenuEmitter.emit(false);
       this.showErrorEmitter.emit(true);
+      this.showUserEmitter.emit("common");
       this.router.navigate(['/login']);
     }
 
   }
 
-  loggout(){
-
-    if (!window.sessionStorage.getItem('user') === null) {
-      window.sessionStorage.removeItem('user');
-      this.logged = false;
-      this.showMenu = false;
+  sessionLogin(){
+    if(!(localStorage.getItem('user') === null)){
+      let user:User = JSON.parse(localStorage.getItem('user'));
+      this.userType = <string> user.type;
+      this.userId = <number> user._id;
+      this.logged =true;
+      this.showMenu= true;
+      this.showMenuEmitter.emit(true);
+      this.showUserEmitter.emit(this.userType);
+      this.showErrorEmitter.emit(false);
+      this.showUserIdEmitter.emit(this.userId);
+      this.router.navigate(['/initial_page']);
+    }else{
+      this.showMenuEmitter.emit(false);
+      this.showErrorEmitter.emit(true);
+      this.showUserEmitter.emit("common");
+      this.router.navigate(['/login']);
     }
+  }
 
+  loggout(){
+    if (!(localStorage.getItem('user') === null)) {
+      localStorage.removeItem('user');
+    }
+    this.showMenu = false;
+    this.logged = false;
+    this.showMenuEmitter.emit(false);
+    this.showUserEmitter.emit("common");
+    this.router.navigate(['/login']);
+  }
+
+  loginPage(){
+    this.router.navigate(['/login']);
   }
 
   isLogged(){
