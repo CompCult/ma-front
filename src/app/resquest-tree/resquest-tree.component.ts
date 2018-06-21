@@ -8,6 +8,8 @@ import { User } from '../users/user.model';
 
 import { EvaluationnComponent } from './evaluationn/evaluationn.component';
 
+import { SearchService } from '../search/search.service'
+
 
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -20,6 +22,10 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class ResquestTreeComponent implements OnInit {
 
+  pesquisaButton ="Filtrar por Status:";
+  pesquisaPAram = "Pendente";
+
+
 
 
   myData:any;
@@ -28,7 +34,8 @@ export class ResquestTreeComponent implements OnInit {
   resquest_trees: ResquestTree[] = [];
   atualiza:boolean;
 
-  constructor(private modalService: BsModalService, private resquestTreeService: ResquestTreeService, private userService: UserService) { }
+  constructor(private modalService: BsModalService, private resquestTreeService: ResquestTreeService, private userService: UserService,
+  private searchService: SearchService) { }
 
   create() {
     const initialState = {
@@ -66,8 +73,21 @@ export class ResquestTreeComponent implements OnInit {
   }
 
   getListaArvores(){
-    this.resquestTreeService.getResquest_trees()
+    // this.resquestTreeService.getResquest_trees()
+    // .subscribe(resquest_trees => this.resquest_trees = resquest_trees);
+    this.search("Pendente");
+  }
+
+
+  search(status: string){
+    // delay para tempo de receber os valores do get
+    this.pesquisaPAram = status;
+    setTimeout(() => {
+
+    this.searchService.search("status", status, "tree_requests")
     .subscribe(resquest_trees => this.resquest_trees = resquest_trees);
+
+  },300);
   }
 
   openModal(template: TemplateRef<any>) {
@@ -92,8 +112,7 @@ export class ResquestTreeComponent implements OnInit {
     // delay para tempo de receber os valores do get
     setTimeout(() => {
 
-    this.resquestTreeService.getResquest_trees()
-    .subscribe(resquest_trees => this.resquest_trees = resquest_trees);
+    this.search(this.pesquisaPAram);
 
     },1000);
 

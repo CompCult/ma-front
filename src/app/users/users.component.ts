@@ -112,7 +112,7 @@ search(searchForm){
   // delay para tempo de receber os valores do get
   setTimeout(() => {
 
-  this.usuarioService.search(this.pesquisaPAram, this.searcher.elementoPesquisa)
+  this.searchService.search(this.pesquisaPAram, this.searcher.elementoPesquisa, "users")
   .subscribe(users => this.users = users);
 
 },300);

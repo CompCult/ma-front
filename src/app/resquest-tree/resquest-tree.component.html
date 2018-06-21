@@ -2,13 +2,27 @@
 
 
   <nav class="navbar navbar-dark my-nav ">
-    <span class="navbar-brand">Gerenciar Pedidos</span>
+    <span class="navbar-brand">Gerenciar pedidos</span>
 
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Search">
-      <button class="btn btn-primary my-2 my-sm-0" type="submit">Procurar</button>
-    </form>
-  </nav>
+
+    <form  #searchForm ="ngForm" (ngSubmit)="search(searchForm)" class="form-inline navbar-right">
+      <div class="btn-group" dropdown>
+        <button id="button-basic" dropdownToggle type="button" class="btn btn-success dropdown-toggle"
+        aria-controls="dropdown-basic">
+        {{pesquisaButton}} <span class="caret"></span>
+      </button>
+      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+      role="menu" aria-labelledby="button-basic">
+      <li ><a class="dropdown-item" (click)="search('Pendente')" >Pendente</a></li>
+      <li ><a class="dropdown-item" (click)="search('Aprovado')">Aprovado</a></li>
+      <li ><a class="dropdown-item" (click)="search('Plantada')">Plantada</a></li>
+      <li ><a class="dropdown-item" (click)="search('Rejeitado')">Rejeitado</a></li>
+    </ul>
+  </div>
+  <!-- <input class="form-control mr-sm-2" type="text" placeholder="Procurar" aria-label="Search" [(ngModel)]="searcher.elementoPesquisa" name ="elementoPesquisa" #elementoPesquisa="ngModel">
+  <button class="btn btn-primary my-2 my-sm-0" type="submit">Procurar</button> -->
+</form>
+</nav>
 
 </div>
 

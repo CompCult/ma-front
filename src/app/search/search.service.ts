@@ -16,8 +16,8 @@ export class SearchService {
   constructor(private http: Http){}
 
 
-  search(field: string, param: string): Observable<any[]>{
-    return this.http.get(`${API}/users/query/fields?${field}=${param}`)
+  search(field: string, param: string, routing: string): Observable<any[]>{
+    return this.http.get(`${API}/${routing}/query/fields?${field}=${param}`)
     .map(response => response.json())
     .catch(ErrorHandler.handleError)
   }
