@@ -58,7 +58,7 @@ export class ResquestTree {
   constructor(_id: number, _user: number, _type: number, requester_name: string, place: string,
      status: string, created_at: string, updated_at: string,  street: string,
     complement: string, number: number, neighborhood: string, city: string, state: string,
-    zipcode: string, quantity: number, location_lng: string,location_lat: string, sidewalk_size: number, photo: string) {
+    zipcode: string, quantity: number, location_lng: string,location_lat: string, sidewalk_size: number, photo: string,  planting_date: string) {
 
       this._id = _id;
       this._user = _user;
@@ -80,5 +80,6 @@ export class ResquestTree {
       this.location_lng= location_lng;
       this.sidewalk_size = sidewalk_size;
       this.photo = photo;
+      this.planting_date = planting_date;
     };
   }
