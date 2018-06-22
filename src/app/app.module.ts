@@ -56,6 +56,7 @@ import { InitialPageComponent } from './initial-page/initial-page.component';
 import { LocalComponent } from './local/local.component';
 import { LocalOptionsComponent } from './local/local-options/local-options.component';
 import { IndexComponent } from './index/index.component';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 
 
@@ -97,6 +98,7 @@ import { IndexComponent } from './index/index.component';
     BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
     HttpModule,
+    AlertModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBb4zfxXZMu-1Mt-J8XdcsydsCyEkXcyX0'
     })

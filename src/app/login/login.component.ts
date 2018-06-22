@@ -11,23 +11,20 @@ import { ErrorHandler } from '../app.error-handler';
 export class LoginComponent implements OnInit {
 
   user: FinalUser = new FinalUser();
-  error: boolean;
+  error: string = "";
   session:boolean = true;
 
   constructor(private loginService: LoginService,private cdref: ChangeDetectorRef) { }
 
-
   login(){
-    this.loginService.login(this.user).subscribe(credential =>{
-        this.loginService.createSession(credential)
-      }
+    this.loginService.login(this.user).subscribe(
+      credential => this.loginService.createSession(credential),
+      error => console.log(this.error)
     );
 
     this.loginService.showErrorEmitter.subscribe(error => {
-      this.error = error;
+      this.error = error.replace('"','');
     })
-
-
   }
 
   ngOnInit() {
@@ -35,7 +32,5 @@ export class LoginComponent implements OnInit {
       this.loginService.sessionLogin();
       this.session = false;
     }
-
   }
-
 }

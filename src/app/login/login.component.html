@@ -20,7 +20,10 @@
       <button type="submit" class="btn btn-lg btn-success btn-block"> Login</button>
 
       <div *ngIf="error" class="form-group">
-        <h4>Erro ao tentar fazer o login</h4>
+        <br>
+        <alert type="danger">
+          <strong>Erro de Login: </strong>{{error}}
+        </alert>
       </div>
 
     </form>

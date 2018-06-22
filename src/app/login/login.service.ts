@@ -28,10 +28,11 @@ export class LoginService {
   showMenu = false;
   userType: string;
   userId:number;
+  errorLoginMessage:string = "";
 
   showMenuEmitter = new EventEmitter<boolean>();
   showUserEmitter = new EventEmitter<string>();
-  showErrorEmitter = new EventEmitter<boolean>();
+  showErrorEmitter = new EventEmitter<string>();
   showUserIdEmitter = new EventEmitter<number>();
 
   constructor(private http: Http, private router: Router){}
@@ -44,7 +45,8 @@ export class LoginService {
 
   login(json: any){
     return this.http.post(`${API}/users/auth`, json).map((response: Response) => response.json())
-    .catch(ErrorHandler.handleError);
+    .catch(error=> Observable.apply(this.showErrorEmitter.emit(error._body)));
+    // Observable.call(this.showErrorEmitter.emit("teste de erro"))
   }
 
   createSession(credential:User){
@@ -56,12 +58,12 @@ export class LoginService {
       this.showMenu= true;
       this.showMenuEmitter.emit(true);
       this.showUserEmitter.emit(this.userType);
-      this.showErrorEmitter.emit(false);
+      this.showErrorEmitter.emit("");
       this.showUserIdEmitter.emit(this.userId);
       this.router.navigate(['/initial_page']);
     }else{
       this.showMenuEmitter.emit(false);
-      this.showErrorEmitter.emit(true);
+      this.showErrorEmitter.emit("Usuário não tem permissão de acesso ao painel.");
       this.showUserEmitter.emit("common");
       this.router.navigate(['/login']);
     }
@@ -77,12 +79,12 @@ export class LoginService {
       this.showMenu= true;
       this.showMenuEmitter.emit(true);
       this.showUserEmitter.emit(this.userType);
-      this.showErrorEmitter.emit(false);
+      this.showErrorEmitter.emit("");
       this.showUserIdEmitter.emit(this.userId);
       this.router.navigate(['/initial_page']);
     }else{
       this.showMenuEmitter.emit(false);
-      this.showErrorEmitter.emit(true);
+      this.showErrorEmitter.emit("Usuário não tem permissão de acesso ao painel.");
       this.showUserEmitter.emit("common");
       this.router.navigate(['/login']);
     }
@@ -114,6 +116,14 @@ export class LoginService {
 
   getUserId():number{
     return this.userId;
+  }
+
+  getErrorLoginMessage():string{
+    return this.errorLoginMessage;
+  }
+
+  setErrorLoginMessage(error:string){
+    this.errorLoginMessage = error;
   }
 
 }
