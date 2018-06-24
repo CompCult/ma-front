@@ -22,16 +22,12 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class ResquestTreeComponent implements OnInit {
 
-  pesquisaButton ="Filtrar por Status:";
   pesquisaPAram = "Pendente";
-
-
-
-
   myData:any;
   bsModalRef: BsModalRef;
   modalRef: BsModalRef;
   resquest_trees: ResquestTree[] = [];
+  resquest_treesBackup: ResquestTree[];
   atualiza:boolean;
 
   constructor(private modalService: BsModalService, private resquestTreeService: ResquestTreeService, private userService: UserService,
@@ -80,14 +76,26 @@ export class ResquestTreeComponent implements OnInit {
 
 
   search(status: string){
-    // delay para tempo de receber os valores do get
     this.pesquisaPAram = status;
+    if(status == 'Todos'){
+      setTimeout(() => {
+        this.resquestTreeService.getResquest_trees()
+        .subscribe(resquest_trees => {
+          this.resquest_trees = resquest_trees,
+          this.resquest_treesBackup = resquest_trees
+        });
+      },300);
+      return;
+    }
+    // delay para tempo de receber os valores do get
+
     setTimeout(() => {
-
-    this.searchService.search("status", status, "tree_requests")
-    .subscribe(resquest_trees => this.resquest_trees = resquest_trees);
-
-  },300);
+      this.searchService.search("status", status, "tree_requests")
+      .subscribe(resquest_trees => {
+        this.resquest_trees = resquest_trees,
+        this.resquest_treesBackup = resquest_trees
+      });
+    },300);
   }
 
   openModal(template: TemplateRef<any>) {
@@ -111,9 +119,7 @@ export class ResquestTreeComponent implements OnInit {
   updateList(){
     // delay para tempo de receber os valores do get
     setTimeout(() => {
-
-    this.search(this.pesquisaPAram);
-
+      this.search(this.pesquisaPAram);
     },1000);
 
   }
@@ -135,6 +141,29 @@ export class ResquestTreeComponent implements OnInit {
      },20000);
      }
   }
+
+  updateFilterName(event) {
+      this.resquest_trees = this.resquest_treesBackup; // restaura a lista original;
+      const val = event.target.value.toLowerCase();
+      // pesquisa na lista
+      const temp = this.resquest_trees.filter(function(d) {
+        return d.requester_name.toLowerCase().indexOf(val) !== -1 || !val;
+      });
+      // atualiza a lista
+      this.resquest_trees = temp;
+  }
+
+  updateFilterNeighborhood(event) {
+      this.resquest_trees = this.resquest_treesBackup; // restaura a lista original;
+      const val = event.target.value.toLowerCase();
+      // pesquisa na lista
+      const temp = this.resquest_trees.filter(function(d) {
+        return d.neighborhood.toLowerCase().indexOf(val) !== -1 || !val;
+      });
+      // atualiza a lista
+      this.resquest_trees = temp;
+  }
+
 
   ngOnInit() {
     this.getListaArvores();

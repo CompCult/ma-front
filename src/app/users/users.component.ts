@@ -29,6 +29,7 @@ export class UsersComponent implements OnInit {
 
 
   users: User[];
+  usersTemp:User[];
   myData:any;
   bsModalRef: BsModalRef;
 
@@ -90,10 +91,10 @@ change(tipo: String){
 atualizaLista(){
   // delay para tempo de receber os valores do get
   setTimeout(() => {
-
   this.usuarioService.getUsuarios()
-  .subscribe(users => this.users = users);
-
+  .subscribe(users => {
+    this.users = users,
+    this.usersTemp = users})
 },300);
 
 }
@@ -116,6 +117,28 @@ search(searchForm){
   .subscribe(users => this.users = users);
 
 },300);
+}
+
+updateFilterName(event) {
+    this.users = this.usersTemp; // restaura a lista original;
+    const val = event.target.value.toLowerCase();
+    // pesquisa na lista
+    const temp = this.users.filter(function(d) {
+      return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+    });
+    // atualiza a lista
+    this.users = temp;
+}
+
+updateFilterEmail(event) {
+    this.users = this.usersTemp; // restaura a lista original;
+    const val = event.target.value.toLowerCase();
+    // pesquisa na lista
+    const temp = this.users.filter(function(d) {
+      return d.email.toLowerCase().indexOf(val) !== -1 || !val;
+    });
+    // atualiza a lista
+    this.users = temp;
 }
 
 ngOnInit() {

@@ -26,6 +26,27 @@
 
 <br>
 
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-success" type="button">Nome:</button>
+        </div>
+        <input (keyup)='updateFilterName($event)' type="text" class="form-control" placeholder="Qual o nome que deseja pesquisar?" aria-label="">
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-success" type="button">Email:</button>
+        </div>
+        <input (keyup)='updateFilterEmail($event)' type="text" class="form-control" placeholder="Qual o email que deseja pesquisar?" aria-label="" aria-describedby="basic-addon1">
+      </div>
+    </div>
+  </div>
+</div>
+
 <table>
   <tr>
     <th>ID</th>

@@ -4,15 +4,36 @@
   <nav class="navbar navbar-dark my-nav ">
     <span class="navbar-brand">Tipos de Árvores</span>
 
-    <form class="form-inline">
+    <!-- <form class="form-inline">
       <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Search">
       <button class="btn btn-primary my-2 my-sm-0" type="submit">Procurar</button>
-    </form>
+    </form> -->
   </nav>
 
 </div>
 
 <br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-success" type="button">Nome:</button>
+        </div>
+        <input (keyup)='updateFilterName($event)' type="text" class="form-control" placeholder="Qual o nome que deseja pesquisar?" aria-label="">
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-success" type="button">Descrição:</button>
+        </div>
+        <input (keyup)='updateFilterDescription($event)' type="text" class="form-control" placeholder="Qual a descrição que deseja pesquisar?" aria-label="" aria-describedby="basic-addon1">
+      </div>
+    </div>
+  </div>
+</div>
 
 <table>
   <tr>

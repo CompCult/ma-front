@@ -17,6 +17,7 @@ export class TreesComponent implements OnInit {
 
   bsModalRef: BsModalRef;
   trees: Tree[] = [];
+  treesBackup: Tree[];
   status:Boolean = true;
   atualiza:boolean;
 
@@ -48,7 +49,9 @@ export class TreesComponent implements OnInit {
 
   getListaArvores(){
     this.treeService.getObjetos()
-    .subscribe(trees => this.trees = trees);
+    .subscribe(trees => {
+      this.trees = trees
+      this.treesBackup = trees});
   }
 
   markerIconTreeUrl() {
@@ -69,6 +72,30 @@ export class TreesComponent implements OnInit {
        this.atualizaAutomatico();
      },20000);
      }
+  }
+
+  updateFilterName(event) {
+      this.trees = this.treesBackup; // restaura a lista original;
+      const val = event.target.value.toLowerCase();
+      // pesquisa na lista
+      const temp = this.trees.filter(function(d) {
+        return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+      });
+      // atualiza a lista
+      this.trees = temp;
+  }
+
+  updateFilterDescription(event) {
+      this.trees = this.treesBackup; // restaura a lista original;
+      const val = event.target.value.toLowerCase();
+      // pesquisa na lista
+      const temp = this.trees.filter(function(d) {
+        if(d.description != null){
+          return d.description.toLowerCase().indexOf(val) !== -1 || !val;
+        }        
+      });
+      // atualiza a lista
+      this.trees = temp;
   }
 
   ngOnInit() {
