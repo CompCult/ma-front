@@ -104,7 +104,8 @@ export class EvaluationnComponent implements OnInit {
 
     planting(resquestTree: ResquestTree){
       delete this.resquestTree.photo;
-        this.resquestTree.status ="Plantada"
+      this.resquestTree.status ="Plantada"
+      console.log(this.resquestTree.planting_date)
       this.resquestTreeService.update(this.resquestTree, resquestTree._id).subscribe();
 
 

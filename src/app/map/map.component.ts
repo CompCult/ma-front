@@ -43,21 +43,21 @@ export class MapComponent implements OnInit {
   }
 
   treeView(map:Map):boolean{
-    if(map._request == null){
-      return false;
-    }else if(map._request.status == 'Rejeitado'){
-      return false;
-    }else{
+    // if(map._request == null){
+    //   return false;
+    // }else{
       return true;
-    }
+    // }
   }
 
   markerIconMapUrl(map:Map) {
     if(map._request == null){
       return '../assets/img/pin_red_map.png';
     }
-    if(map._request.status == "Aprovado" || map._request.status == "Plantada"){
+    if(map._request.status == "Plantada"){
       return '../assets/img/pin_green_map.png';
+    }else if(map._request.status == "Aprovado"){
+      return '../assets/img/pin_blue_map.png';
     }else if(map._request.status == "Pendente"){
       return '../assets/img/pin_yellow_map.png';
     }else{
