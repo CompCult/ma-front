@@ -45,16 +45,14 @@ export class EvaluationnComponent implements OnInit {
     }
   }
 
-  local: Local[] = []
+
+
+
+
   checkTypePlace(){
     console.log("passou aki")
     //this.local = tree._places;
   }
-
-
-
-
-
 
   create(resquestForm){
     console.log(this.resquestTree);
@@ -128,10 +126,13 @@ export class EvaluationnComponent implements OnInit {
       }
       treeName= "Árvore"
 
+
+      local: Local[] = []
       add(tree: Tree){
         this.treeName = tree.name;
         this.resquestTree._type = tree._id;
         this.local = tree._places;
+        this.local.pop();
       }
 
 

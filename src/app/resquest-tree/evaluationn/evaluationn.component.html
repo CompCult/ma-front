@@ -62,7 +62,7 @@
 </button>
 <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
 role="menu" aria-labelledby="button-basic">
-<li ><a class="dropdown-item" *ngFor="let place of local"  (click)="addPlace(place)" >{{place.name}}</a></li>
+<li *ngFor="let place of local" ><a class="dropdown-item" *ngIf="place"  (click)="addPlace(place)" >{{place.name}}</a></li>
 
 </ul>
 </div>
